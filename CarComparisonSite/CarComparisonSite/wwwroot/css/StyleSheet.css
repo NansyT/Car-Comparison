@@ -1,0 +1,29 @@
+﻿.kmTitel {
+    width: 100%;
+}
+
+.contentAligner{
+    display:flex;
+}
+
+.electricCarContainer {
+    background-color: lightgrey;
+    flex:auto;
+    text-align:center;
+}
+
+.gasCarContainer {
+    background-color: darkgrey;
+    flex:auto;
+    text-align:center;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ddBtnHolder{
+
+}

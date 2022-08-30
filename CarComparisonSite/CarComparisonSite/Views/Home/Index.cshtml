@@ -1,8 +1,68 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	<h1 class="display-4 kmTitel">Km kørsel: </h1>
+</div>
+<div class="contentAligner">
+
+	<div class="gasCarContainer">
+		<div class="form-group">
+			<h1 class="display-4">Hello Gas</h1>
+			<label for="exampleInputEmail1">Email address</label>
+			<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+			@*<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>*@
+		</div>
+	</div>
+	<div class="electricCarContainer">
+		<div class="form-group">
+			<h1 class="display-4">Hello Electric</h1>
+			<div class="ddBtnHolder">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Model
+				</button>
+				<div class="dropdown-menu" id="ddElectric" aria-labelledby="dropdownMenuButton">
+					@*Make these on load with brand names or whatever is needed*@
+					<button class="dropdown-item" type="button">Action</button>
+					<button class="dropdown-item" type="button">Another action</button>
+					<button class="dropdown-item" type="button">Something else here</button>
+				</div>
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Brand
+				</button>
+				<div class="dropdown-menu" id="ddElectric" aria-labelledby="dropdownMenuButton">
+					@*Make these on load with brand names or whatever is needed*@
+					<button class="dropdown-item" type="button">Action</button>
+					<button class="dropdown-item" type="button">Another action</button>
+					<button class="dropdown-item" type="button">Something else here</button>
+				</div>
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Variant
+				</button>
+				<div class="dropdown-menu" id="ddElectric" aria-labelledby="dropdownMenuButton">
+					@*Make these on load with brand names or whatever is needed*@
+					<button class="dropdown-item" type="button">Action</button>
+					<button class="dropdown-item" type="button">Another action</button>
+					<button class="dropdown-item" type="button">Something else here</button>
+				</div>
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Year
+				</button>
+				<div class="dropdown-menu" id="ddElectric" aria-labelledby="dropdownMenuButton">
+					@*Make these on load with brand names or whatever is needed*@
+					<button class="dropdown-item" type="button">Action</button>
+					<button class="dropdown-item" type="button">Another action</button>
+					<button class="dropdown-item" type="button">Something else here</button>
+				</div>
+			</div>
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="cBoxOwn">
+				<label class="form-check-label" for="cBoxOwn">Eje</label>
+				<input type="checkbox" class="form-check-input" id="cBoxRent" />
+				<label class="form-check-label" for="cBoxRent">Leje</label>
+			</div>
+		</div>
+	</div>
 </div>
