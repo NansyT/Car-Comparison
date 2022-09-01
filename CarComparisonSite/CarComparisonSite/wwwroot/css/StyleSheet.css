@@ -1,21 +1,41 @@
 ﻿.kmTitel {
-    width: 100%;
+    border: none;
+    border-width: 0.2px;
+    border-bottom: 2px solid #00bfff;
+    font-size: 2rem;
+    text-align: center;
+    margin: 5% 0px 5% 0px;
 }
 
-.contentAligner{
-    display:flex;
+h1 {
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+.contentAligner {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 200px 200px;
+    grid-gap: 0;
+    /*height:10rem;*/
+    clear: both;
 }
 
 .electricCarContainer {
     background-color: lightgrey;
-    flex:auto;
-    text-align:center;
+    flex: auto;
+    text-align: center;
 }
 
 .gasCarContainer {
     background-color: darkgrey;
-    flex:auto;
-    text-align:center;
+    flex: auto;
+    text-align: center;
+    height: auto;
 }
 
 .row:after {
@@ -24,6 +44,68 @@
     clear: both;
 }
 
-.ddBtnHolder{
+.ddBtnHolder {
+    display: inline-block;
+}
 
+.electricRadioBoxes {
+    margin-top: 6%;
+}
+
+.statisticsContainer {
+    /*background-color: royalblue;*/
+    grid-column: 1 / span 2;
+}
+
+.statisticsNav {
+    margin-top: 1.5%;
+    /*background-color: darkgrey;*/
+    /*border-top-right-radius: 20px;*/
+    width: fit-content;
+    padding-top: 1%;
+    /*padding-left: 1%;*/
+    padding-right: 1%;
+    padding-bottom: 1%;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #6c757d;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+        color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.statisticsNav{
+    padding-bottom:0;
+}
+
+.statisticsBody {
+    background-color: #f8f9fa;
+    display: grid;
+    grid-template-columns: 42% 48% 10%;
+    clear: both;
+    border-left: 0.1px solid #dee2e6;
+    border-right: 0.1px solid #dee2e6;
+    border-bottom: 0.1px solid #dee2e6;
+}
+
+.statisticsGas{
+    flex:auto;
+    text-align:center;
+}
+
+.statisticsElectric{
+    flex:auto;
+    justify-content:end;
+}
+
+.statisticsTextEndAlign{
+    text-align:end
 }
