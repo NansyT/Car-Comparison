@@ -5,7 +5,20 @@ using System.Threading.Tasks;
 
 namespace CarComparisonSite
 {
-    public class Enums
+    public enum FuelType
     {
+        Benzin,
+        El
+    }
+
+    public enum Brand
+    {
+        Ford,
+        BMW,
+        Volkswagen,
+        Toyota,
+        Tesla,
+        Chevrolet,
+        Mitsubishi,
     }
 }
