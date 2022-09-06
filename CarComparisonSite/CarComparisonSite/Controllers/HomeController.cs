@@ -12,14 +12,18 @@ namespace CarComparisonSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IFetchCarFromDb dbConnector;
+        private List<Car> cars;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IFetchCarFromDb fetch)
         {
             _logger = logger;
+            dbConnector = fetch;
         }
 
         public IActionResult Index()
         {
+            cars = dbConnector.GetAllCars();
             return View();
         }
 
