@@ -1,6 +1,12 @@
-﻿@{
+﻿@model List<Car>
+@{
 	ViewData["Title"] = "Home Page";
+	List<Brand> brands = Model.Select(car => car.Brand).Distinct().ToList();
+	List<string> models = Model.Select(car => car.Model).Distinct().ToList();
+	List<string> variants = Model.Select(car => car.Variant).Distinct().ToList();
+	List<DateTime> dateTimes = Model.Select(car => car.ReleaseYear).Distinct().ToList();
 }
+
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
 
 <div class="text-center">
@@ -22,9 +28,10 @@
 					</button>
 					<div class="dropdown-menu" id="ddGasModel" aria-labelledby="ddGasBtnModel">
 						@*Make these on load with brand names or whatever is needed*@
-						<button class="dropdown-item" type="button">Action</button>
-						<button class="dropdown-item" type="button">Another action</button>
-						<button class="dropdown-item" type="button">Something else here</button>
+						@foreach (string carModel in models)
+						{
+							<button class="dropdown-item" type="button">@carModel</button>
+						}
 					</div>
 				</div>
 				<div class="ddBtnHolder">
@@ -38,9 +45,11 @@
 					</button>
 					<div class="dropdown-menu" id="ddGasBrand" aria-labelledby="ddGasBtnBrand">
 						@*Make these on load with brand names or whatever is needed*@
-						<button class="dropdown-item" type="button">Action</button>
-						<button class="dropdown-item" type="button">Another action</button>
-						<button class="dropdown-item" type="button">Something else here</button>
+						@foreach (Brand brand in brands)
+						{
+							<button class="dropdown-item" type="button">@Enum.GetName(typeof(Brand),brand)</button>
+
+						}
 					</div>
 				</div>
 				<div class="ddBtnHolder">
@@ -54,9 +63,11 @@
 					</button>
 					<div class="dropdown-menu" id="ddGasVariant" aria-labelledby="ddGasBtnVariant">
 						@*Make these on load with brand names or whatever is needed*@
-						<button class="dropdown-item" type="button">Action</button>
-						<button class="dropdown-item" type="button">Another action</button>
-						<button class="dropdown-item" type="button">Something else here</button>
+						@foreach (string carVariant in variants)
+						{
+							<button class="dropdown-item" type="button">@carVariant</button>
+
+						}
 					</div>
 				</div>
 				<div class="ddBtnHolder">
@@ -69,9 +80,10 @@
 					</button>
 					<div class="dropdown-menu" id="ddGasYear" aria-labelledby="ddGasBtnYear">
 						@*Make these on load with brand names or whatever is needed*@
-						<button class="dropdown-item" type="button">Action</button>
-						<button class="dropdown-item" type="button">Another action</button>
-						<button class="dropdown-item" type="button">Something else here</button>
+						@foreach (DateTime dates in dateTimes)
+						{
+							<button class="dropdown-item" type="button">@dates.Year</button>
+						}
 					</div>
 				</div>
 			</div>
@@ -90,9 +102,10 @@
 				</button>
 				<div class="dropdown-menu" id="ddElectricModel" aria-labelledby="ddElectricModel">
 					@*Make these on load with brand names or whatever is needed*@
-					<button class="dropdown-item" type="button">Action</button>
-					<button class="dropdown-item" type="button">Another action</button>
-					<button class="dropdown-item" type="button">Something else here</button>
+					@foreach (string carModel in models)
+					{
+						<button class="dropdown-item" type="button">@carModel</button>
+					}
 				</div>
 			</div>
 			<div class="ddBtnHolder">
@@ -105,9 +118,11 @@
 				</button>
 				<div class="dropdown-menu" id="ddElectricBrand" aria-labelledby="ddElectricBrand">
 					@*Make these on load with brand names or whatever is needed*@
-					<button class="dropdown-item" type="button">Action</button>
-					<button class="dropdown-item" type="button">Another action</button>
-					<button class="dropdown-item" type="button">Something else here</button>
+					@foreach (Brand brand in brands)
+					{
+						<button class="dropdown-item" type="button">@Enum.GetName(typeof(Brand),brand)</button>
+
+					}
 				</div>
 			</div>
 			<div class="ddBtnHolder">
@@ -120,9 +135,11 @@
 				</button>
 				<div class="dropdown-menu" id="ddElectricVariant" aria-labelledby="ddElectricVariant">
 					@*Make these on load with brand names or whatever is needed*@
-					<button class="dropdown-item" type="button">Action</button>
-					<button class="dropdown-item" type="button">Another action</button>
-					<button class="dropdown-item" type="button">Something else here</button>
+					@foreach (string carVariant in variants)
+					{
+						<button class="dropdown-item" type="button">@carVariant</button>
+
+					}
 				</div>
 			</div>
 			<div class="ddBtnHolder">
@@ -135,9 +152,10 @@
 				</button>
 				<div class="dropdown-menu" id="ddElectricYear" aria-labelledby="ddElectricYear">
 					@*Make these on load with brand names or whatever is needed*@
-					<button class="dropdown-item" type="button">Action</button>
-					<button class="dropdown-item" type="button">Another action</button>
-					<button class="dropdown-item" type="button">Something else here</button>
+					@foreach (DateTime dates in dateTimes)
+					{
+						<button class="dropdown-item" type="button">@dates.Year</button>
+					}
 				</div>
 			</div>
 			<div class="form-check">

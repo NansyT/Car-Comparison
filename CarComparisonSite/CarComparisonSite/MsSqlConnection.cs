@@ -18,12 +18,7 @@ namespace CarComparisonSite
             this.config = configuration;
         }
 
-        public List<Car> GetCars(string variant, string model, DateTime releaseYear, Brand? brand)
-        {
-            throw new NotImplementedException();
-        }
-
-        public FilterOptions GetOnLoad()
+        public List<Car> GetAllCars()
         {
             throw new NotImplementedException();
         }

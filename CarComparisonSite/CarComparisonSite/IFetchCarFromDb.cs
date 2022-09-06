@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace CarComparisonSite
 {
-    interface IFetchCarFromDb
+    public interface IFetchCarFromDb
     {
-        public List<Car> GetCars(string variant, string model, DateTime releaseYear, Brand? brand);
-
-        public FilterOptions GetOnLoad();
+        public List<Car> GetAllCars();
     }
 }
