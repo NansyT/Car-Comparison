@@ -23,7 +23,7 @@ namespace CarComparisonSite.Controllers
 
         public IActionResult Index()
         {
-            cars = dbConnector.GetAllCars();
+            //cars = dbConnector.GetAllCars();
             return View();
         }
 
