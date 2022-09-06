@@ -8,8 +8,8 @@
 }
 
 h1 {
-    overflow:hidden;
-    white-space:nowrap;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -73,17 +73,17 @@ input:focus, textarea:focus, select:focus {
     color: #6c757d;
 }
 
-.pagination a.active {
-    background-color: #4CAF50;
+    .pagination a.active {
+        background-color: #4CAF50;
         color: white;
-}
+    }
 
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
-}
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
 
-.statisticsNav{
-    padding-bottom:0;
+.statisticsNav {
+    padding-bottom: 0;
 }
 
 .statisticsBody {
@@ -94,23 +94,26 @@ input:focus, textarea:focus, select:focus {
     border-left: 0.1px solid #dee2e6;
     border-right: 0.1px solid #dee2e6;
     border-bottom: 0.1px solid #dee2e6;
-    border-top: 0.1px solid #dee2e6;    
+    border-top: 0.1px solid #dee2e6;
 }
 
-.statisticsGas{
-    flex:auto;
-    text-align:center;
+.statisticsGas {
+    flex: auto;
+    text-align: center;
 }
 
-.statisticsElectric{
-    flex:auto;
-    justify-content:end;
+.statisticsElectric {
+    flex: auto;
+    justify-content: end;
 }
 
-.statisticsTextEndAlign{
-    text-align:end
+.statisticsTextEndAlign {
+    text-align: end
 }
 
-.convasContainer{
+.convasContainer {
+}
 
+.category {
+    font-weight: bold;
 }
