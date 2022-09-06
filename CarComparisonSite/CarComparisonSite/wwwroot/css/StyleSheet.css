@@ -17,26 +17,43 @@ input:focus, textarea:focus, select:focus {
 }
 
 .contentAligner {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    /*display: grid;*/
+    /*    grid-template-columns: 50% 50%;
     grid-template-rows: 200px 200px;
-    grid-gap: 0;
+    grid-gap: 0;*/
     /*height:10rem;*/
     clear: both;
 }
 
-.electricCarContainer {
+.contentAlignerError {
+    display: flex;
+    /*height:10rem;*/
+    clear: both;
+    word-wrap: break-word;
+}
+
+.row {
+    background-color: #f8f9fa;
+    border-radius: 3px;
+    border: 0.1px solid #dee2e6;
+}
+
+.carGridNav{
+    text-align:center;
+}
+
+/*.electricCarContainer {
     background-color: lightgrey;
     flex: auto;
     text-align: center;
-}
+}*/
 
-.gasCarContainer {
+/*.gasCarContainer {
     background-color: darkgrey;
     flex: auto;
     text-align: center;
     height: auto;
-}
+}*/
 
 .row:after {
     content: "";
@@ -46,6 +63,11 @@ input:focus, textarea:focus, select:focus {
 
 .ddBtnHolder {
     display: inline-block;
+}
+
+
+.form-check{
+    display:inline-flex;
 }
 
 .electricRadioBoxes {

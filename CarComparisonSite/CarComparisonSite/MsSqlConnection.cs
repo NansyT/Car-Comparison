@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
 namespace CarComparisonSite
@@ -20,6 +20,7 @@ namespace CarComparisonSite
 
         public List<Car> GetAllCars()
         {
+            return new List<Car>();
             throw new NotImplementedException();
         }
     }

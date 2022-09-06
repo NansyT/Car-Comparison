@@ -4,8 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using X.PagedList;
 
 namespace CarComparisonSite.Controllers
 {
@@ -21,9 +20,13 @@ namespace CarComparisonSite.Controllers
             dbConnector = fetch;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
             cars = dbConnector.GetAllCars();
+            int pageNumber = page ?? 1;
+            IPagedList<Car> onePageOfCars = cars.ToPagedList(pageNumber, 10);
+
+            ViewBag.OnePageOfCars = onePageOfCars;
             return View();
         }
 

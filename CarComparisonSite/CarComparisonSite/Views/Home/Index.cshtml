@@ -1,234 +1,137 @@
-﻿@model List<Car>
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
 @{
 	ViewData["Title"] = "Home Page";
-	List<Brand> brands = Model.Select(car => car.Brand).Distinct().ToList();
-	List<string> models = Model.Select(car => car.Model).Distinct().ToList();
-	List<string> variants = Model.Select(car => car.Variant).Distinct().ToList();
-	List<DateTime> dateTimes = Model.Select(car => car.ReleaseYear).Distinct().ToList();
 }
 
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
 
 <div class="text-center">
-	<input class="kmTitel" placeholder="KM om året" type="text" />
+	<input class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
 </div>
-<div class="contentAligner">
-
-	<div class="gasCarContainer">
-		<div class="form-group">
-			<h1 class="display-4">Benzin Bil</h1>
-			<div class="ddBtnHolder">
-				<div class="ddBtnHolder">
-					<button class="btn btn-primary dropdown-toggle"
-							type="button"
-							id="ddGasBtnModel"
-							data-mdb-toggle="dropdown"
-							aria-expanded="false">
-						Model
-					</button>
-					<div class="dropdown-menu" id="ddGasModel" aria-labelledby="ddGasBtnModel">
-						@*Make these on load with brand names or whatever is needed*@
-						@foreach (string carModel in models)
-						{
-							<button class="dropdown-item" type="button">@carModel</button>
-						}
-					</div>
+<div id="contentAligner" class="contentAligner">
+	@*<div id="contentAligner" class="@(Model == null ? "contentAligner" : "contentAlignerError")>*@
+	@if (@*Model != null*@true)
+	{
+		<div class="row">
+			<div class="col-sm">
+				<p> <strong> Mærke </strong> </p>
+			</div>
+			<div class="col-sm">
+				<p> <strong> Model </strong></p>
+			</div>
+			<div class="col-sm">
+				<p> <strong> Udgave </strong></p>
+			</div>
+			<div class="col-sm">
+				<p> <strong> År </strong></p>
+			</div>
+			<div class="col-sm">
+				<p> <strong> Type </strong></p>
+			</div>
+		</div>
+		@foreach (Car car in ViewBag.OnePageOfCars)
+		{
+			<div class="row">
+				<div class="col-sm">
+					<p>@car.Brand</p>
 				</div>
-				<div class="ddBtnHolder">
+			</div>
+		}
 
-					<button class="btn btn-primary dropdown-toggle"
-							type="button"
-							id="ddGasBtnBrand"
-							data-mdb-toggle="dropdown"
-							aria-expanded="false">
-						Brand
-					</button>
-					<div class="dropdown-menu" id="ddGasBrand" aria-labelledby="ddGasBtnBrand">
-						@*Make these on load with brand names or whatever is needed*@
-						@foreach (Brand brand in brands)
-						{
-							<button class="dropdown-item" type="button">@Enum.GetName(typeof(Brand),brand)</button>
+		@Html.PagedListPager( (IPagedList)ViewBag.OnePageOfCars, page => Url.Action("Index", new { page }) )
 
-						}
-					</div>
+		<div class="chosenCars">
+			<div class="row">
+				<div class="col-sm">
+					<p class="lead"> Valgte bil </p>
 				</div>
-				<div class="ddBtnHolder">
-
-					<button class="btn btn-primary dropdown-toggle"
-							type="button"
-							id="ddGasBtnVariant"
-							data-mdb-toggle="dropdown"
-							aria-expanded="false">
-						Variant
-					</button>
-					<div class="dropdown-menu" id="ddGasVariant" aria-labelledby="ddGasBtnVariant">
-						@*Make these on load with brand names or whatever is needed*@
-						@foreach (string carVariant in variants)
-						{
-							<button class="dropdown-item" type="button">@carVariant</button>
-
-						}
-					</div>
-				</div>
-				<div class="ddBtnHolder">
-					<button class="btn btn-primary dropdown-toggle"
-							type="button"
-							id="ddGasYear"
-							data-mdb-toggle="dropdown"
-							aria-expanded="false">
-						Year
-					</button>
-					<div class="dropdown-menu" id="ddGasYear" aria-labelledby="ddGasBtnYear">
-						@*Make these on load with brand names or whatever is needed*@
-						@foreach (DateTime dates in dateTimes)
-						{
-							<button class="dropdown-item" type="button">@dates.Year</button>
-						}
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<p class="lead"> Valgte bil </p>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="electricCarContainer">
-		<div class="form-group">
-			<h1 class="display-4">El Bil</h1>
-			<div class="ddBtnHolder">
-				<button class="btn btn-primary dropdown-toggle"
-						type="button"
-						id="ddElectricModel"
-						data-mdb-toggle="dropdown"
-						aria-expanded="false">
-					Model
-				</button>
-				<div class="dropdown-menu" id="ddElectricModel" aria-labelledby="ddElectricModel">
-					@*Make these on load with brand names or whatever is needed*@
-					@foreach (string carModel in models)
-					{
-						<button class="dropdown-item" type="button">@carModel</button>
-					}
-				</div>
-			</div>
-			<div class="ddBtnHolder">
-				<button class="btn btn-primary dropdown-toggle"
-						type="button"
-						id="ddElectricBrand"
-						data-mdb-toggle="dropdown"
-						aria-expanded="false">
-					Brand
-				</button>
-				<div class="dropdown-menu" id="ddElectricBrand" aria-labelledby="ddElectricBrand">
-					@*Make these on load with brand names or whatever is needed*@
-					@foreach (Brand brand in brands)
-					{
-						<button class="dropdown-item" type="button">@Enum.GetName(typeof(Brand),brand)</button>
 
-					}
+		<div class="form-check">
+			<h3 class="lead">Ladestander type</h3>
+			<div class="electricRadioBoxes">
+				<div class="custom-control custom-radio custom-control-inline">
+					<input type="radio" id="electricRadioRent" name="electricRadio" class="custom-control-input">
+					<label class="custom-control-label" for="electricRadioRent">Rent</label>
 				</div>
-			</div>
-			<div class="ddBtnHolder">
-				<button class="btn btn-primary dropdown-toggle"
-						type="button"
-						id="ddElectricVariant"
-						data-mdb-toggle="dropdown"
-						aria-expanded="false">
-					Variant
-				</button>
-				<div class="dropdown-menu" id="ddElectricVariant" aria-labelledby="ddElectricVariant">
-					@*Make these on load with brand names or whatever is needed*@
-					@foreach (string carVariant in variants)
-					{
-						<button class="dropdown-item" type="button">@carVariant</button>
-
-					}
-				</div>
-			</div>
-			<div class="ddBtnHolder">
-				<button class="btn btn-primary dropdown-toggle"
-						type="button"
-						id="ddElectricYear"
-						data-mdb-toggle="dropdown"
-						aria-expanded="false">
-					Year
-				</button>
-				<div class="dropdown-menu" id="ddElectricYear" aria-labelledby="ddElectricYear">
-					@*Make these on load with brand names or whatever is needed*@
-					@foreach (DateTime dates in dateTimes)
-					{
-						<button class="dropdown-item" type="button">@dates.Year</button>
-					}
-				</div>
-			</div>
-			<div class="form-check">
-				<div class="electricRadioBoxes">
-					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="electricRadioRent" name="electricRadio" class="custom-control-input">
-						<label class="custom-control-label" for="electricRadioRent">Rent</label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="electricRadioOwn" name="electricRadio" class="custom-control-input">
-						<label class="custom-control-label" for="electricRadioOwn">Own</label>
-					</div>
+				<div class="custom-control custom-radio custom-control-inline">
+					<input type="radio" id="electricRadioOwn" name="electricRadio" class="custom-control-input">
+					<label class="custom-control-label" for="electricRadioOwn">Own</label>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="statisticsContainer">
-		<div class="statisticsNav">
-			<ul class="nav nav-tabs">
-				<li class="nav-item">
-					<a class="nav-link active" href="#">1. År</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">2. År</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">3. År</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">4. År</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">5. År</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Samlet</a>
-				</li>
-			</ul>
-		</div>
-		<div class="statisticsBody">
-			<div class="statisticsGas col category">
-				<div class="d-flex p-2 ">Nypris</div>
-				<div class="d-flex p-2 ">Brændstof/el forbrug</div>
-				<div class="d-flex p-2 ">Co2 afgift</div>
-				<div class="d-flex p-2 ">Bilsyn</div>
-				<div class="d-flex p-2 ">Serviceeftersyn</div>
-				<div class="d-flex p-2 ">Ladestander</div>
-				<div class="d-flex p-2 ">Ladeabonnement</div>
+		<div class="statisticsContainer">
+			<div class="statisticsNav">
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" href="#">1. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">2. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">3. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">4. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">5. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Samlet</a>
+					</li>
+				</ul>
 			</div>
-			<div class="col">
-				<div id="newPGas" class="d-flex p-2"></div>
-				<div id="fuelPGas" class="d-flex p-2"></div>
-				<div id="co2Gas" class="d-flex p-2"></div>
-				<div id="synPGas" class="d-flex p-2"></div>
-                <div id="servPGas" class="d-flex p-2"></div>
-				<div id="cargPGas" class="d-flex p-2"></div>
-				<div id="subPGas" class="d-flex p-2"></div>
-			</div>
-			<div class="statisticsElectric">
+			<div class="statisticsBody">
+				<div class="statisticsGas col category">
+					<div class="d-flex p-2 ">Nypris</div>
+					<div class="d-flex p-2 ">Brændstof/el forbrug</div>
+					<div class="d-flex p-2 ">Co2 afgift</div>
+					<div class="d-flex p-2 ">Bilsyn</div>
+					<div class="d-flex p-2 ">Serviceeftersyn</div>
+					<div class="d-flex p-2 ">Ladestander</div>
+					<div class="d-flex p-2 ">Ladeabonnement</div>
+				</div>
 				<div class="col">
-					<div id="newPElec" class="d-flex p-2"></div>
-					<div id="fuelPElec" class="d-flex p-2"></div>
-					<div id="co2Elec" class="d-flex p-2"></div>
-                    <div id="synElec" class="d-flex p-2"></div>
-                    <div id="servElec" class="d-flex p-2"></div>
-                    <div id="chargPElec" class="d-flex p-2"></div>
-                    <div id="subPElec" class="d-flex p-2"></div>
+					<div id="newPGas" class="d-flex p-2"></div>
+					<div id="fuelPGas" class="d-flex p-2"></div>
+					<div id="co2Gas" class="d-flex p-2"></div>
+					<div id="synPGas" class="d-flex p-2"></div>
+					<div id="servPGas" class="d-flex p-2"></div>
+					<div id="cargPGas" class="d-flex p-2"></div>
+					<div id="subPGas" class="d-flex p-2"></div>
+				</div>
+				<div class="statisticsElectric">
+					<div class="col">
+						<div id="newPElec" class="d-flex p-2"></div>
+						<div id="fuelPElec" class="d-flex p-2"></div>
+						<div id="co2Elec" class="d-flex p-2"></div>
+						<div id="synElec" class="d-flex p-2"></div>
+						<div id="servElec" class="d-flex p-2"></div>
+						<div id="chargPElec" class="d-flex p-2"></div>
+						<div id="subPElec" class="d-flex p-2"></div>
+					</div>
+				</div>
+				<div class="canvasContainer">
+					<canvas id="myChart"></canvas>
 				</div>
 			</div>
-			<div class="canvasContainer">
-				<canvas id="myChart"></canvas>
-			</div>
 		</div>
-	</div>
+	}
+	else
+	{
+		@Html
+		<div class="text-center">
+			<h1 class="display-2">Det kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
+		</div>
+	}
 </div>				
