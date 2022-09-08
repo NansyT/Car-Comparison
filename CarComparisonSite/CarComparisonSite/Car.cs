@@ -7,6 +7,15 @@ namespace CarComparisonSite
 {
     public class Car
     {
+        private int carId;
+
+        public int CarId
+        {
+            get { return carId; }
+            set { carId = value; }
+        }
+
+
         private Fuel fuel;
 
         public Fuel Fuel
@@ -63,8 +72,9 @@ namespace CarComparisonSite
             private set { brand = value; }
         }
 
-        public Car(Fuel fuel, string variant, float fuelUsagePerKM, float price, DateTime releaseYear, string model, Brand brand)
+        public Car(int carId,Fuel fuel, string variant, float fuelUsagePerKM, float price, DateTime releaseYear, string model, Brand brand)
         {
+            CarId = carId;
             Fuel = fuel;
             Variant = variant;
             FuelUsagePerKM = fuelUsagePerKM;
@@ -72,6 +82,11 @@ namespace CarComparisonSite
             ReleaseYear = releaseYear;
             Model = model;
             Brand = brand;
+        }
+
+        public Car()
+        {
+
         }
     }
 }

@@ -38,8 +38,13 @@ input:focus, textarea:focus, select:focus {
     border: 0.1px solid #dee2e6;
 }
 
-.carGridNav{
-    text-align:center;
+.clickAbleContent {
+    background-color: transparent;
+    border: none;
+}
+
+.carGridNav {
+    text-align: center;
 }
 
 /*.electricCarContainer {

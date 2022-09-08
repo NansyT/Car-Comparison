@@ -1,5 +1,6 @@
 ﻿@using X.PagedList;
 @using X.PagedList.Mvc.Core;
+@model Car
 @{
 	ViewData["Title"] = "Home Page";
 }
@@ -30,25 +31,54 @@
 				<p> <strong> Type </strong></p>
 			</div>
 		</div>
-		@foreach (Car car in ViewBag.OnePageOfCars)
+		@using (Html.BeginForm("Index", "Home", FormMethod.Post))
 		{
-			<div class="row">
-				<div class="col-sm">
-					<p>@car.Brand</p>
-				</div>
-			</div>
-		}
+			@foreach (Car car in ViewBag.OnePageOfCars)
+			{
+				<div class="row">
+					<div class="col-sm">
+						@*@Html.HiddenFor(c => car.CarId, new {Value = car.CarId, id=car.CarId})*@
 
-		@Html.PagedListPager( (IPagedList)ViewBag.OnePageOfCars, page => Url.Action("Index", new { page }) )
+						@Html.Hidden("car",@car.CarId)
+						<input class="lead clickAbleContent" type="submit" id="@car.CarId" value="@Enum.GetName(typeof(Brand),car.Brand)" />
+
+		</div>
+		<div class="col-sm">
+						<p class="lead">@car.Model</p>
+					</div>
+					<div class="col-sm">
+						<p class="lead">@car.Variant</p>
+					</div>
+					<div class="col-sm">
+						<p class="lead">@car.ReleaseYear.Year</p>
+					</div>
+					<div class="col-sm">
+						<p class="lead">@Enum.GetName(typeof(FuelType),car.Fuel.FuelType)</p>
+					</div>
+				</div>
+			}
+		}
+		<div class="pagedListPager">
+			@Html.PagedListPager( (IPagedList)ViewBag.OnePageOfCars, page =>
+		Url.Action("Index", new { page, ViewBag.SelectedGas,ViewBag.SelectedElectric }))
+		</div>
 
 		<div class="chosenCars">
 			<div class="row">
 				<div class="col-sm">
+					@if (ViewBag.SelectedGas != null)
+					{
+						Car gas = ViewBag.SelectedGas;
+					}
 					<p class="lead"> Valgte bil </p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm">
+					@if (ViewBag.SelectedElectric != null)
+					{
+						Car gas = ViewBag.SelectedElectric;
+					}
 					<p class="lead"> Valgte bil </p>
 				</div>
 			</div>
@@ -129,7 +159,6 @@
 	}
 	else
 	{
-		@Html
 		<div class="text-center">
 			<h1 class="display-2">Det kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
 		</div>

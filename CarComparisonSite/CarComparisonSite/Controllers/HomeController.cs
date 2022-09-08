@@ -20,13 +20,37 @@ namespace CarComparisonSite.Controllers
             dbConnector = fetch;
         }
 
-        public IActionResult Index(int? page)
+        public IActionResult Index(int? page, Car selectedCarElectric, Car SelectedCarGas)
         {
             cars = dbConnector.GetAllCars();
             int pageNumber = page ?? 1;
-            IPagedList<Car> onePageOfCars = cars.ToPagedList(pageNumber, 10);
+            IPagedList<Car> onePageOfCars = cars.ToPagedList(pageNumber, 4);
 
             ViewBag.OnePageOfCars = onePageOfCars;
+            return View();
+        }
+
+        //Reports back to the server what car was chosen in the grid
+        //so it can be set in viewbag and shown on reload
+        [HttpPost]
+        public ActionResult Index(int car)
+        {
+            cars = dbConnector.GetAllCars();
+            for (int i = 0; i < cars.Count; i++)
+            {
+                if (cars[i].CarId == car)
+                {
+                    if (cars[i].Fuel.FuelType == FuelType.Benzin)
+                    {
+                        ViewBag.SelectedGas = cars[i];
+                    }
+                    else
+                    {
+                        ViewBag.SelectedElectric = cars[i];
+                    }
+                    i = cars.Count + 1;
+                }
+            }
             return View();
         }
 
