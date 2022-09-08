@@ -20,7 +20,7 @@ namespace CarComparisonSite.Controllers
             dbConnector = fetch;
         }
 
-        public IActionResult Index(int? page, Car selectedCarElectric, Car SelectedCarGas)
+        public IActionResult Index(int? page)
         {
             cars = dbConnector.GetAllCars();
             int pageNumber = page ?? 1;
@@ -42,16 +42,16 @@ namespace CarComparisonSite.Controllers
                 {
                     if (cars[i].Fuel.FuelType == FuelType.Benzin)
                     {
-                        ViewBag.SelectedGas = cars[i];
+                        HttpContext.Session.SetObject("SelectedGas", cars[i]);
                     }
                     else
                     {
-                        ViewBag.SelectedElectric = cars[i];
+                        HttpContext.Session.SetObject("SelectedElectric", cars[i]);
                     }
                     i = cars.Count + 1;
                 }
-            }
-            return View();
+            }            
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

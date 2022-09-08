@@ -86,3 +86,4 @@ C:\Users\kenn5073\source\repos\Car-Comparison\CarComparisonSite\CarComparisonSit
 C:\Users\kenn5073\source\repos\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.dll
 C:\Users\kenn5073\source\repos\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.pdb
 C:\Users\kenn5073\source\repos\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.genruntimeconfig.cache
+C:\Users\kenn5073\source\repos\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

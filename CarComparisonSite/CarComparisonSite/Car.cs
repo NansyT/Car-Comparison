@@ -84,9 +84,9 @@ namespace CarComparisonSite
             Brand = brand;
         }
 
-        public Car()
-        {
+        //public Car()
+        //{
 
-        }
+        //}
     }
 }
