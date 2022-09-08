@@ -6,6 +6,7 @@
 }
 
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
+<script src="~/js/priceOverview.js"></script>
 
 <div class="text-center">
 	<input class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
@@ -138,6 +139,8 @@
 					<div class="d-flex p-2 ">Serviceeftersyn</div>
 					<div class="d-flex p-2 ">Ladestander</div>
 					<div class="d-flex p-2 ">Ladeabonnement</div>
+                    <br />
+					<div class="d-flex p-2 ">Totalt</div>
 				</div>
 				<div class="col">
 					<div id="newPGas" class="d-flex p-2"></div>
@@ -145,18 +148,22 @@
 					<div id="co2Gas" class="d-flex p-2"></div>
 					<div id="synPGas" class="d-flex p-2"></div>
 					<div id="servPGas" class="d-flex p-2"></div>
-					<div id="cargPGas" class="d-flex p-2"></div>
+					<div id="chargPGas" class="d-flex p-2"></div>
 					<div id="subPGas" class="d-flex p-2"></div>
+                    <br />
+					<div id="totalPGas" class="d-flex p-2"></div>
 				</div>
 				<div class="statisticsElectric">
 					<div class="col">
 						<div id="newPElec" class="d-flex p-2"></div>
-						<div id="fuelPElec" class="d-flex p-2"></div>
+						<div id="electPElec" class="d-flex p-2"></div>
 						<div id="co2Elec" class="d-flex p-2"></div>
-						<div id="synElec" class="d-flex p-2"></div>
-						<div id="servElec" class="d-flex p-2"></div>
+						<div id="synPElec" class="d-flex p-2"></div>
+						<div id="servPElec" class="d-flex p-2"></div>
 						<div id="chargPElec" class="d-flex p-2"></div>
 						<div id="subPElec" class="d-flex p-2"></div>
+						<br />
+						<div id="totalPElec" class="d-flex p-2"></div>
 					</div>
 				</div>
 				<div class="canvasContainer">
