@@ -1,4 +1,4 @@
-INSERT INTO Brand(BName) VALUES 
+INSERT INTO Brand(BName) VALUES
 ('Kia'),
 ('Volvo'),
 ('Nissan'),
@@ -54,10 +54,12 @@ INSERT INTO Car(Variant, ReleaseYear, FuelUsagePerKM, Price, MName, BName, FuelN
 ('50 Allure 5d', '2020-09-01', 164.0, 245910, 'e-208', 'Peugeot', 'El'),
 ('Experience 3d', '2020-09-01', 148.0, 280420, 'Cooper SE', 'MINI', 'El')
 
-
 INSERT INTO FuelPrice(FuelName, Date, Price) VALUES
-('Benzin', '2022-09-03', 15.79),
-('Benzin', '2022-09-02', 15.89),
-('Benzin', '2022-09-01', 16.09),
-('Benzin', '2022-08-30', 16.19),
-('Benzin', '2022-08-24', 16.39)
+('Benzin', '2022-08-31', 16.36),
+('Benzin', '2022-07-31', 17.19),
+('Benzin', '2022-06-30', 18.69),
+('Benzin', '2022-05-31', 18.69),
+('El', '2022-08-31', 3.37),
+('El', '2022-07-31', 1.89),
+('El', '2022-06-30', 1.59),
+('El', '2022-05-31', 1.24)
