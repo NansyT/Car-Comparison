@@ -1,0 +1,24 @@
+﻿@model Car
+
+<div class="row">
+	<div class="col-sm">
+		@*@Html.HiddenFor(c => car.CarId, new {Value = car.CarId, id=car.CarId})*@
+
+		@*@Html.Hidden("car",@car.CarId)*@
+		<div class="clickAbleDiv" id="@Model.CarId.ToString()">
+			<p class="lead">@Model.Model</p>
+		</div>
+	</div>
+	<div class="col-sm">
+		<p class="lead">@Model.Model</p>
+	</div>
+	<div class="col-sm">
+		<p class="lead">@Model.Variant</p>
+	</div>
+	<div class="col-sm">
+		<p class="lead">@Model.ReleaseYear.Year</p>
+	</div>
+	<div class="col-sm">
+		<p class="lead">@Enum.GetName(typeof(FuelType),Model.Fuel.FuelType)</p>
+	</div>
+</div>

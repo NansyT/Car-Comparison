@@ -33,13 +33,14 @@ namespace CarComparisonSite.Controllers
         //Reports back to the server what car was chosen in the grid
         //so it can be set in viewbag and shown on reload
         [HttpPost]
-        public ActionResult Index(int car)
+        public ActionResult Index(int carId)
         {
             cars = dbConnector.GetAllCars();
             for (int i = 0; i < cars.Count; i++)
             {
-                if (cars[i].CarId == car)
+                if (cars[i].CarId == carId)
                 {
+        // TODO: TRY TO MAKE IT WORK WITH A DIV WITH AN ONCLICK LISTENER FROM A JS script
                     if (cars[i].Fuel.FuelType == FuelType.Benzin)
                     {
                         HttpContext.Session.SetObject("SelectedGas", cars[i]);

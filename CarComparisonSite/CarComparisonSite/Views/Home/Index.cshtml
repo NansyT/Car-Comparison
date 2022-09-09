@@ -34,29 +34,11 @@
 		</div>
 		@using (Html.BeginForm("Index", "Home", FormMethod.Post))
 		{
-			@foreach (Car car in ViewBag.OnePageOfCars)
+			@for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)	
 			{
-				<div class="row">
-					<div class="col-sm">
-						@*@Html.HiddenFor(c => car.CarId, new {Value = car.CarId, id=car.CarId})*@
-
-						@Html.Hidden("car",@car.CarId)
-						<input class="lead clickAbleContent" type="submit" id="@car.CarId" value="@Enum.GetName(typeof(Brand),car.Brand)" />
-
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.Model</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.Variant</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.ReleaseYear.Year</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@Enum.GetName(typeof(FuelType),car.Fuel.FuelType)</p>
-					</div>
-				</div>
+				Car car = (Car)ViewBag.OnePageOfCars[i];
+				@Html.Partial("CarPartialView",car);
+				
 			}
 		}
 		<div class="pagedListPager">
