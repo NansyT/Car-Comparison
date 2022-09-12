@@ -1,4 +1,6 @@
 --CREATE DATABASE CarComparison;
+drop table if exists Car, FuelPrice, Model, Brand, FuelType;
+
 
 CREATE TABLE [FuelType]
 (
@@ -26,7 +28,8 @@ CREATE TABLE [FuelPrice]
 
 CREATE TABLE [Car]
 (
-	[Variant] VARCHAR(150) PRIMARY KEY,
+	[CarId] int primary key not null identity(1,1),
+	[Variant] VARCHAR(150),
 	[ReleaseYear] DATE,
 	[FuelUsagePerKM] FLOAT NOT NULL,
 	[Price] FLOAT NOT NULL,

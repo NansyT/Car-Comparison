@@ -72,21 +72,16 @@ namespace CarComparisonSite
             private set { brand = value; }
         }
 
-        public Car(int carId,Fuel fuel, string variant, float fuelUsagePerKM, float price, DateTime releaseYear, string model, Brand brand)
+        public Car(int carId, string variant, DateTime releaseYear, float fuelUsagePerKM, float price, string model, Brand brand, Fuel fuel)
         {
             CarId = carId;
-            Fuel = fuel;
             Variant = variant;
+            ReleaseYear = releaseYear;
             FuelUsagePerKM = fuelUsagePerKM;
             Price = price;
-            ReleaseYear = releaseYear;
             Model = model;
             Brand = brand;
+            Fuel = fuel;
         }
-
-        //public Car()
-        //{
-
-        //}
     }
 }

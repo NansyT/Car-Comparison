@@ -20,8 +20,35 @@ namespace CarComparisonSite
 
         public List<Car> GetAllCars()
         {
-            command = new SqlCommand("GetCars", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            using (connection = GetConnection())
+            {
+                List<Car> cars = new List<Car>();
+                connection.Open();
+                using (command = new SqlCommand("GetCars", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Car c = new Car(
+                                reader.GetInt32(0),
+                                reader.GetString(1),
+                                reader.GetDateTime(2),
+                                reader.GetFloat(3),
+                                reader.GetFloat(4),
+                                reader.GetString(5),
+                                Enum.Parse<Brand>(reader.GetString(6)),
+                                new Fuel(
+                                    Enum.Parse<FuelType>(reader.GetString(7)),
+                                    reader.GetFloat(8))
+                                );
+                            cars.Add(c);
+                        }
+                        return cars;
+                    }
+                }
+            }
             #region TestData
             //Car car = new Car(1, new Fuel(FuelType.El, 13.5f), "WhiteGuy", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
             //Car car1 = new Car(2, new Fuel(FuelType.El, 13.5f), "Welcome", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
