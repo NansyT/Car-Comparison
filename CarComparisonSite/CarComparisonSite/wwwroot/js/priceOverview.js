@@ -20,9 +20,11 @@ var startprice = 8542.85;
 var charger = 5500;
 
 window.onload = function () {
-    if (document.getElementById()) {
+    if (document.getElementById("kmYear").value === null) {
+        console.log("null");
 
     }
+      
 }
 
 function calculateFuelPrice() {
