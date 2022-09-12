@@ -9,7 +9,7 @@
 <script src="~/js/priceOverview.js"></script>
 
 <div class="text-center">
-	<input class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
+	<input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
 </div>
 <div id="contentAligner" class="contentAligner">
 	@if (ViewBag.OnePageOfCars != null)
@@ -47,6 +47,7 @@
 
 		<div class="chosenCars">
 			<div class="row">
+<<<<<<< Updated upstream
 				@if (Context.Session.GetObject<Car>("SelectedGas") != null)
 				{
 					Car car = Context.Session.GetObject<Car>("SelectedGas");
@@ -93,6 +94,69 @@
 						<p class="lead"> Vælg El bil </p>
 					</div>
 				}
+=======
+                <div class="col-sm">
+                    @if (Context.Session.GetObject<Car>("SelectedGas") != null)
+                    {
+                        Car car = Context.Session.GetObject<Car>("SelectedGas");
+
+                        <div class="col-sm">
+                            <div class="clickAbleDiv" id="@car.CarId.ToString()">
+                                <p class="lead">@car.Brand</p>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@car.Model</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@car.Variant</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@car.ReleaseYear.Year</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@Enum.GetName(typeof(FuelType), car.Fuel.FuelType)</p>
+                        </div>
+						<p id="newPGasI" hidden="hidden">@car.Price</p>
+						<p id="useKmGasI" hidden="hidden">@car.FuelUsagePerKM</p>
+					}
+				    else
+					{
+						<p class="lead"> Valgte bil </p>
+					}
+                        </div>
+                    </div>
+			<div class="row">
+                <div class="col-sm">
+                    @if (Context.Session.GetObject<Car>("SelectedElectric") != null)
+                    {
+                        Car car = Context.Session.GetObject<Car>("SelectedElectric");
+                        <div class="col-sm">
+                            <div class="clickAbleDiv" id="@car.CarId.ToString()">
+                                <p class="lead">@car.Brand</p>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@car.Model</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@car.Variant</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@car.ReleaseYear.Year</p>
+                        </div>
+                        <div class="col-sm">
+                            <p class="lead">@Enum.GetName(typeof(FuelType), car.Fuel.FuelType)</p>
+                        </div>
+                        <p id="newPElecI" hidden="hidden">@car.Price</p>
+                        <p id="useKmElecI" hidden="hidden">@car.FuelUsagePerKM</p>
+                    }
+                    else
+                    {
+                        <p class="lead"> Valgte bil </p>
+                    }
+                </div>
+>>>>>>> Stashed changes
 			</div>
 		</div>
 
@@ -146,6 +210,7 @@
 					<div class="d-flex p-2 ">Totalt</div>
 				</div>
 				<div class="col">
+<<<<<<< Updated upstream
 					<div id="newPGas" class="d-flex p-2"></div>
 					<div id="fuelPGas" class="d-flex p-2"></div>
 					<div id="co2Gas" class="d-flex p-2"></div>
@@ -154,17 +219,27 @@
 					<div id="chargPGas" class="d-flex p-2"></div>
 					<div id="subPGas" class="d-flex p-2"></div>
 					<br />
+=======
+					<div id="newPGasO" class="d-flex p-2"></div>
+					<div id="fuelPGasO" class="d-flex p-2"></div>
+					@*<div id="co2GasO" class="d-flex p-2"></div>*@
+					<div id="synPGasO" class="d-flex p-2"></div>
+					<div id="servPGasO" class="d-flex p-2"></div>
+					<div id="chargPGasO" class="d-flex p-2"></div>
+					<div id="subPGasO" class="d-flex p-2"></div>
+                    <br />
+>>>>>>> Stashed changes
 					<div id="totalPGas" class="d-flex p-2"></div>
 				</div>
 				<div class="statisticsElectric">
 					<div class="col">
-						<div id="newPElec" class="d-flex p-2"></div>
-						<div id="electPElec" class="d-flex p-2"></div>
-						<div id="co2Elec" class="d-flex p-2"></div>
-						<div id="synPElec" class="d-flex p-2"></div>
-						<div id="servPElec" class="d-flex p-2"></div>
-						<div id="chargPElec" class="d-flex p-2"></div>
-						<div id="subPElec" class="d-flex p-2"></div>
+						<div id="newPElecO" class="d-flex p-2"></div>
+						<div id="electPElecO" class="d-flex p-2"></div>
+						@*<div id="co2ElecO" class="d-flex p-2"></div>*@
+						<div id="synPElecO" class="d-flex p-2"></div>
+						<div id="servPElecO" class="d-flex p-2"></div>
+						<div id="chargPElecO" class="d-flex p-2"></div>
+						<div id="subPElecO" class="d-flex p-2"></div>
 						<br />
 						<div id="totalPElec" class="d-flex p-2"></div>
 					</div>

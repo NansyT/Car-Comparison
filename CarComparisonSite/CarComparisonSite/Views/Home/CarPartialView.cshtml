@@ -1,5 +1,6 @@
 ﻿@model Car
 
+<<<<<<< Updated upstream
 <div class="clickAbleDiv" id="@Model.CarId.ToString()">
 	<div class="row">
 		<div class="col-sm">
@@ -7,6 +8,15 @@
 		</div>
 		<div class="col-sm">
 			<p class="lead">@Model.Model</p>
+=======
+<div class="row">
+	<div class="col-sm">
+		@*@Html.HiddenFor(c => car.CarId, new {Value = car.CarId, id=car.CarId})*@
+
+		@*@Html.Hidden("car",@car.CarId)*@
+		<div class="clickAbleDiv" id="@Model.CarId.ToString()">
+			<p class="lead">@Model.Brand</p>
+>>>>>>> Stashed changes
 		</div>
 		<div class="col-sm">
 			<p class="lead">@Model.Variant</p>
