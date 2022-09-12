@@ -47,8 +47,6 @@
 			{
 				Car car = (Car)ViewBag.OnePageOfCars[i];
 				@Html.Partial("CarPartialView", car)
-				;
-
 			}
 		}
 		<div class="pagedListPager">
@@ -133,26 +131,27 @@
 
 		<div class="statisticsContainer">
 			<div class="statisticsNav">
-				<ul class="nav nav-tabs">
+				<p hidden="hidden" id="currentTab"></p>
+				<ul class="nav nav-tabs" id="statisticsNavTab" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active" href="#">1. År</a>
+						<a class="nav-link active" id="1YearTab" data-toggle="tab" href="#1Year" aria-controls="1Year" aria-selected="true">1. År</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">2. År</a>
+						<a class="nav-link" id="2YearTab" data-toggle="tab" href="#2Year" aria-controls="2Year" aria-selected="false">2. År</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">3. År</a>
+						<a class="nav-link" id="3YearTab" data-toggle="tab" href="#3Year" aria-controls="3Year" aria-selected="false">3. År</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">4. År</a>
+						<a class="nav-link" id="4YearTab" data-toggle="tab" href="#4Year" aria-controls="4Year" aria-selected="false">4. År</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">5. År</a>
+						<a class="nav-link" id="5YearTab" data-toggle="tab" href="#5Year" aria-controls="5Year" aria-selected="false">5. År</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Samlet</a>
+						<a class="nav-link" id="fullTab" data-toggle="tab" href="#fullYear" aria-controls="fullYear" aria-selected="false">Samlet</a>
 					</li>
-				</ul>
+				</ul>				
 			</div>
 			<div class="statisticsBody">
 				<div class="statisticsGas col category">
