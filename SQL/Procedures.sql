@@ -8,16 +8,6 @@ CREATE OR ALTER PROCEDURE GetCars @brand VARCHAR(30), @model VARCHAR(50), @varia
 AS
 	SELECT * FROM [Car]
 	WHERE
-	BName LIKE @brand
-	AND
-	MName LIKE @model
-	AND
-	Variant LIKE @variant
-	AND
-	ReleaseYear LIKE @releaseYear
-
-	SELECT * FROM [Car]
-	WHERE
 	BName LIKE '%'+@brand+'%'
 	AND
 	MName LIKE '%'+@model+'%'

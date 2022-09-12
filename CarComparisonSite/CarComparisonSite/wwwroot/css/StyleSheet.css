@@ -12,6 +12,20 @@ h1 {
     white-space: nowrap;
 }
 
+.col-sm {
+    padding-top: 0.5%;
+}
+
+    .col-sm .lead {
+        margin-bottom: 0.5%;
+    }
+
+.form-check{
+    padding-left:0;
+    display:inline-block;
+    padding-top:2rem;
+}
+
 input:focus, textarea:focus, select:focus {
     outline: none;
 }
@@ -38,12 +52,13 @@ input:focus, textarea:focus, select:focus {
     border: 0.1px solid #dee2e6;
 }
 
-.clickAbleContent {
+.clickAbleDiv {
     background-color: transparent;
     border: none;
+    cursor:pointer;
 }
 
-.carGridNav {
+.pagedListPager {
     text-align: center;
 }
 
@@ -68,11 +83,6 @@ input:focus, textarea:focus, select:focus {
 
 .ddBtnHolder {
     display: inline-block;
-}
-
-
-.form-check{
-    display:inline-flex;
 }
 
 .electricRadioBoxes {

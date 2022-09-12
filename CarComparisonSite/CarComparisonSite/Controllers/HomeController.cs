@@ -13,6 +13,8 @@ namespace CarComparisonSite.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IFetchCarFromDb dbConnector;
         private List<Car> cars;
+        private IPagedList<Car> onePageOfCars;
+        private int pageNumber;
 
         public HomeController(ILogger<HomeController> logger, IFetchCarFromDb fetch)
         {
@@ -23,15 +25,18 @@ namespace CarComparisonSite.Controllers
         public IActionResult Index(int? page)
         {
             cars = dbConnector.GetAllCars();
-            int pageNumber = page ?? 1;
-            IPagedList<Car> onePageOfCars = cars.ToPagedList(pageNumber, 4);
+            pageNumber = page ?? 1;
+            onePageOfCars = cars.ToPagedList(pageNumber, 4);
 
             ViewBag.OnePageOfCars = onePageOfCars;
             return View();
         }
 
-        //Reports back to the server what car was chosen in the grid
-        //so it can be set in viewbag and shown on reload
+        //Called from an onclick in JS
+        //Sends us the carId that was clicked,
+        //so we can save it in session and be used in the view for selected cars
+
+        //Viewbag and TempData does not last long, so session is required
         [HttpPost]
         public ActionResult Index(int carId)
         {
@@ -40,7 +45,6 @@ namespace CarComparisonSite.Controllers
             {
                 if (cars[i].CarId == carId)
                 {
-        // TODO: TRY TO MAKE IT WORK WITH A DIV WITH AN ONCLICK LISTENER FROM A JS script
                     if (cars[i].Fuel.FuelType == FuelType.Benzin)
                     {
                         HttpContext.Session.SetObject("SelectedGas", cars[i]);
