@@ -20,23 +20,23 @@ namespace CarComparisonSite
 
         public List<Car> GetAllCars()
         {
-            command = new SqlCommand("GetCars", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            //command = new SqlCommand("GetCars", connection);
+            //command.CommandType = System.Data.CommandType.StoredProcedure;
             #region TestData
-            //Car car = new Car(1, new Fuel(FuelType.El, 13.5f), "WhiteGuy", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
-            //Car car1 = new Car(2, new Fuel(FuelType.El, 13.5f), "Welcome", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
-            //Car car2 = new Car(3, new Fuel(FuelType.El, 13.5f), "To", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
-            //Car car3 = new Car(4, new Fuel(FuelType.El, 13.5f), "the", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
-            //Car car4 = new Car(5, new Fuel(FuelType.Benzin, 13.5f), "Internet", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
-            //Car car5 = new Car(6, new Fuel(FuelType.El, 13.5f), "Baddest", 34, 284800, DateTime.Now, "KDA", Brand.Mitsubishi);
-            //Car car6 = new Car(7, new Fuel(FuelType.Benzin, 13.5f), "COMINGATYOULIVE", 34, 284800, DateTime.Now.AddYears(-1), "KDA", Brand.BMW);
-            //Car car7 = new Car(8, new Fuel(FuelType.Benzin, 13.5f), "BALLER", 34, 284800, DateTime.Now.AddYears(-12), "KDA", Brand.BMW);
-            //Car car8 = new Car(9, new Fuel(FuelType.Benzin, 13.5f), "GIANTS", 34, 284800, DateTime.Now.AddYears(-12), "TrueDamage", Brand.Chevrolet);
+            Car car = new Car(1, new Fuel(FuelType.El, 13.5f), "WhiteGuy", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
+            Car car1 = new Car(2, new Fuel(FuelType.El, 13.5f), "Welcome", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
+            Car car2 = new Car(3, new Fuel(FuelType.El, 13.5f), "To", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
+            Car car3 = new Car(4, new Fuel(FuelType.El, 13.5f), "the", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
+            Car car4 = new Car(5, new Fuel(FuelType.Benzin, 13.5f), "Internet", 34, 284800, DateTime.Now, "SCOTT Burnham", Brand.Tesla);
+            Car car5 = new Car(6, new Fuel(FuelType.El, 13.5f), "Baddest", 34, 284800, DateTime.Now, "KDA", Brand.Mitsubishi);
+            Car car6 = new Car(7, new Fuel(FuelType.Benzin, 13.5f), "COMINGATYOULIVE", 34, 284800, DateTime.Now.AddYears(-1), "KDA", Brand.BMW);
+            Car car7 = new Car(8, new Fuel(FuelType.Benzin, 13.5f), "BALLER", 34, 284800, DateTime.Now.AddYears(-12), "KDA", Brand.BMW);
+            Car car8 = new Car(9, new Fuel(FuelType.Benzin, 13.5f), "GIANTS", 34, 284800, DateTime.Now.AddYears(-12), "TrueDamage", Brand.Chevrolet);
 
-            //return new List<Car>()
-            //{
-            //    car,car1,car2,car3,car4,car5,car6,car7,car8
-            //};
+            return new List<Car>()
+            {
+                car,car1,car2,car3,car4,car5,car6,car7,car8
+            };
             #endregion
         }
 
