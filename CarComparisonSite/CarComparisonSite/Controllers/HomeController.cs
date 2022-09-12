@@ -26,8 +26,7 @@ namespace CarComparisonSite.Controllers
         {
             cars = dbConnector.GetAllCars();
             pageNumber = page ?? 1;
-            onePageOfCars = cars.ToPagedList(pageNumber, 4);
-
+            onePageOfCars = cars.ToPagedList(pageNumber, 10);
             ViewBag.OnePageOfCars = onePageOfCars;
             return View();
         }
@@ -38,7 +37,7 @@ namespace CarComparisonSite.Controllers
 
         //Viewbag and TempData does not last long, so session is required
         [HttpPost]
-        public ActionResult Index(int carId)
+        public ActionResult Index(int carId, double kmYear = 0)
         {
             cars = dbConnector.GetAllCars();
             for (int i = 0; i < cars.Count; i++)
@@ -55,7 +54,12 @@ namespace CarComparisonSite.Controllers
                     }
                     i = cars.Count + 1;
                 }
-            }            
+            }
+            if (kmYear != 0)
+            {
+                HttpContext.Session.SetObject("kmYear", kmYear);
+
+            }
             return RedirectToAction("Index");
         }
 

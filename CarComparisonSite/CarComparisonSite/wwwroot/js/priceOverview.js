@@ -19,17 +19,23 @@ var startprice = 8542.85;
 //Uden ab
 var charger = 5500;
 
-window.onload = function () {
-    if (document.getElementById("kmYear").value === null) {
-        console.log("null");
+document.addEventListener("DOMContentLoaded", function (e) {
+    document.getElementById("kmYear").addEventListener('change', function (e) {
+        if (document.getElementById("chosenGasCarBrand") != null) {
+            console.log("GAS CAR EXISTS");
+            calculateGasCar();
+        }
+        if (document.getElementById("chosenElecCarBrand") != null) {
+            console.log("Elec CAR EXISTS");
+            calculateElecCar();
+        }
+    })
+})
 
-    }
-      
-}
 
 function calculateFuelPrice() {
-    kmDriven = document.getElementById("kmYear").innerHTML;
-    fuelUseGas = document.getElementById("useKmGasI").innerHTML;
+    kmDriven = document.getElementById("kmYear").value;
+    fuelUseGas = parseFloat(document.getElementById("useKmGasI").innerHTML);
     return (kmDriven / fuelUseGas) * fuelP;
 }
 
@@ -39,7 +45,7 @@ function calculateGasCar() {
     var inpection = calculateInspectionPrice();
     var year;
     var total;
-    if (year = "samlet") {
+    if (year == "samlet") {
         total = newGas + syn + fuel
     }
     else {
@@ -52,7 +58,7 @@ function calculateGasCar() {
         }
     }
 
-    document.getElementById("totalPGas").value = total;
+    document.getElementById("totalPGas").innerHTML = total;
 }
 
 function calculateInspectionPrice() {
@@ -69,13 +75,13 @@ function calculateInspectionPrice() {
 
 
 function calcElectricityPrice() {
-    kmDriven = document.getElementById("kmYear").innerHTML;
+    kmDriven = document.getElementById("kmYear").value;
     electUseElec = document.getElementById("useKmElecI").innerHTML;
     electUseElec = electUseElec / 1000;
     return (kmDriven / electUseElec) * electP;
 }
 
-function calculateElectricCar() {
+function calculateElecCar() {
     newPElec = document.getElementById("newPElecI").innerHTML;
     var fuel = calculateFuelPrice();
     var inpection = calculateInspectionPrice();
@@ -94,7 +100,7 @@ function calculateElectricCar() {
         }
     }
 
-    document.getElementById("totalPElec").value = total;
+    document.getElementById("totalPElec").innerHTML = total;
 }
 
 

@@ -31,17 +31,28 @@ namespace CarComparisonSite
                     {
                         while (reader.Read())
                         {
+                            //int s = reader.GetInt32(0);
+                            //string s2 = reader.GetString(1);
+                            //DateTime dateTime = reader.GetDateTime(2);
+                            //double t = reader.GetDouble(3);
+                            //double t2 = reader.GetDouble(4);
+                            //string s3 = reader.GetString(5);
+                            //string s4 = reader.GetString(6);
+                            //string s5 = reader.GetString(7);
+                            //double t3 = reader.GetDouble(8);
+
+
                             Car c = new Car(
                                 reader.GetInt32(0),
                                 reader.GetString(1),
                                 reader.GetDateTime(2),
-                                reader.GetFloat(3),
-                                reader.GetFloat(4),
+                                reader.GetDouble(3),
+                                reader.GetDouble(4),
                                 reader.GetString(5),
                                 Enum.Parse<Brand>(reader.GetString(6)),
                                 new Fuel(
                                     Enum.Parse<FuelType>(reader.GetString(7)),
-                                    reader.GetFloat(8))
+                                    reader.GetDouble(8))
                                 );
                             cars.Add(c);
                         }

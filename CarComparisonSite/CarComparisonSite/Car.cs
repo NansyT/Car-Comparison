@@ -32,17 +32,17 @@ namespace CarComparisonSite
             private set { variant = value; }
         }
 
-        private float fuelUsagePerKM;
+        private double fuelUsagePerKM;
 
-        public float FuelUsagePerKM
+        public double FuelUsagePerKM
         {
             get { return fuelUsagePerKM; }
             private set { fuelUsagePerKM = value; }
         }
 
-        private float price;
+        private double price;
 
-        public float Price
+        public double Price
         {
             get { return price; }
             private set { price = value; }
@@ -72,7 +72,7 @@ namespace CarComparisonSite
             private set { brand = value; }
         }
 
-        public Car(int carId, string variant, DateTime releaseYear, float fuelUsagePerKM, float price, string model, Brand brand, Fuel fuel)
+        public Car(int carId, string variant, DateTime releaseYear, double fuelUsagePerKM, double price, string model, Brand brand, Fuel fuel)
         {
             CarId = carId;
             Variant = variant;

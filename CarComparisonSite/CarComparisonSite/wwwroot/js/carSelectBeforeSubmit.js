@@ -4,7 +4,8 @@ for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener("click", e => {
         let myvalue = e.currentTarget.id;
         console.log(myvalue);
-        $.post("/", { carId: myvalue }, function (data) {
+        let kmYearval = document.getElementById("kmYear").value;
+        $.post("/", { carId: myvalue, kmYear: kmYearval}, function (data) {
             location.reload(true);
         });
     })

@@ -16,15 +16,15 @@ namespace CarComparisonSite
         }
 
 
-        private float pricePerUnit;
+        private double pricePerUnit;
 
-        public float PricePerUnit
+        public double PricePerUnit
         {
             get { return pricePerUnit; }
             private set { pricePerUnit = value; }
         }
 
-        public Fuel(FuelType fuelType, float pricePerUnit)
+        public Fuel(FuelType fuelType, double pricePerUnit)
         {
             FuelType = fuelType;
             PricePerUnit = pricePerUnit;
