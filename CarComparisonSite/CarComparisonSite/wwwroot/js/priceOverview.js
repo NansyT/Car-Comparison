@@ -48,6 +48,25 @@ window.onload = function () {
     document.getElementById("electricRadioOwn").addEventListener('change', function () {
     })
 
+//Eventlistener for links in nav statistics
+var navlinks = document.querySelectorAll(".nav-link");
+for (var i = 0; i < navlinks.length; i++) {
+    navlinks[i].addEventListener('click', e => {
+        //Check if user is pressing the same button, as the active one
+        //If so, do nothing
+        if (!e.currentTarget.classList.contains('active')) {
+            let hiddenEl = document.getElementById("currentTab");
+            if (!isNaN(e.currentTarget.id[0])) {
+                hiddenEl.innerHTML = e.currentTarget.id[0];
+            }
+            else {
+                hiddenEl.innerHTML = "all";
+            }
+            console.log(hiddenEl.innerHTML)
+        }
+    })
+}
+
 
 }
 
