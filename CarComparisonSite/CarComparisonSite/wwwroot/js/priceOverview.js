@@ -18,31 +18,58 @@ var electP = 1.43
 var startprice = 8542.85;
 //Uden ab
 var charger = 5500;
+window.onload = function () {
 
-document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("kmYear").addEventListener('change', function (e) {
         if (document.getElementById("chosenGasCarBrand") != null) {
-            console.log("GAS CAR EXISTS");
             calculateGasCar();
         }
         if (document.getElementById("chosenElecCarBrand") != null) {
-            console.log("Elec CAR EXISTS");
             calculateElecCar();
         }
     })
-})
+
+    if (document.getElementById("chosenGasCarBrand") != null) {
+        if (document.getElementById("kmYear").value > 0) {
+            calculateGasCar();
+        }
+    }
+    if (document.getElementById("chosenElecCarBrand") != null) {
+        if (document.getElementById("kmYear").value > 0) {
+            calculateElecCar();
+        }
+    }
+
+    document.getElementById("electricRadioRent").addEventListener('change', function () {
+        console.log(document.getElementById("electricRadioRent").checked);
+        console.log(document.getElementById("electricRadioOwn").checked);
+    })
+
+    document.getElementById("electricRadioOwn").addEventListener('change', function () {
+    })
 
 
+}
+
+function df() {
+    if (document.getElementById("kmYear").value > 0) {
+        calculateGasCar();
+    }
+}
+
+function checkKm() {
+
+}
 function calculateFuelPrice() {
-    kmDriven = document.getElementById("kmYear").value;
+    kmDriven = parseFloat(document.getElementById("kmYear").value);
     fuelUseGas = parseFloat(document.getElementById("useKmGasI").innerHTML);
     return (kmDriven / fuelUseGas) * fuelP;
 }
 
 function calculateGasCar() {
-    newGas = document.getElementById("newPGasI").innerHTML;
-    var fuel = calculateFuelPrice();
-    var inpection = calculateInspectionPrice();
+    newGas = parseFloat(document.getElementById("newPGasI").innerHTML);
+    var fuel = parseFloat(calculateFuelPrice());
+    var inpection = parseFloat(calculateInspectionPrice());
     var year;
     var total;
     if (year == "samlet") {
@@ -50,10 +77,10 @@ function calculateGasCar() {
     }
     else {
         total = fuel + inpection;
-        if (year = "1") {
+        if (year == "1") {
             total += newGas;
         }
-        else if (year = "4") {
+        else if (year == "4") {
             total += syn;
         }
     }
@@ -62,7 +89,7 @@ function calculateGasCar() {
 }
 
 function calculateInspectionPrice() {
-    var inspecAmount = (kmDriven / 15000);
+    var inspecAmount = (parseFloat(kmDriven) / 15000);
 
     if (inspecAmount < 1) {
         return serv;
@@ -75,27 +102,27 @@ function calculateInspectionPrice() {
 
 
 function calcElectricityPrice() {
-    kmDriven = document.getElementById("kmYear").value;
-    electUseElec = document.getElementById("useKmElecI").innerHTML;
+    kmDriven = parseFloat(document.getElementById("kmYear").value);
+    electUseElec = parseFloat(document.getElementById("useKmElecI").innerHTML);
     electUseElec = electUseElec / 1000;
     return (kmDriven / electUseElec) * electP;
 }
 
 function calculateElecCar() {
-    newPElec = document.getElementById("newPElecI").innerHTML;
-    var fuel = calculateFuelPrice();
-    var inpection = calculateInspectionPrice();
+    newPElec = parseFloat(document.getElementById("newPElecI").innerHTML);
+    var fuel = parseFloat(calcElectricityPrice());
+    var inpection = parseFloat(calculateInspectionPrice());
     var year;
     var total;
-    if (year = "samlet") {
-        total = newGas + syn + fuel
+    if (year == "samlet") {
+        total = newPElec + syn + fuel
     }
     else {
         total = fuel + inpection;
-        if (year = "1") {
+        if (year == "1") {
             total += newGas;
         }
-        else if (year = "4") {
+        else if (year == "4") {
             total += syn;
         }
     }
