@@ -18,6 +18,9 @@ var electP = 1.43
 var startprice = 8542.85;
 //Uden ab
 var charger = 5500;
+
+var ownership;
+
 window.onload = function () {
 
     document.getElementById("kmYear").addEventListener('change', function (e) {
@@ -41,12 +44,32 @@ window.onload = function () {
     }
 
     document.getElementById("electricRadioRent").addEventListener('change', function () {
-        console.log(document.getElementById("electricRadioRent").checked);
-        console.log(document.getElementById("electricRadioOwn").checked);
+        ownership = "Rent";
     })
 
     document.getElementById("electricRadioOwn").addEventListener('change', function () {
+        ownership = "Own"
     })
+
+    //Eventlistener for links in nav statistics
+    var navlinks = document.querySelectorAll(".nav-link");
+    for (var i = 0; i < navlinks.length; i++) {
+        navlinks[i].addEventListener('click', e => {
+            //Check if user is pressing the same button, as the active one
+            //If so, do nothing
+            if (!e.currentTarget.classList.contains('active')) {
+                let hiddenEl = document.getElementById("currentTab");
+                if (!isNaN(e.currentTarget.id[0])) {
+                    hiddenEl.innerHTML = e.currentTarget.id[0];
+                }
+                else {
+                    hiddenEl.innerHTML = "all";
+                }
+                console.log(hiddenEl.innerHTML)
+            }
+        })
+    }
+
 
 
 }
@@ -69,14 +92,15 @@ function calculateFuelPrice() {
 function calculateGasCar() {
     newGas = parseFloat(document.getElementById("newPGasI").innerHTML);
     var fuel = parseFloat(calculateFuelPrice());
-    var inpection = parseFloat(calculateInspectionPrice());
-    var year;
+    var inspection = parseFloat(calculateInspectionPrice());
+    var year = document.getElementById("currentTab");
     var total;
-    if (year == "samlet") {
+    if (year == "all") {
+        inspection * 5;
         total = newGas + syn + fuel
     }
     else {
-        total = fuel + inpection;
+        total = fuel + inspection;
         if (year == "1") {
             total += newGas;
         }
@@ -112,9 +136,9 @@ function calculateElecCar() {
     newPElec = parseFloat(document.getElementById("newPElecI").innerHTML);
     var fuel = parseFloat(calcElectricityPrice());
     var inpection = parseFloat(calculateInspectionPrice());
-    var year;
+    var year = document.getElementById("currentTab");
     var total;
-    if (year == "samlet") {
+    if (year == "all") {
         total = newPElec + syn + fuel
     }
     else {
