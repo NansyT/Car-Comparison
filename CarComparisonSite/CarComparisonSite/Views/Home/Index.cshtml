@@ -166,7 +166,7 @@
 		</div>
 
 		<div class="chosenCars">
-			<div class="row">
+			<div id="chosenGas" class="row">
 				@if (Context.Session.GetObject<Car>("SelectedGas") != null)
 				{
 					Car car = Context.Session.GetObject<Car>("SelectedGas");
@@ -195,7 +195,7 @@
 					</div>
 				}
 			</div>
-			<div class="row">
+			<div id="chosenElec" class="row">
 				@if (Context.Session.GetObject<Car>("SelectedElectric") != null)
 				{
 					Car car = Context.Session.GetObject<Car>("SelectedElectric");
