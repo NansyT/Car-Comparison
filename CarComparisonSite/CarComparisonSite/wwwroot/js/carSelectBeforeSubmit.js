@@ -5,7 +5,7 @@ for (let i = 0; i < inputs.length; i++) {
         let myvalue = e.currentTarget.id;
         console.log(myvalue);
         let kmYearval = document.getElementById("kmYear").value;
-        $.post("/", { carId: myvalue, kmYear: kmYearval}, function (data) {
+        $.post("/", { carId: myvalue, kmYear: kmYearval }, function (data) {
             location.reload(true);
         });
     })
