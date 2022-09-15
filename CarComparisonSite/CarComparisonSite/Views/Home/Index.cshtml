@@ -13,124 +13,128 @@
 		double kmYear = Context.Session.GetObject<double>("kmYear");
 		if (kmYear != default)
 		{
-				<input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" value="@kmYear" />
+			<input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" value="@kmYear" />
 		}
 		else
 		{
-				<input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
+			<input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
 		}
 	}
 </div>
 <div id="contentAligner" class="contentAligner">
-	<div class="ddBtnHolder">
-		<button class="btn btn-primary dropdown-toggle"
-				type="button"
-				id="ddBtnModel"
-				data-mdb-toggle="dropdown"
-				aria-expanded="false">
-			Model
-		</button>
-		<div class="dropdown-menu" id="ddModel" aria-labelledby="ddBtnModel">
-			@{
-				List<string> distinctStr = new List<string>();
-				for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-				{
-					Car car = (Car)ViewBag.OnePageOfCars[i];
-					if (!distinctStr.Contains(car.Model))
+	<div class="topButtons">
+
+		<div class="ddBtnHolder">
+			<button class="btn btn-primary dropdown-toggle"
+					type="button"
+					id="ddBtnModel"
+					data-mdb-toggle="dropdown"
+					aria-expanded="false">
+				Model
+			</button>
+			<div class="dropdown-menu" id="ddModel" aria-labelledby="ddBtnModel">
+				@{
+					List<string> distinctStr = new List<string>();
+					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
 					{
-						distinctStr.Add(car.Model);
-							<button id="btnModel + @i" class="dropdown-item" type="button">
+						Car car = (Car)ViewBag.OnePageOfCars[i];
+						if (!distinctStr.Contains(car.Model))
+						{
+							distinctStr.Add(car.Model);
+							<button id="btnModel @i" class="dropdown-item" type="button">
 								@car.Model
 							</button>
+						}
 					}
 				}
-			}
+			</div>
 		</div>
-	</div>
-	<div class="ddBtnHolder">
+		<div class="ddBtnHolder">
 
-		<button class="btn btn-primary dropdown-toggle"
-				type="button"
-				id="ddBtnBrand"
-				data-mdb-toggle="dropdown"
-				aria-expanded="false">
-			Brand
-		</button>
-		<div class="dropdown-menu" id="ddBrand" aria-labelledby="ddBtnBrand">
-			@{
-				List<Brand> distinctB = new List<Brand>();
-				for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-				{
-					Car car = (Car)ViewBag.OnePageOfCars[i];
-					if (!distinctB.Contains(car.Brand))
+			<button class="btn btn-primary dropdown-toggle"
+					type="button"
+					id="ddBtnBrand"
+					data-mdb-toggle="dropdown"
+					aria-expanded="false">
+				Brand
+			</button>
+			<div class="dropdown-menu" id="ddBrand" aria-labelledby="ddBtnBrand">
+				@{
+					List<Brand> distinctB = new List<Brand>();
+					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
 					{
-						distinctB.Add(car.Brand);
-						
-							<button id="btnmodel @car.CarId" class="dropdown-item" type="button">
+						Car car = (Car)ViewBag.OnePageOfCars[i];
+						if (!distinctB.Contains(car.Brand))
+						{
+							distinctB.Add(car.Brand);
+
+							<button id="btnBrand @i" class="dropdown-item" type="button">
 								@car.Brand
 							</button>
+						}
 					}
 				}
-			}
+			</div>
 		</div>
+		<div class="ddBtnHolder">
 
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$('#example-getting-started').multiselect();
-			});
-		</script>
-
-	</div>
-	<div class="ddBtnHolder">
-
-		<button class="btn btn-primary dropdown-toggle"
-				type="button"
-				id="ddBtnVariant"
-				data-mdb-toggle="dropdown"
-				aria-expanded="false">
-			Variant
-		</button>
-		<div class="dropdown-menu" id="ddVariant" aria-labelledby="ddBtnVariant">
-			@{
-				distinctStr = new List<string>();
-				for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-				{
-					Car car = (Car)ViewBag.OnePageOfCars[i];
-					if (!distinctStr.Contains(car.Variant))
+			<button class="btn btn-primary dropdown-toggle"
+					type="button"
+					id="ddBtnVariant"
+					data-mdb-toggle="dropdown"
+					aria-expanded="false">
+				Variant
+			</button>
+			<div class="dropdown-menu" id="ddVariant" aria-labelledby="ddBtnVariant">
+				@{
+					distinctStr = new List<string>();
+					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
 					{
-						distinctStr.Add(car.Variant);
-							<button id="btnModel + @i" class="dropdown-item" type="button">
+						Car car = (Car)ViewBag.OnePageOfCars[i];
+						if (!distinctStr.Contains(car.Variant))
+						{
+							distinctStr.Add(car.Variant);
+							<button id="btnVariant @i" class="dropdown-item" type="button">
 								@car.Variant
 							</button>
+						}
 					}
 				}
-			}
+			</div>
 		</div>
-	</div>
-	<div class="ddBtnHolder">
-		<button class="btn btn-primary dropdown-toggle"
-				type="button"
-				id="ddYear"
-				data-mdb-toggle="dropdown"
-				aria-expanded="false">
-			Year
-		</button>
-		<div class="dropdown-menu" id="ddYear" aria-labelledby="ddBtnYear">
-			@{
-				List<int> distinctY = new List<int>();
-				for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-				{
-					Car car = (Car)ViewBag.OnePageOfCars[i];
-					if (!distinctY.Contains(car.ReleaseYear.Year))
+		<div class="ddBtnHolder">
+			<button class="btn btn-primary dropdown-toggle"
+					type="button"
+					id="ddYear"
+					data-mdb-toggle="dropdown"
+					aria-expanded="false">
+				Year
+			</button>
+			<div class="dropdown-menu" id="ddYear" aria-labelledby="ddBtnYear">
+				@{
+					List<int> distinctY = new List<int>();
+					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
 					{
-						distinctY.Add(car.ReleaseYear.Year);
-							<button id="btnModel + @i" class="dropdown-item" type="button">
+						Car car = (Car)ViewBag.OnePageOfCars[i];
+						if (!distinctY.Contains(car.ReleaseYear.Year))
+						{
+							distinctY.Add(car.ReleaseYear.Year);
+							<button id="btnYear @i" class="dropdown-item" type="button">
 								@car.ReleaseYear.Year
 							</button>
+						}
 					}
 				}
-			}
+			</div>
 		</div>
+		@using (Html.BeginForm("index", "Home", FormMethod.Post, new { @class = "ddBtnHolder", id = "buttonSubmit" }))
+		{
+			<button class="btn btn-primary" type="submit" id="btnSubmit"> Genindlæs</button>
+		}
+		@using (Html.BeginForm("ClearFilters", "Home", FormMethod.Get, new { @class = "ddBtnHolder" }))
+		{
+			<button class="btn btn-primary" type="submit" id="btnReset"> Nulstil</button>
+		}
 	</div>
 
 	@if (ViewBag.OnePageOfCars != null)
@@ -154,10 +158,27 @@
 		</div>
 		@using (Html.BeginForm("Index", "Home", FormMethod.Post))
 		{
+			string model = Context.Session.GetObject<string>("model");
+			Brand? brand = Context.Session.GetObject<Brand?>("brand");
+			string variant = Context.Session.GetObject<string>("variant");
+			int year = Context.Session.GetObject<int>("year");
+
 			@for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
 			{
 				Car car = (Car)ViewBag.OnePageOfCars[i];
-				@Html.Partial("CarPartialView", car)
+
+				if (model == null && brand == null && variant == null && year == 0)
+				{
+					@Html.Partial("CarPartialView", car)
+
+				}
+				else if (model != null && model == car.Model ||
+				brand != null && brand == car.Brand ||
+				variant != null && variant == car.Variant ||
+				year != 0 && year == car.ReleaseYear.Year)
+				{
+					@Html.Partial("CarPartialView", car)
+				}
 			}
 		}
 		<div class="pagedListPager">

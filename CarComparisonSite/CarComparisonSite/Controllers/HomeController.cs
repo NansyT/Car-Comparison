@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using X.PagedList;
 
 namespace CarComparisonSite.Controllers
@@ -22,13 +23,46 @@ namespace CarComparisonSite.Controllers
             dbConnector = fetch;
         }
 
-        public IActionResult Index(int? page)
+        public IActionResult Index(int? page, string modelFilter, string variantFilter, int dateFilter, Brand? brandfilter = null)
         {
             cars = dbConnector.GetAllCars();
             pageNumber = page ?? 1;
             onePageOfCars = cars.ToPagedList(pageNumber, 10);
             ViewBag.OnePageOfCars = onePageOfCars;
+            FilterCars(modelFilter, variantFilter, dateFilter, brandfilter);
             return View();
+        }
+
+
+        private void FilterCars(string mFilter, string vFilter, int yFilter, Brand? bFilter = null)
+        {
+            if (!string.IsNullOrEmpty(mFilter))
+            {
+                HttpContext.Session.SetObject("model", mFilter);
+            }
+            if (!string.IsNullOrEmpty(vFilter))
+            {
+                HttpContext.Session.SetObject("variant", vFilter);
+            }
+            if (bFilter != null)
+            {
+                HttpContext.Session.SetObject("brand", bFilter);
+            }
+            if (yFilter != 0)
+            {
+                HttpContext.Session.SetObject("year", yFilter);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ClearFilters()
+        {
+
+            HttpContext.Session.SetObject("model", null);
+            HttpContext.Session.SetObject("variant", null);
+            HttpContext.Session.SetObject("brand", null);
+            HttpContext.Session.SetObject("year", 0);
+            return RedirectToAction("index");
         }
 
         //Called from an onclick in JS
@@ -61,11 +95,6 @@ namespace CarComparisonSite.Controllers
 
             }
             return RedirectToAction("Index");
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

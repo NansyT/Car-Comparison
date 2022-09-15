@@ -23,16 +23,45 @@ for (var i = 0; i < dds.length; i++) {
 
 function UpdateFilter(newFilter) {
     let id = newFilter.split(" ")[1]
-    if (newFilter.includes("model")) {
-        alert(id)
+
+    if (newFilter.includes("Model")) {
+        var modelF = document.getElementById(newFilter).innerHTML.trim()
+        //alert(modelF);
     }
-    else if (newFilter.includes("brand")) {
-        alert(id)
+    else if (newFilter.includes("Brand")) {
+        var brandF = document.getElementById(newFilter).innerHTML.trim()
+        //alert(modelB);
     }
-    else if (newFilter.includes("variant")) {
-        alert(id)
+    else if (newFilter.includes("Variant")) {
+        var variantF = document.getElementById(newFilter).innerHTML.trim()
+        //alert(modelV);
     }
-    else if (newFilter.includes("year")) {
-        alert(id)
+    else if (newFilter.includes("Year")) {
+        var dateF = document.getElementById(newFilter).innerHTML.trim()
+        //alert(modelY);
     }
+
+    let ur = 'https://localhost:44355'
+    $.ajax({
+        url: ur,
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            "modelFilter": modelF,
+            "brandFilter": brandF,
+            "variantFilter": variantF,
+            "dateFilter": dateF
+        },
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
+    });
+    //.done(function () {
+    //    document.getElementById("buttonSubmit").submit();
+    //});
 }

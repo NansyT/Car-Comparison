@@ -54,6 +54,7 @@ namespace CarComparisonSite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(name: "ClearFilters", pattern: "{controller=Home}/{action=ClearFilters}");
             });
         }
     }

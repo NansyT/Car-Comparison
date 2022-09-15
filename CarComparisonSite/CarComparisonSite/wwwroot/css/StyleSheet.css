@@ -82,8 +82,18 @@ input:focus, textarea:focus, select:focus {
     clear: both;
 }
 
+.topButtons{
+    margin-bottom:1%;    
+    display: flex;
+}
+
 .ddBtnHolder {
-    display: inline-block;
+    margin-left:0.5%;
+}
+
+#buttonSubmit{
+    margin-left:2.5%;
+    margin-right:0.5%;
 }
 
 .electricRadioBoxes {
