@@ -60,6 +60,7 @@ input:focus, textarea:focus, select:focus {
 
 .pagedListPager {
     text-align: center;
+    font-size:x-large;
 }
 
 /*.electricCarContainer {
