@@ -73,11 +73,10 @@ namespace CarComparisonSite
 
 
 
-            return new List<Car>()
-            {
-                //car,car1,car2,car3
-                //,car4,car5,car6,car7,car8
-            };
+            //return new List<Car>()
+            //{
+            //    car,car1,car2,car3,car4,car5,car6,car7,car8
+            //};
             #endregion
         }
 

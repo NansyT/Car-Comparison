@@ -6,7 +6,7 @@ AS
 
    from FuelPrice where Date > DATEADD(day, -320, GetDate()) and FuelPrice.FuelName = 'Benzin';
 
-   Select @gasPrice;
+  
 
 
    declare @ElPrice float;
@@ -15,7 +15,7 @@ AS
 
    from FuelPrice where Date > DATEADD(day, -120, GetDate()) and FuelPrice.FuelName = 'El';
 
-   select @ElPrice;
+ 
 
    SELECT Car.*, case when Car.FuelName = 'Benzin' then  @gasPrice else @ElPrice end as AvgPrice
    from Car
