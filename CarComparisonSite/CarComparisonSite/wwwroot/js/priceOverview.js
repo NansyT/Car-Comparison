@@ -90,8 +90,8 @@ function checkKm() {
 
 }
 function calculateFuelPrice() {
+        kmDriven = document.getElementById("kmYear").value;
     if (kmDriven != "") {
-        kmDriven = parseFloat(document.getElementById("kmYear").value);
 
         fuelUseGas = parseFloat(document.getElementById("useKmGasI").innerHTML.replace(',', "."));
         return (kmDriven / fuelUseGas) * fuelP;
@@ -128,17 +128,20 @@ function calculateGasCar() {
         }
     }
 
-    document.getElementById("newPGasO").innerHTML = newGas;
-    document.getElementById("fuelPGasO").innerHTML = fuel;
-    document.getElementById("synPGasO").innerHTML = syn;
-    document.getElementById("servPGasO").innerHTML = inspection;
+    document.getElementById("newPGasO").innerHTML = newGas.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("fuelPGasO").innerHTML = fuel.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("synPGasO").innerHTML = syn.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("servPGasO").innerHTML = inspection.toFixed(2).toString().replace(".", ",") + " kr";
     document.getElementById("chargPGasO").innerHTML = "N/A";
     document.getElementById("subPGasO").innerHTML = "N/A";
 
-    document.getElementById("totalPGas").innerHTML = total;
+    document.getElementById("totalPGas").innerHTML = total.toFixed(2).toString().replace(".", ",") + " kr";
 }
 
 function calculateInspectionPrice() {
+    if (kmDriven == "") {
+        return serv;
+    }
     var inspecAmount = (parseFloat(kmDriven) / 15000);
 
     if (inspecAmount < 1) {
@@ -152,8 +155,8 @@ function calculateInspectionPrice() {
 
 
 function calcElectricityPrice() {
+        kmDriven = document.getElementById("kmYear").value;
     if (kmDriven != "") {
-        kmDriven = parseFloat(document.getElementById("kmYear").value);
         electUseElec = parseFloat(document.getElementById("useKmElecI").innerHTML.replace(',', "."));
         electUseElec = electUseElec / 1000;
         var elP = electP;
@@ -226,13 +229,13 @@ function calculateElecCar() {
         }
     }
 
-    document.getElementById("newPElecO").innerHTML = newPElec;
-    document.getElementById("electPElecO").innerHTML = fuel;
-    document.getElementById("synPElecO").innerHTML = syn;
-    document.getElementById("servPElecO").innerHTML = inspection;
-    document.getElementById("chargPElecO").innerHTML = charger;
-    document.getElementById("subPElecO").innerHTML = extra;
-    document.getElementById("totalPElec").innerHTML = total;
+    document.getElementById("newPElecO").innerHTML = newPElec.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("electPElecO").innerHTML = fuel.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("synPElecO").innerHTML = syn.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("servPElecO").innerHTML = inspection.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("chargPElecO").innerHTML = charger.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("subPElecO").innerHTML = extra.toFixed(2).toString().replace(".", ",") + " kr";
+    document.getElementById("totalPElec").innerHTML = total.toFixed(2).toString().replace(".", ",") + " kr";
 }
 
 
