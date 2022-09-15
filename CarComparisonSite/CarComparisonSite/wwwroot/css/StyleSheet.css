@@ -126,7 +126,7 @@ input:focus, textarea:focus, select:focus {
 .statisticsBody {
     background-color: #f8f9fa;
     display: grid;
-    grid-template-columns: 42% 48% 10%;
+    grid-template-columns: 33% 33% 33%;
     clear: both;
     border-left: 0.1px solid #dee2e6;
     border-right: 0.1px solid #dee2e6;

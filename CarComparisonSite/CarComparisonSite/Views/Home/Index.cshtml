@@ -2,203 +2,208 @@
 @using X.PagedList.Mvc.Core;
 @model Car
 @{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
 
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
 <script src="~/js/priceOverview.js"></script>
 
 <div class="text-center">
-	@{
-		double kmYear = Context.Session.GetObject<double>("kmYear");
-		if (kmYear != default)
-		{
-			<input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" value="@kmYear" />
-		}
-		else
-		{
-			<input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
-		}
-	}
+    @{
+        double kmYear = Context.Session.GetObject<double>("kmYear");
+        if (kmYear != default)
+        {
+            <input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" value="@kmYear" />
+        }
+        else
+        {
+            <input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
+        }
+    }
 </div>
 <div id="contentAligner" class="contentAligner">
-	@if (ViewBag.OnePageOfCars != null)
-	{
-		<div class="row">
-			<div class="col-sm">
-				<p> <strong> Mærke </strong> </p>
-			</div>
-			<div class="col-sm">
-				<p> <strong> Model </strong></p>
-			</div>
-			<div class="col-5">
-				<p> <strong> Udgave </strong></p>
-			</div>
-			<div class="col-sm">
-				<p> <strong> År </strong></p>
-			</div>
-			<div class="col-sm">
-				<p> <strong> Type </strong></p>
-			</div>
-		</div>
-		@using (Html.BeginForm("Index", "Home", FormMethod.Post))
-		{
-			@for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-			{
-				Car car = (Car)ViewBag.OnePageOfCars[i];
-				@Html.Partial("CarPartialView", car)
-			}
-		}
-		<div class="pagedListPager">
-			@Html.PagedListPager((IPagedList)ViewBag.OnePageOfCars, page =>
-		Url.Action("Index", new { page }))
-		</div>
+    @if (ViewBag.OnePageOfCars != null)
+    {
+        <div class="row">
+            <div class="col-sm">
+                <p> <strong> Mærke </strong> </p>
+            </div>
+            <div class="col-sm">
+                <p> <strong> Model </strong></p>
+            </div>
+            <div class="col-5">
+                <p> <strong> Udgave </strong></p>
+            </div>
+            <div class="col-sm">
+                <p> <strong> År </strong></p>
+            </div>
+            <div class="col-sm">
+                <p> <strong> Type </strong></p>
+            </div>
+        </div>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            @for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
+            {
+                Car car = (Car)ViewBag.OnePageOfCars[i];
+                @Html.Partial("CarPartialView", car)
+            }
+        }
+        <div class="pagedListPager">
+            @Html.PagedListPager((IPagedList)ViewBag.OnePageOfCars, page =>
+        Url.Action("Index", new { page }))
+        </div>
 
-		<div class="chosenCars">
-			<div id="chosenGas" class="row">
-				@if (Context.Session.GetObject<Car>("SelectedGas") != null)
-				{
-					Car car = Context.Session.GetObject<Car>("SelectedGas");
-					<div class="col-sm">
-						<p class="lead" id="chosenGasCarBrand"> @car.Brand</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.Model</p>
-					</div>
-					<div class="col-5">
-						<p class="lead">@car.Variant</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.ReleaseYear.Year</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.Fuel.FuelType</p>
-					</div>
-					<p hidden="hidden" id="newPGasI" class="lead">@car.Price</p>
-					<p hidden="hidden" id="useKmGasI" class="lead">@car.FuelUsagePerKM</p>
-				}
-				else
-				{
-					<div class="col-sm">
-						<p class="lead"> Vælg Benzin bil </p>
-					</div>
-				}
-			</div>
-			<div id="chosenElec" class="row">
-				@if (Context.Session.GetObject<Car>("SelectedElectric") != null)
-				{
-					Car car = Context.Session.GetObject<Car>("SelectedElectric");
-					<div class="col-sm">
-						<p class="lead" id="chosenElecCarBrand"> @car.Brand</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.Model</p>
-					</div>
-					<div class="col-5">
-						<p class="lead">@car.Variant</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.ReleaseYear.Year</p>
-					</div>
-					<div class="col-sm">
-						<p class="lead">@car.Fuel.FuelType</p>
-					</div>
-					<p hidden="hidden" id="newPElecI" class="lead">@car.Price</p>
-					<p hidden="hidden" id="useKmElecI" class="lead">@car.FuelUsagePerKM</p>
-				}
-				else
-				{
-					<div class="col-sm">
-						<p class="lead"> Vælg El bil </p>
-					</div>
-				}
-			</div>
-		</div>
+        <div class="chosenCars">
+            <div id="chosenGas" class="row">
+                @if (Context.Session.GetObject<Car>("SelectedGas") != null)
+                {
+                    Car car = Context.Session.GetObject<Car>("SelectedGas");
+                    <div class="col-sm">
+                        <p class="lead" id="chosenGasCarBrand"> @car.Brand</p>
+                    </div>
+                    <div class="col-sm">
+                        <p class="lead">@car.Model</p>
+                    </div>
+                    <div class="col-5">
+                        <p class="lead">@car.Variant</p>
+                    </div>
+                    <div class="col-sm">
+                        <p class="lead">@car.ReleaseYear.Year</p>
+                    </div>
+                    <div class="col-sm">
+                        <p class="lead">@car.Fuel.FuelType</p>
+                    </div>
+                    <p hidden="hidden" id="newPGasI" class="lead">@car.Price</p>
+                    <p hidden="hidden" id="useKmGasI" class="lead">@car.FuelUsagePerKM</p>
+                }
+                else
+                {
+                    <div class="col-sm">
+                        <p class="lead"> Vælg Benzin bil </p>
+                    </div>
+                }
+            </div>
+            <div id="chosenElec" class="row">
+                @if (Context.Session.GetObject<Car>("SelectedElectric") != null)
+                {
+                    Car car = Context.Session.GetObject<Car>("SelectedElectric");
+                    <div class="col-sm">
+                        <p class="lead" id="chosenElecCarBrand"> @car.Brand</p>
+                    </div>
+                    <div class="col-sm">
+                        <p class="lead">@car.Model</p>
+                    </div>
+                    <div class="col-5">
+                        <p class="lead">@car.Variant</p>
+                    </div>
+                    <div class="col-sm">
+                        <p class="lead">@car.ReleaseYear.Year</p>
+                    </div>
+                    <div class="col-sm">
+                        <p class="lead">@car.Fuel.FuelType</p>
+                    </div>
+                    <p hidden="hidden" id="newPElecI" class="lead">@car.Price</p>
+                    <p hidden="hidden" id="useKmElecI" class="lead">@car.FuelUsagePerKM</p>
+                }
+                else
+                {
+                    <div class="col-sm">
+                        <p class="lead"> Vælg El bil </p>
+                    </div>
+                }
+            </div>
+        </div>
 
-		<div class="form-check">
-			<h3 class="lead">Ladestander type</h3>
-			<div class="electricRadioBoxes">
-				<div class="custom-control custom-radio custom-control-inline">
-					<input type="radio" id="electricRadioRent" name="electricRadio" class="custom-control-input">
-					<label class="custom-control-label" for="electricRadioRent">Leje (Abonnement)</label>
-				</div>
-				<div class="custom-control custom-radio custom-control-inline">
-					<input type="radio" id="electricRadioOwn" name="electricRadio" class="custom-control-input">
-					<label class="custom-control-label" for="electricRadioOwn">Ejer Selv</label>
-				</div>
-			</div>
-		</div>
+        <div class="form-check">
+            <h3 class="lead">Ladestander type</h3>
+            <div class="electricRadioBoxes">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="electricRadioRent" name="electricRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="electricRadioRent">Leje (Abonnement)</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="electricRadioOwn" name="electricRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="electricRadioOwn">Ejer Selv</label>
+                </div>
+            </div>
+        </div>
 
-		<div class="statisticsContainer">
-			<div class="statisticsNav">
-				<p hidden="hidden" id="currentTab"></p>
-				<ul class="nav nav-tabs" id="statisticsNavTab" role="tablist">
-					<li class="nav-item">
-						<a class="nav-link active" id="1YearTab" data-toggle="tab" href="#1Year" aria-controls="1Year" aria-selected="true">1. År</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="2YearTab" data-toggle="tab" href="#2Year" aria-controls="2Year" aria-selected="false">2. År</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="3YearTab" data-toggle="tab" href="#3Year" aria-controls="3Year" aria-selected="false">3. År</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="4YearTab" data-toggle="tab" href="#4Year" aria-controls="4Year" aria-selected="false">4. År</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="5YearTab" data-toggle="tab" href="#5Year" aria-controls="5Year" aria-selected="false">5. År</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" id="fullTab" data-toggle="tab" href="#fullYear" aria-controls="fullYear" aria-selected="false">Samlet</a>
-					</li>
-				</ul>				
-			</div>
-			<div class="statisticsBody">
-				<div class="statisticsGas col category">
-					<div class="d-flex p-2 ">Nypris</div>
-					<div class="d-flex p-2 ">Brændstof/el forbrug</div>
-					@*<div class="d-flex p-2 ">Co2 afgift</div>*@
-					<div class="d-flex p-2 ">Bilsyn</div>
-					<div class="d-flex p-2 ">Serviceeftersyn</div>
-					<div class="d-flex p-2 ">Ladestander</div>
-					<div class="d-flex p-2 ">Ladeabonnement</div>
-					<br />
-					<div class="d-flex p-2 ">Totalt</div>
-				</div>
-				<div class="col">
-					<div id="newPGasO" class="d-flex p-2"></div>
-					<div id="fuelPGasO" class="d-flex p-2"></div>
-					@*<div id="co2Gas" class="d-flex p-2"></div>*@
-					<div id="synPGasO" class="d-flex p-2"></div>
-					<div id="servPGasO" class="d-flex p-2"></div>
-					<div id="chargPGasO" class="d-flex p-2"></div>
-					<div id="subPGasO" class="d-flex p-2"></div>
-					<br />
-					<div id="totalPGas" class="d-flex p-2"></div>
-				</div>
-				<div class="statisticsElectric">
-					<div class="col">
-						<div id="newPElecO" class="d-flex p-2"></div>
-						<div id="electPElecO" class="d-flex p-2"></div>
-						@*<div id="co2Elec" class="d-flex p-2"></div>*@
-						<div id="synPElecO" class="d-flex p-2"></div>
-						<div id="servPElecO" class="d-flex p-2"></div>
-						<div id="chargPElecO" class="d-flex p-2"></div>
-						<div id="subPElecO" class="d-flex p-2"></div>
-						<br />
-						<div id="totalPElec" class="d-flex p-2"></div>
-					</div>
-				</div>
-				<div class="canvasContainer">
-					<canvas id="myChart"></canvas>
-				</div>
-			</div>
-		</div>
-	}
-	else
-	{
-		<div class="text-center">
-			<h1 class="display-2">Der kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
-		</div>
-	}
+        <div class="statisticsContainer">
+            <div class="statisticsNav">
+                <p hidden="hidden" id="currentTab">1</p>
+                <ul class="nav nav-tabs" id="statisticsNavTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="1YearTab" data-toggle="tab" href="#1Year" aria-controls="1Year" aria-selected="true">1. År</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="2YearTab" data-toggle="tab" href="#2Year" aria-controls="2Year" aria-selected="false">2. År</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="3YearTab" data-toggle="tab" href="#3Year" aria-controls="3Year" aria-selected="false">3. År</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="4YearTab" data-toggle="tab" href="#4Year" aria-controls="4Year" aria-selected="false">4. År</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="5YearTab" data-toggle="tab" href="#5Year" aria-controls="5Year" aria-selected="false">5. År</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="fullTab" data-toggle="tab" href="#fullYear" aria-controls="fullYear" aria-selected="false">Samlet</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="statisticsBody">
+                <div class=" col category">
+                    <div class="d-flex p-2 ">Kategorier:</div>
+                    <div class="d-flex p-2 ">Nypris</div>
+                    <div class="d-flex p-2 ">Brændstof/el forbrug</div>
+                    @*<div class="d-flex p-2 ">Co2 afgift</div>*@
+                    <div class="d-flex p-2 ">Bilsyn</div>
+                    <div class="d-flex p-2 ">Serviceeftersyn</div>
+                    <div class="d-flex p-2 ">Ladestander</div>
+                    <div class="d-flex p-2 ">Ladeabonnement</div>
+                    <br />
+                    <div class="d-flex p-2 ">Totalt</div>
+                </div>
+                <div class="statisticsGas">
+                    <div class="col">
+                        <div class="d-flex p-2 ">Benzin bil:</div>
+                        <div id="newPGasO" class="d-flex p-2"></div>
+                        <div id="fuelPGasO" class="d-flex p-2"></div>
+                        @*<div id="co2Gas" class="d-flex p-2"></div>*@
+                        <div id="synPGasO" class="d-flex p-2"></div>
+                        <div id="servPGasO" class="d-flex p-2"></div>
+                        <div id="chargPGasO" class="d-flex p-2"></div>
+                        <div id="subPGasO" class="d-flex p-2"></div>
+                        <br />
+                        <div id="totalPGas" class="d-flex p-2"></div>
+                    </div>
+                </div>
+                <div class="statisticsElectric">
+                    <div class="col">
+                        <div class="d-flex p-2 ">El bil:</div>
+                        <div id="newPElecO" class="d-flex p-2"></div>
+                        <div id="electPElecO" class="d-flex p-2"></div>
+                        @*<div id="co2Elec" class="d-flex p-2"></div>*@
+                        <div id="synPElecO" class="d-flex p-2"></div>
+                        <div id="servPElecO" class="d-flex p-2"></div>
+                        <div id="chargPElecO" class="d-flex p-2"></div>
+                        <div id="subPElecO" class="d-flex p-2"></div>
+                        <br />
+                        <div id="totalPElec" class="d-flex p-2"></div>
+                    </div>
+                </div>
+                <div class="canvasContainer">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <h1 class="display-2">Der kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
+        </div>
+    }
 </div>				
