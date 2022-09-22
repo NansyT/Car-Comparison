@@ -8,7 +8,7 @@ var serv = 3500;
 var fuelP = 17.7325;
 
 // Electric car prices
-var sub = 180;
+var sub = 180 * 12;
 var ref = 1.06;
 //Raw electric price
 //Notes: Price for kWh/h is not precise.
