@@ -6,7 +6,6 @@
 }
 
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
-<script src="~/js/priceOverview.js"></script>
 
 <div class="text-center">
     @{
@@ -326,9 +325,19 @@
                         <div id="totalPElec" class="d-flex p-2"></div>
                     </div>
                 </div>
-                <div class="canvasContainer">
+                <div class="canvasContainer" hidden="hidden" id="canCon">
                     <canvas id="myChart"></canvas>
                 </div>
+                <p id="year1G" hidden="hidden"></p>
+                <p id="year2G" hidden="hidden"></p>
+                <p id="year3G" hidden="hidden"></p>
+                <p id="year4G" hidden="hidden"></p>
+                <p id="year5G" hidden="hidden"></p>
+                <p id="year1E" hidden="hidden"></p>
+                <p id="year2E" hidden="hidden"></p>
+                <p id="year3E" hidden="hidden"></p>
+                <p id="year4E" hidden="hidden"></p>
+                <p id="year5E" hidden="hidden"></p>
             </div>
         </div>
     }

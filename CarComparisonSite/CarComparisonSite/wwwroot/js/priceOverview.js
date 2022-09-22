@@ -34,10 +34,10 @@ let finPrices = {
     year4E: 0,
     year5E: 0
 };
+document.getElementById("electricRadioRent").checked = true;
+ownership = "Rent";
 
 window.onload = function () {
-    document.getElementById("electricRadioRent").checked = true;
-    ownership = "Rent";
     document.getElementById("kmYear").addEventListener('change', function (e) {
         calcGas();
         calcElec();
@@ -48,11 +48,15 @@ window.onload = function () {
     document.getElementById("electricRadioRent").addEventListener('change', function () {
         ownership = "Rent";
         calcElec();
+        calcGas();
+        chart();
     })
 
     document.getElementById("electricRadioOwn").addEventListener('change', function () {
         ownership = "Own";
         calcElec();
+        calcGas();
+        chart();
     })
 
     //Eventlistener for links in nav statistics
@@ -65,13 +69,16 @@ window.onload = function () {
                 let hiddenEl = document.getElementById("currentTab");
                 if (!isNaN(e.currentTarget.id[0])) {
                     hiddenEl.innerHTML = e.currentTarget.id[0];
+                    //    document.querySelector(".canvasContainer").hidden = false;
                 }
                 else {
                     hiddenEl.innerHTML = "all";
+                    //    document.querySelector(".canvasContainer").hidden = true;
                 }
                 console.log(hiddenEl.innerHTML)
                 calcElec();
                 calcGas();
+                chart();
             }
         })
     }
@@ -98,14 +105,14 @@ function calculateFuelPrice(km) {
 }
 
 function calculateServInspecPrice(km) {
-    var inspecAmount = (parseFloat(km) / 15000);
+    if (km != "") {
+        var inspecAmount = (parseFloat(km) / 15000);
 
-    if (inspecAmount < 1) {
-        return serv;
+        if (inspecAmount > 1) {
+            return inspecAmount * serv;
+        }
     }
-    else {
-        return inspecAmount * serv;
-    }
+    return serv;
 }
 
 function calcElectricityPrice(km) {
@@ -123,7 +130,7 @@ function calcElectricityPrice(km) {
 }
 
 function calcCar(car) {
-    let kmDriven = parseFloat(document.getElementById("kmYear").value);
+    let kmDriven = document.getElementById("kmYear").value;
     let newPrice;
     let servIns = calculateServInspecPrice(kmDriven);
     let year = document.getElementById("currentTab").innerHTML;;
@@ -145,12 +152,15 @@ function calcCar(car) {
         case "4":
             outPrices = calcYear4(car, fuel, servIns);
             newPrice = 0;
+
             break;
         case "all":
-            outPrices = calcAll(car, newPrice, fuel, serv);
+            outPrices = calcAll(car, newPrice, fuel, servIns);
+            fuel *= 5;
+            servIns *= 5;
             break;
         default:
-            outPrices = calcYearWithoutServ(car, fuel, serv);
+            outPrices = calcYearWithoutServ(car, fuel, servIns);
             newPrice = 0;
             break;
     }
@@ -180,7 +190,7 @@ function calcYear1(car, newP, fuel, servIns) {
 }
 
 function calcYear4(car, fuel, servIns) {
-    let total = fuel + servIns;
+    let total = fuel + servIns + inspec;
     let extra = 0;
     if (car == "elec") {
         if (ownership == "Rent") {
@@ -188,7 +198,7 @@ function calcYear4(car, fuel, servIns) {
         }
         total += extra;
     }
-    return { total, extra, ins: 0 };
+    return { total, extra, ins: inspec };
 }
 
 function calcAll(car, newP, fuel, servIns) {
@@ -196,7 +206,7 @@ function calcAll(car, newP, fuel, servIns) {
     let extra = 0;
     if (car == "elec") {
         if (ownership == "Rent") {
-            extra = (sub + 5) + startprice;
+            extra = (sub * 5) + startprice;
         }
         else {
             extra = charger;
@@ -243,27 +253,27 @@ function calcGraph(car, newP, fuel, servIns) {
 
 function setText(car, prices) {
     if (car == "gas") {
-        document.getElementById("newPGasO").innerHTML = prices.new;
-        document.getElementById("fuelPGasO").innerHTML = prices.fuel;
-        document.getElementById("synPGasO").innerHTML = prices.ins;
-        document.getElementById("servPGasO").innerHTML = prices.serv;
+        document.getElementById("newPGasO").innerHTML = prices.new.toFixed(2).toString().replace(".", ",") + " kr";
+        document.getElementById("fuelPGasO").innerHTML = prices.fuel.toFixed(2).toString().replace(".", ",") + " kr";
+        document.getElementById("synPGasO").innerHTML = prices.ins.toFixed(2).toString().replace(".", ",") + " kr";
+        document.getElementById("servPGasO").innerHTML = prices.serv.toFixed(2).toString().replace(".", ",") + " kr";
         document.getElementById("chargPGasO").innerHTML = "N/A";
         document.getElementById("subPGasO").innerHTML = "N/A";
-        document.getElementById("totalPGas").innerHTML = prices.total;
+        document.getElementById("totalPGas").innerHTML = prices.total.toFixed(2).toString().replace(".", ",") + " kr";
     }
     else {
-        document.getElementById("newPElecO").innerHTML = prices.new;
-        document.getElementById("electPElecO").innerHTML = prices.fuel;
-        document.getElementById("synPElecO").innerHTML = prices.ins;
-        document.getElementById("servPElecO").innerHTML = prices.serv;
+        document.getElementById("newPElecO").innerHTML = prices.new.toFixed(2).toString().replace(".", ",") + " kr";
+        document.getElementById("electPElecO").innerHTML = prices.fuel.toFixed(2).toString().replace(".", ",") + " kr";
+        document.getElementById("synPElecO").innerHTML = prices.ins.toFixed(2).toString().replace(".", ",") + " kr";
+        document.getElementById("servPElecO").innerHTML = prices.serv.toFixed(2).toString().replace(".", ",") + " kr";
         if (ownership = "Rent") {
-            document.getElementById("chargPElecO").innerHTML = 0;
-            document.getElementById("subPElecO").innerHTML = prices.extra;
+            document.getElementById("chargPElecO").innerHTML = 0 + " kr";
+            document.getElementById("subPElecO").innerHTML = prices.extra.toFixed(2).toString().replace(".", ",") + " kr";
         }
         else {
-            document.getElementById("chargPElecO").innerHTML = prices.extra;
-            document.getElementById("subPElecO").innerHTML = 0;
+            document.getElementById("chargPElecO").innerHTML = prices.extra.toFixed(2).toString().replace(".", ",") + " kr";
+            document.getElementById("subPElecO").innerHTML = 0 + " kr";
         }
-        document.getElementById("totalPElec").innerHTML = prices.total;
+        document.getElementById("totalPElec").innerHTML = prices.total.toFixed(2).toString().replace(".", ",") + " kr";
     }
 }
