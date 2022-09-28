@@ -237,3 +237,4 @@ C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarCompariso
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Home\CarPartialView.cshtml.g.cs
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.csproj.AssemblyReference.cache
