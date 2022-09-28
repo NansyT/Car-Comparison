@@ -221,6 +221,7 @@ function calculateElecCar() {
             total += syn;
             startprice = 0;
             charger = 0;
+            newPElec = 0;
         }
         else {
             startprice = 0;

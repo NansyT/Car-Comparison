@@ -65,6 +65,18 @@ namespace CarComparisonSite.Controllers
             return RedirectToAction("index");
         }
 
+        
+        [HttpPost]
+        public ActionResult GetModels(Brand brand)
+        {
+            return Ok();
+        }
+        [HttpPost]
+        public ActionResult GetVariant(Brand brand, string model, int? year = null)
+        {
+            return Ok();
+        }
+
         //Called from an onclick in JS
         //Sends us the carId that was clicked,
         //so we can save it in session and be used in the view for selected cars

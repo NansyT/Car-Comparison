@@ -9,46 +9,22 @@
 <script src="~/js/priceOverview.js"></script>
 
 <div class="text-center">
-    @{
-        double kmYear = Context.Session.GetObject<double>("kmYear");
-        if (kmYear != default)
-        {
-            <input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" value="@kmYear" />
-        }
-        else
-        {
-            <input id="kmYear" class="kmTitel" placeholder="KM om året" type="text" pattern="[0-9]+" />
-        }
-    }
+	@{
+		<span class="col-form-label label-primary">Indtast kørte km./år: </span>
+		double kmYear = Context.Session.GetObject<double>("kmYear");
+		if (kmYear != default)
+		{
+			<input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" value="@kmYear" />
+		}
+		else
+		{
+			<input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" />
+		}
+	}
+	<i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" role="tooltip" data-placement="right" title="Gennemsnitligt kører en dansker 17.000 km./år"> </i>
 </div>
 <div id="contentAligner" class="contentAligner">
 	<div class="topButtons">
-
-		<div class="ddBtnHolder">
-			<button class="btn btn-primary dropdown-toggle"
-					type="button"
-					id="ddBtnModel"
-					data-mdb-toggle="dropdown"
-					aria-expanded="false">
-				Model
-			</button>
-			<div class="dropdown-menu" id="ddModel" aria-labelledby="ddBtnModel">
-				@{
-					List<string> distinctStr = new List<string>();
-					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-					{
-						Car car = (Car)ViewBag.OnePageOfCars[i];
-						if (!distinctStr.Contains(car.Model))
-						{
-							distinctStr.Add(car.Model);
-							<button id="btnModel @i" class="dropdown-item" type="button">
-								@car.Model
-							</button>
-						}
-					}
-				}
-			</div>
-		</div>
 		<div class="ddBtnHolder">
 
 			<button class="btn btn-primary dropdown-toggle"
@@ -56,7 +32,7 @@
 					id="ddBtnBrand"
 					data-mdb-toggle="dropdown"
 					aria-expanded="false">
-				Brand
+				Mærke
 			</button>
 			<div class="dropdown-menu" id="ddBrand" aria-labelledby="ddBtnBrand">
 				@{
@@ -77,6 +53,31 @@
 			</div>
 		</div>
 		<div class="ddBtnHolder">
+			<button class="btn btn-primary dropdown-toggle"
+					type="button"
+					id="ddBtnModel"
+					data-mdb-toggle="dropdown"
+					aria-expanded="false">
+				Model
+			</button>
+			<div class="dropdown-menu" id="ddModel" aria-labelledby="ddBtnModel">
+				@*@{
+					List<string> distinctStr = new List<string>();
+					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
+					{
+						Car car = (Car)ViewBag.OnePageOfCars[i];
+						if (!distinctStr.Contains(car.Model))
+						{
+							distinctStr.Add(car.Model);
+							<button id="btnModel @i" class="dropdown-item" type="button">
+								@car.Model
+							</button>
+						}
+					}
+				}*@
+			</div>
+		</div>
+		<div class="ddBtnHolder">
 
 			<button class="btn btn-primary dropdown-toggle"
 					type="button"
@@ -86,7 +87,7 @@
 				Variant
 			</button>
 			<div class="dropdown-menu" id="ddVariant" aria-labelledby="ddBtnVariant">
-				@{
+				@*@{
 					distinctStr = new List<string>();
 					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
 					{
@@ -99,7 +100,7 @@
 							</button>
 						}
 					}
-				}
+				}*@
 			</div>
 		</div>
 		<div class="ddBtnHolder">
@@ -108,7 +109,7 @@
 					id="ddYear"
 					data-mdb-toggle="dropdown"
 					aria-expanded="false">
-				Year
+				År
 			</button>
 			<div class="dropdown-menu" id="ddYear" aria-labelledby="ddBtnYear">
 				@{
@@ -146,8 +147,13 @@
 			<div class="col-sm">
 				<p> <strong> Model </strong></p>
 			</div>
-			<div class="col-5">
-				<p> <strong> Udgave </strong></p>
+			<div class="col-5 variantTitleAlign">
+				@*<div class="VariantTitleAlign">*@
+				<p>
+					<strong> Udgave </strong>
+					<i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="right" title="heyThere!"> </i>
+				</p>
+				@*</div>*@
 			</div>
 			<div class="col-sm">
 				<p> <strong> År </strong></p>
@@ -248,7 +254,11 @@
 		</div>
 
 		<div class="form-check">
-			<h3 class="lead">Ladestander type</h3>
+			<div class="chargingStationTitle">
+				<h3 class="lead">Ladestander type</h3>
+				<i class="fa-solid fa-circle-info chargingStationInfo" data-toggle="tooltip" role="tooltip" data-placement="right" title="Vælg om du ejer ladestanderen selv, eller får leveret en gennem abonnement."> </i>
+			</div>
+
 			<div class="electricRadioBoxes">
 				<div class="custom-control custom-radio custom-control-inline">
 					<input type="radio" id="electricRadioRent" name="electricRadio" class="custom-control-input">
@@ -261,81 +271,148 @@
 			</div>
 		</div>
 
-        <div class="statisticsContainer">
-            <div class="statisticsNav">
-                <p hidden="hidden" id="currentTab">1</p>
-                <ul class="nav nav-tabs" id="statisticsNavTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="1YearTab" data-toggle="tab" href="#1Year" aria-controls="1Year" aria-selected="true">1. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="2YearTab" data-toggle="tab" href="#2Year" aria-controls="2Year" aria-selected="false">2. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="3YearTab" data-toggle="tab" href="#3Year" aria-controls="3Year" aria-selected="false">3. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="4YearTab" data-toggle="tab" href="#4Year" aria-controls="4Year" aria-selected="false">4. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="5YearTab" data-toggle="tab" href="#5Year" aria-controls="5Year" aria-selected="false">5. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="fullTab" data-toggle="tab" href="#fullYear" aria-controls="fullYear" aria-selected="false">Samlet</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="statisticsBody">
-                <div class=" col category">
-                    <div class="d-flex p-2 ">Kategorier:</div>
-                    <div class="d-flex p-2 ">Nypris</div>
-                    <div class="d-flex p-2 ">Brændstof/el forbrug</div>
-                    @*<div class="d-flex p-2 ">Co2 afgift</div>*@
-                    <div class="d-flex p-2 ">Bilsyn</div>
-                    <div class="d-flex p-2 ">Serviceeftersyn</div>
-                    <div class="d-flex p-2 ">Ladestander</div>
-                    <div class="d-flex p-2 ">Ladeabonnement</div>
-                    <br />
-                    <div class="d-flex p-2 ">Totalt</div>
-                </div>
-                <div class="statisticsGas">
-                    <div class="col">
-                        <div class="d-flex p-2 ">Benzin bil:</div>
-                        <div id="newPGasO" class="d-flex p-2"></div>
-                        <div id="fuelPGasO" class="d-flex p-2"></div>
-                        @*<div id="co2Gas" class="d-flex p-2"></div>*@
-                        <div id="synPGasO" class="d-flex p-2"></div>
-                        <div id="servPGasO" class="d-flex p-2"></div>
-                        <div id="chargPGasO" class="d-flex p-2"></div>
-                        <div id="subPGasO" class="d-flex p-2"></div>
-                        <br />
-                        <div id="totalPGas" class="d-flex p-2"></div>
-                    </div>
-                </div>
-                <div class="statisticsElectric">
-                    <div class="col">
-                        <div class="d-flex p-2 ">El bil:</div>
-                        <div id="newPElecO" class="d-flex p-2"></div>
-                        <div id="electPElecO" class="d-flex p-2"></div>
-                        @*<div id="co2Elec" class="d-flex p-2"></div>*@
-                        <div id="synPElecO" class="d-flex p-2"></div>
-                        <div id="servPElecO" class="d-flex p-2"></div>
-                        <div id="chargPElecO" class="d-flex p-2"></div>
-                        <div id="subPElecO" class="d-flex p-2"></div>
-                        <br />
-                        <div id="totalPElec" class="d-flex p-2"></div>
-                    </div>
-                </div>
-                <div class="canvasContainer">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
-        </div>
-    }
-    else
-    {
-        <div class="text-center">
-            <h1 class="display-2">Der kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
-        </div>
-    }
+		<div class="statisticsContainer">
+			<div class="statisticsNav">
+				<p hidden="hidden" id="currentTab">1</p>
+				<ul class="nav nav-tabs" id="statisticsNavTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="1YearTab" data-toggle="tab" href="#1Year" aria-controls="1Year" aria-selected="true">1. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="2YearTab" data-toggle="tab" href="#2Year" aria-controls="2Year" aria-selected="false">2. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="3YearTab" data-toggle="tab" href="#3Year" aria-controls="3Year" aria-selected="false">3. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="4YearTab" data-toggle="tab" href="#4Year" aria-controls="4Year" aria-selected="false">4. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="5YearTab" data-toggle="tab" href="#5Year" aria-controls="5Year" aria-selected="false">5. År</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="fullTab" data-toggle="tab" href="#fullYear" aria-controls="fullYear" aria-selected="false">Samlet</a>
+					</li>
+				</ul>
+			</div>
+
+
+			<div class="statisticsBody">
+				<div class=" col category">
+					<div class="d-flex p-2 ">
+						<p>Kategorier:</p>
+					</div>
+					<div class="d-flex p-2 ">
+						<p>Nypris <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Købsprisen på bilen. Dette bliver kun regnet med det første år."></i></p>
+					</div>
+					<div class="d-flex p-2 ">
+						<p>Brændstof/el forbrug <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Totalprisen af forbrug på el/benzin."></i></p>
+					</div>
+					@*<div class="d-flex p-2 ">Co2 afgift</div>*@
+					<div class="d-flex p-2 ">
+						<p>Bilsyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal synes efter 4 år efter køb. Derefter skal den synes hvert andet år."> </i></p>
+					</div>
+					<div class="d-flex p-2 ">
+						<p>Serviceeftersyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal til serviceeftersyn mindst 1 gang årligt, eller efter et bestemt antal kilometer kørt."> </i></p>
+					</div>
+					<div class="d-flex p-2 ">
+						<p>Ladestander <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Pris på en ladestander. Dette er kun relevant hvis du ejer den selv."> </i></p>
+					</div>
+					<div class="d-flex p-2 ">
+						<p>Ladeabonnement <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Startpris og pris for abonnement "> </i></p>
+					</div>
+					<br />
+					<div class="d-flex p-2">
+						<p class="totalPriceAmountTitle">Totalt</p>
+					</div>
+				</div>
+				<div class="col">
+					<div class="statisticsGas">
+						<div class="d-flex p-2 ">
+							@if (Context.Session.GetObject<Car>("SelectedGas") != null)
+							{
+								Car car = Context.Session.GetObject<Car>("SelectedGas");
+								<p class="category">Benzin bil: @car.Variant</p>
+							}
+							else
+							{
+								<p class="category">Benzin bil:</p>
+							}
+						</div>
+						<div class="d-flex p-2">
+							<p id="newPGasO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="fuelPGasO"></p>
+						</div>
+						@*<div id="co2Gas" class="d-flex p-2"></div>*@
+						<div class="d-flex p-2">
+							<p id="synPGasO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="servPGasO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="chargPGasO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="subPGasO"></p>
+						</div>
+						<br />
+						<div class="d-flex p-2">
+							<p class="totalPriceAmountTitle" id="totalPGas"></p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="statisticsElectric">
+						<div class="d-flex p-2 ">
+							@if (Context.Session.GetObject<Car>("SelectedElectric") != null)
+							{
+								Car car = Context.Session.GetObject<Car>("SelectedElectric");
+								<p class="category">El bil: @car.Variant</p>
+							}
+							else
+							{
+								<p class="category">El bil:</p>
+							}
+						</div>
+						<div class="d-flex p-2">
+							<p id="newPElecO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="electPElecO"></p>
+
+						</div>
+						@*<div id="co2Elec" class="d-flex p-2"></div>*@
+						<div class="d-flex p-2">
+							<p id="synPElecO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="servPElecO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="chargPElecO"></p>
+						</div>
+						<div class="d-flex p-2">
+							<p id="subPElecO"></p>
+						</div>
+						<br />
+						<div class="d-flex p-2">
+							<p class="totalPriceAmountTitle" id="totalPElec"></p>
+						</div>
+					</div>
+				</div>
+				<div class="canvasContainer" hidden="hidden">
+					<canvas id="myChart"></canvas>
+				</div>
+			</div>
+		</div>
+	}
+	else
+	{
+		<div class="text-center">
+			<h1 class="display-2">Der kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
+		</div>
+	}
 </div>				
