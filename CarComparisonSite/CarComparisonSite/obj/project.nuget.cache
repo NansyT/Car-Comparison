@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "AiOfZ3CQ/wzni0u5t6cvuxpkYiKqAweX7286BfeEiKYuGibhu5U9nsdPFzfLKb4/UfQOeFcav7y25pb1eQEc3w==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\kenn5073\\Source\\Repos\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj",
-=======
-  "dgSpecHash": "yVD3rSDIK1429b+37eII4E2kGIYpeFkxp+5eAVLuhLIN+x5UW1laW6sUBCWfJTxG3MMF7HI+t4FZegnlgYtdew==",
+  "dgSpecHash": "/AZrL2oeXmVCurNsoWA1fUSMmyGPLlBZ38YZysO7tY0JmcHOcr1AVr/b4XLlu4v7+slusHvizAuhvp0/06S78w==",
   "success": true,
   "projectFilePath": "C:\\Users\\nann8059\\Documents\\GitHub\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj",
->>>>>>> 9338f0bb83b095b2391c7364cc651ba169dd0c5d
   "expectedPackageFiles": [
     "C:\\Users\\nann8059\\.nuget\\packages\\jetbrains.annotations\\2022.1.0\\jetbrains.annotations.2022.1.0.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
@@ -128,7 +122,14 @@
     "C:\\Users\\nann8059\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\x.pagedlist\\8.4.3\\x.pagedlist.8.4.3.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\x.pagedlist.mvc.core\\8.4.3\\x.pagedlist.mvc.core.8.4.3.nupkg.sha512",
-    "C:\\Users\\nann8059\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
+    "C:\\Users\\nann8059\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.28\\microsoft.netcore.app.host.win-x64.3.1.28.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\nann8059\\Documents\\GitHub\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

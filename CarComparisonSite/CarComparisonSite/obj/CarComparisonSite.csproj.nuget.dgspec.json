@@ -1,19 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Users\\kenn5073\\Source\\Repos\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\kenn5073\\Source\\Repos\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\kenn5073\\Source\\Repos\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj",
-        "projectName": "CarComparisonSite",
-        "projectPath": "C:\\Users\\kenn5073\\Source\\Repos\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj",
-        "packagesPath": "C:\\Users\\kenn5073\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kenn5073\\Source\\Repos\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\obj\\",
-=======
     "C:\\Users\\nann8059\\Documents\\GitHub\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj": {}
   },
   "projects": {
@@ -25,15 +12,10 @@
         "projectPath": "C:\\Users\\nann8059\\Documents\\GitHub\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj",
         "packagesPath": "C:\\Users\\nann8059\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\nann8059\\Documents\\GitHub\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\obj\\",
->>>>>>> 9338f0bb83b095b2391c7364cc651ba169dd0c5d
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
           "C:\\Users\\nann8059\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -85,14 +67,15 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.25, 3.1.25]"
+              "version": "[3.1.28, 3.1.28]"
             }
           ],
           "frameworkReferences": {
@@ -103,11 +86,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
->>>>>>> 9338f0bb83b095b2391c7364cc651ba169dd0c5d
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
