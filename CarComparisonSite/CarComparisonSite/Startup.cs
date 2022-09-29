@@ -55,6 +55,10 @@ namespace CarComparisonSite
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(name: "ClearFilters", pattern: "{controller=Home}/{action=ClearFilters}");
+                endpoints.MapControllerRoute(name: "GetAllBrands", pattern: "{controller=Home}/{action=GetAllBrands}");
+                endpoints.MapControllerRoute(name: "GetModels", pattern: "{controller=Home}/{action=GetModels}/{brand}");
+                endpoints.MapControllerRoute(name: "GetVariantsByModel", pattern: "{controller=Home}/{action=GetVariantsByModel}/{model}");
+                endpoints.MapControllerRoute(name: "SetYear", pattern: "{controller=Home}/{action=SetYear}/{year}");
             });
         }
     }

@@ -20,3 +20,24 @@ AS
    SELECT Car.*, case when Car.FuelName = 'Benzin' then  @gasPrice else @ElPrice end as AvgPrice
    from Car
 GO
+
+
+CREATE OR ALTER PROCEDURE GetBrands
+AS
+	select * from Brand
+GO
+
+CREATE or ALTER PROCEDURE GetModelsByBrand @Brand varchar(30)
+AS
+	Select MName from car where BName = @Brand;
+GO
+
+CREATE or ALTER PROCEDURE GetVariantByModel @model varchar(50)
+AS
+	Select Variant from car where MName = @model;
+GO
+
+CREATE or ALTER PROCEDURE GetYears @brand varchar(30), @variant varchar(150), @model varchar(50)
+AS
+	Select YEAR(ReleaseYear) from car where MName = @model;
+GO

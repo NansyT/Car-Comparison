@@ -10,6 +10,14 @@ for (var i = 0; i < dds.length; i++) {
     })
 }
 
+//var btnBrands = document.getElementsByName("btnBrand");
+
+//for (var i = 0; i < btnBrands.length; i++) {
+//    btnBrands[i].addEventListener('click', function (event) {
+
+//    })
+//}
+
 
 
 //function SortDropDowns() {

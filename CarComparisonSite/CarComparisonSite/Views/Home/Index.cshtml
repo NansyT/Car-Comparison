@@ -35,19 +35,39 @@
 			</button>
 			<div class="dropdown-menu" id="ddBrand" aria-labelledby="ddBtnBrand">
 				@{
-					List<Brand> distinctB = new List<Brand>();
-					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-					{
-						Car car = (Car)ViewBag.OnePageOfCars[i];
-						if (!distinctB.Contains(car.Brand))
-						{
-							distinctB.Add(car.Brand);
+					List<Brand> brands = Context.Session.GetObject<List<Brand>>("brands");
 
-							<button id="btnBrand @i" class="dropdown-item" type="button">
-								@car.Brand
-							</button>
+					if (brands != null && brands.Count > 0)
+					{
+						for (int i = 0; i < brands.Count; i++)
+						{
+							@using (Html.BeginForm("GetModels", "Home", new { brand = @brands[i] }, FormMethod.Post, false, new { }))
+							{
+								<button id="btnBrand @i" class="dropdown-item" name="btnBrand" type="submit">
+									@brands[i]
+								</button>
+							}
 						}
 					}
+					else
+					{
+						<button class="dropdown-item" type="button">
+							Der var ingen mærker fundet
+						</button>
+					}
+					//List<Brand> distinctB = new List<Brand>();
+					//for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
+					//{
+					//	Car car = (Car)ViewBag.OnePageOfCars[i];
+					//	if (!distinctB.Contains(car.Brand))
+					//	{
+					//		distinctB.Add(car.Brand);
+
+					//		<button id="btnBrand @i" class="dropdown-item" type="button">
+					//			@car.Brand
+					//		</button>
+					//	}
+					//}
 				}
 			</div>
 		</div>
@@ -60,19 +80,41 @@
 				Model
 			</button>
 			<div class="dropdown-menu" id="ddModel" aria-labelledby="ddBtnModel">
-				@*@{
-					List<string> distinctStr = new List<string>();
-					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
+				@{
+					List<string> models = Context.Session.GetObject<List<string>>("models");
+
+					if (models != null && models.Count > 0)
 					{
-						Car car = (Car)ViewBag.OnePageOfCars[i];
-						if (!distinctStr.Contains(car.Model))
+						for (int i = 0; i < models.Count; i++)
 						{
-							distinctStr.Add(car.Model);
-							<button id="btnModel @i" class="dropdown-item" type="button">
-								@car.Model
-							</button>
+							@using (Html.BeginForm("GetVariantsByModel", "Home", new { model = @models[i] }, FormMethod.Post, false, new { }))
+							{
+								<button id="btnModel @i" class="dropdown-item" type="submit">
+									@models[i]
+								</button>
+							}
 						}
 					}
+					else
+					{
+						<button class="dropdown-item" type="button">
+							Der var ingen mærker fundet
+						</button>
+					}
+				}
+				@*@{
+				List<string> distinctStr = new List<string>();
+				for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
+				{
+				Car car = (Car)ViewBag.OnePageOfCars[i];
+				if (!distinctStr.Contains(car.Model))
+				{
+				distinctStr.Add(car.Model);
+				<button id="btnModel @i" class="dropdown-item" type="button">
+				@car.Model
+				</button>
+				}
+				}
 				}*@
 			</div>
 		</div>
@@ -86,20 +128,28 @@
 				Variant
 			</button>
 			<div class="dropdown-menu" id="ddVariant" aria-labelledby="ddBtnVariant">
-				@*@{
-					distinctStr = new List<string>();
-					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
+				@{
+					List<string> variants = Context.Session.GetObject<List<string>>("variants");
+
+					if (variants != null && variants.Count > 0)
 					{
-						Car car = (Car)ViewBag.OnePageOfCars[i];
-						if (!distinctStr.Contains(car.Variant))
+						for (int i = 0; i < variants.Count; i++)
 						{
-							distinctStr.Add(car.Variant);
-							<button id="btnVariant @i" class="dropdown-item" type="button">
-								@car.Variant
-							</button>
+							@using (Html.BeginForm("GetYears", "Home", new { variant = @variants[i] }, FormMethod.Post, false, new { }))
+							{
+								<button id="btnVariant @i" class="dropdown-item" type="submit">	
+									@variants[i]
+								</button>
+							}
 						}
 					}
-				}*@
+					else
+					{
+						<button class="dropdown-item" type="button">
+							Der var ingen varianter fundet med det mærke
+						</button>
+					}
+				}
 			</div>
 		</div>
 		<div class="ddBtnHolder">
@@ -112,29 +162,37 @@
 			</button>
 			<div class="dropdown-menu" id="ddYear" aria-labelledby="ddBtnYear">
 				@{
-					List<int> distinctY = new List<int>();
-					for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
+					List<int> years = Context.Session.GetObject<List<int>>("years");
+
+					if (years != null && years.Count > 0)
 					{
-						Car car = (Car)ViewBag.OnePageOfCars[i];
-						if (!distinctY.Contains(car.ReleaseYear.Year))
+						for (int i = 0; i < years.Count; i++)
 						{
-							distinctY.Add(car.ReleaseYear.Year);
-							<button id="btnYear @i" class="dropdown-item" type="button">
-								@car.ReleaseYear.Year
-							</button>
+							@using (Html.BeginForm("SetYear", "Home", new { years = @years[i] }, FormMethod.Post, false, new { }))
+							{
+								<button id="btnYear @i" class="dropdown-item" type="submit">	
+									@years[i]
+								</button>
+							}
 						}
+					}
+					else
+					{
+						<button class="dropdown-item" type="button">
+							Der var ingen varianter fundet med det mærke
+						</button>
 					}
 				}
 			</div>
 		</div>
-		@using (Html.BeginForm("index", "Home", FormMethod.Post, new { @class = "ddBtnHolder", id = "buttonSubmit" }))
+		@*@using (Html.BeginForm("index", "Home", FormMethod.Post, new { @class = "ddBtnHolder", id = "buttonSubmit" }))
 		{
 			<button class="btn btn-primary" type="submit" id="btnSubmit"> Genindlæs</button>
 		}
 		@using (Html.BeginForm("ClearFilters", "Home", FormMethod.Get, new { @class = "ddBtnHolder" }))
 		{
 			<button class="btn btn-primary" type="submit" id="btnReset"> Nulstil</button>
-		}
+		}*@
 	</div>
 
 	@if (ViewBag.OnePageOfCars != null)
@@ -150,7 +208,7 @@
 				@*<div class="VariantTitleAlign">*@
 				<p>
 					<strong> Udgave </strong>
-					<i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="right" title="heyThere!"> </i>
+					@*<i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="right" title="heyThere!"> </i>*@
 				</p>
 				@*</div>*@
 			</div>
@@ -163,27 +221,27 @@
 		</div>
 		@using (Html.BeginForm("Index", "Home", FormMethod.Post))
 		{
-			string model = Context.Session.GetObject<string>("model");
-			Brand? brand = Context.Session.GetObject<Brand?>("brand");
-			string variant = Context.Session.GetObject<string>("variant");
-			int year = Context.Session.GetObject<int>("year");
+			@*string model = Context.Session.GetObject<string>("model");
+	Brand? brand = Context.Session.GetObject<Brand?>("brand");
+	string variant = Context.Session.GetObject<string>("variant");
+	int year = Context.Session.GetObject<int>("year");*@
 
 			@for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
 			{
 				Car car = (Car)ViewBag.OnePageOfCars[i];
 
-				if (model == null && brand == null && variant == null && year == 0)
-				{
-					@Html.Partial("CarPartialView", car)
+				@Html.Partial("CarPartialView", car)
+				@*	if (model == null && brand == null && variant == null && year == 0)
+	{
 
-				}
-				else if (model != null && model == car.Model ||
-				brand != null && brand == car.Brand ||
-				variant != null && variant == car.Variant ||
-				year != 0 && year == car.ReleaseYear.Year)
-				{
-					@Html.Partial("CarPartialView", car)
-				}
+	}
+	else if (model != null && model == car.Model ||
+	brand != null && brand == car.Brand ||
+	variant != null && variant == car.Variant ||
+	year != 0 && year == car.ReleaseYear.Year)
+	{
+	@Html.Partial("CarPartialView", car)
+	}*@
 			}
 		}
 		<div class="pagedListPager">
@@ -402,19 +460,19 @@
 						</div>
 					</div>
 				</div>
-				<div class="canvasContainer" hidden="hidden">
+				<div id="canCon" class="canvasContainer" hidden="hidden">
 					<canvas id="myChart"></canvas>
 				</div>
 				<p id="year1G" hidden="hidden"></p>
-                <p id="year2G" hidden="hidden"></p>
-                <p id="year3G" hidden="hidden"></p>
-                <p id="year4G" hidden="hidden"></p>
-                <p id="year5G" hidden="hidden"></p>
-                <p id="year1E" hidden="hidden"></p>
-                <p id="year2E" hidden="hidden"></p>
-                <p id="year3E" hidden="hidden"></p>
-                <p id="year4E" hidden="hidden"></p>
-                <p id="year5E" hidden="hidden"></p>
+				<p id="year2G" hidden="hidden"></p>
+				<p id="year3G" hidden="hidden"></p>
+				<p id="year4G" hidden="hidden"></p>
+				<p id="year5G" hidden="hidden"></p>
+				<p id="year1E" hidden="hidden"></p>
+				<p id="year2E" hidden="hidden"></p>
+				<p id="year3E" hidden="hidden"></p>
+				<p id="year4E" hidden="hidden"></p>
+				<p id="year5E" hidden="hidden"></p>
 			</div>
 		</div>
 	}

@@ -23,35 +23,69 @@ namespace CarComparisonSite.Controllers
             dbConnector = fetch;
         }
 
-        public IActionResult Index(int? page, string modelFilter, string variantFilter, int dateFilter, Brand? brandfilter = null)
+        public IActionResult Index(int? page)
         {
             cars = dbConnector.GetAllCars();
             pageNumber = page ?? 1;
+            cars = FilterCars(cars);
+
             onePageOfCars = cars.ToPagedList(pageNumber, 10);
             ViewBag.OnePageOfCars = onePageOfCars;
-            FilterCars(modelFilter, variantFilter, dateFilter, brandfilter);
+            GetAllBrands();
+            //FilterCars(modelFilter, variantFilter, dateFilter, brandfilter);
             return View();
         }
 
 
-        private void FilterCars(string mFilter, string vFilter, int yFilter, Brand? bFilter = null)
+        private List<Car> FilterCars(List<Car> cars)
         {
-            if (!string.IsNullOrEmpty(mFilter))
+            Brand? brand = HttpContext.Session.GetObject<Brand?>("currentBrand");
+            string model = HttpContext.Session.GetObject<string>("currentModel");
+            string variant = HttpContext.Session.GetObject<string>("currentVariant");
+            int? year = HttpContext.Session.GetObject<int?>("currentYear");
+
+            if (brand != null)
             {
-                HttpContext.Session.SetObject("model", mFilter);
+                for (int i = cars.Count - 1; i > -1; i--)
+                {
+                    if (cars[i].Brand != brand)
+                    {
+                        cars.RemoveAt(i);
+                    }
+                }
             }
-            if (!string.IsNullOrEmpty(vFilter))
+            if (model != null)
             {
-                HttpContext.Session.SetObject("variant", vFilter);
+                for (int i = cars.Count - 1; i > -1; i--)
+                {
+                    if (cars[i].Model != model)
+                    {
+                        cars.RemoveAt(i);
+                    }
+                }
             }
-            if (bFilter != null)
+            if (variant != null)
             {
-                HttpContext.Session.SetObject("brand", bFilter);
+                for (int i = cars.Count - 1; i > -1; i--)
+                {
+                    if (cars[i].Variant != variant)
+                    {
+                        cars.RemoveAt(i);
+                    }
+                }
             }
-            if (yFilter != 0)
+            if (year != null && year != 0)
             {
-                HttpContext.Session.SetObject("year", yFilter);
+                for (int i = cars.Count - 1; i > -1; i--)
+                {
+                    if (cars[i].ReleaseYear.Year != year)
+                    {
+                        cars.RemoveAt(i);
+                    }
+                }
             }
+
+            return cars;
         }
 
         [HttpGet]
@@ -65,16 +99,118 @@ namespace CarComparisonSite.Controllers
             return RedirectToAction("index");
         }
 
-        
+        [HttpGet]
+        public ActionResult GetAllBrands()
+        {
+            try
+            {
+                List<Brand> brands = ((MsSqlConnection)dbConnector).GetAllBrands();
+                if (brands != null && brands.Count > 0)
+                {
+                    HttpContext.Session.SetObject("brands", brands);
+                    return Ok();
+                }
+                else
+                {
+                    throw new Exception("The returned list was null or no elements were found");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return StatusCode(500, e.Message);
+            }
+        }
+
         [HttpPost]
         public ActionResult GetModels(Brand brand)
         {
-            return Ok();
+            try
+            {
+                if (HttpContext.Session.GetObject<Brand>("currentBrand") != brand)
+                {
+                    HttpContext.Session.SetObject("currentBrand", brand);
+                    ResetButtons();
+                }
+
+                List<string> models = ((MsSqlConnection)dbConnector).GetModelsByBrand(brand);
+                if (models != null && models.Count > 0)
+                {
+                    HttpContext.Session.SetObject("models", models);
+                    return RedirectToAction("index");
+                }
+                else
+                {
+                    throw new Exception("The returned list was null or no elements were found");
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
-        [HttpPost]
-        public ActionResult GetVariant(Brand brand, string model, int? year = null)
+
+        private void ResetButtons()
         {
-            return Ok();
+            HttpContext.Session.SetObject("currentModel", null);
+            HttpContext.Session.SetObject("models", null);
+            HttpContext.Session.SetObject("currentVariant", null);
+            HttpContext.Session.SetObject("variants", null);
+            HttpContext.Session.SetObject("currentYear", null);
+            HttpContext.Session.SetObject("years", null);
+        }
+
+        [HttpPost]
+        public ActionResult GetVariantsByModel(string model)
+        {
+            try
+            {
+                HttpContext.Session.SetObject("currentModel", model);
+
+                List<string> variants = ((MsSqlConnection)dbConnector).GetVariantsByModel(model);
+                if (variants != null && variants.Count > 0)
+                {
+                    HttpContext.Session.SetObject("variants", variants);
+                    return RedirectToAction("index");
+                }
+                else
+                {
+                    throw new Exception("The returned list was null or no elements were found");
+                }
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        public ActionResult GetYears(string variant = "")
+        {
+            HttpContext.Session.SetObject("currentVariant", variant);
+
+            Brand brand = HttpContext.Session.GetObject<Brand>("currentBrand");
+            string model = HttpContext.Session.GetObject<string>("currentModel");
+
+            List<int> years = ((MsSqlConnection)dbConnector).GetYears(brand, variant, model);
+            if (years != null && years.Count > 0)
+            {
+                HttpContext.Session.SetObject("years", years);
+
+                return RedirectToAction("index");
+            }
+            else
+            {
+                return StatusCode(500, "error");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SetYear(int year)
+        {
+            HttpContext.Session.SetObject("currentYear", year);
+            Brand brand = HttpContext.Session.GetObject<Brand>("currentBrand");
+            GetModels(brand);
+            return RedirectToAction("index");
         }
 
         //Called from an onclick in JS
