@@ -42,8 +42,8 @@ window.onload = function () {
         calcGas();
         calcElec();
     })
-    calcGas();
     calcElec();
+    calcGas();
 
     document.getElementById("electricRadioRent").addEventListener('change', function () {
         ownership = "Rent";
