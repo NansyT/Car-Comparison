@@ -41,9 +41,12 @@ window.onload = function () {
     document.getElementById("kmYear").addEventListener('change', function (e) {
         calcGas();
         calcElec();
+        SetKmYear();
     })
     calcElec();
     calcGas();
+
+
 
     document.getElementById("electricRadioRent").addEventListener('change', function () {
         ownership = "Rent";
@@ -82,6 +85,26 @@ window.onload = function () {
             }
         })
     }
+}
+
+function SetKmYear() {
+    let ur = 'https://localhost:44355/home/SetkmPeryear'
+    $.ajax({
+        url: ur,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            "kmYear": document.getElementById("kmYear").value
+        },
+        success: function (data) {
+            /*                console.log(data);*/
+        },
+        error: function (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
+    });
 }
 
 function calcGas() {

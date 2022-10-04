@@ -98,7 +98,7 @@
 					else
 					{
 						<button class="dropdown-item" type="button">
-							Der var ingen mærker fundet
+							Der var ingen modeller fundet
 						</button>
 					}
 				}
@@ -133,6 +133,7 @@
 
 					if (variants != null && variants.Count > 0)
 					{
+						
 						for (int i = 0; i < variants.Count; i++)
 						{
 							@using (Html.BeginForm("GetYears", "Home", new { variant = @variants[i] }, FormMethod.Post, false, new { }))
@@ -146,7 +147,7 @@
 					else
 					{
 						<button class="dropdown-item" type="button">
-							Der var ingen varianter fundet med det mærke
+							Der var ingen varianter fundet med den mærke og model
 						</button>
 					}
 				}
@@ -179,7 +180,7 @@
 					else
 					{
 						<button class="dropdown-item" type="button">
-							Der var ingen varianter fundet med det mærke
+							Der var ingen år fundet
 						</button>
 					}
 				}

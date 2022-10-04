@@ -213,6 +213,16 @@ namespace CarComparisonSite.Controllers
             return RedirectToAction("index");
         }
 
+        [HttpPost]
+        public ActionResult SetKmPerYear(int kmYear)
+        {
+            if (kmYear != 0)
+            {
+                HttpContext.Session.SetObject("kmYear", kmYear);
+            }
+            return RedirectToAction("index");
+        }
+
         //Called from an onclick in JS
         //Sends us the carId that was clicked,
         //so we can save it in session and be used in the view for selected cars
@@ -237,13 +247,14 @@ namespace CarComparisonSite.Controllers
                     i = cars.Count + 1;
                 }
             }
-            if (kmYear != 0)
-            {
-                HttpContext.Session.SetObject("kmYear", kmYear);
+            //if (kmYear != 0)
+            //{
+            //    HttpContext.Session.SetObject("kmYear", kmYear);
 
-            }
+            //}
             return RedirectToAction("Index");
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
