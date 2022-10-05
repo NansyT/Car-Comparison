@@ -123,7 +123,7 @@ namespace CarComparisonSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetModels(Brand brand)
+        public ActionResult SelectBrand(Brand brand)
         {
             try
             {
@@ -161,7 +161,7 @@ namespace CarComparisonSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetVariantsByModel(string model)
+        public ActionResult SelectModel(string model)
         {
             try
             {
@@ -184,7 +184,8 @@ namespace CarComparisonSite.Controllers
             }
         }
 
-        public ActionResult GetYears(string variant = "")
+        [HttpPost]
+        public ActionResult SelectVariant(string variant = "")
         {
             HttpContext.Session.SetObject("currentVariant", variant);
 
@@ -205,11 +206,11 @@ namespace CarComparisonSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult SetYear(int year)
+        public ActionResult SelectYear(int year)
         {
             HttpContext.Session.SetObject("currentYear", year);
             Brand brand = HttpContext.Session.GetObject<Brand>("currentBrand");
-            GetModels(brand);
+            SelectBrand(brand);
             return RedirectToAction("index");
         }
 
