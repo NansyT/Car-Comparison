@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css" />
 
 <div class="text-center">
@@ -52,19 +51,6 @@
                             Der var ingen mærker fundet
                         </button>
                     }
-                    //List<Brand> distinctB = new List<Brand>();
-                    //for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-                    //{
-                    //	Car car = (Car)ViewBag.OnePageOfCars[i];
-                    //	if (!distinctB.Contains(car.Brand))
-                    //	{
-                    //		distinctB.Add(car.Brand);
-
-                    //		<button id="btnBrand @i" class="dropdown-item" type="button">
-                    //			@car.Brand
-                    //		</button>
-                    //	}
-                    //}
                 }
             </div>
         </div>
@@ -96,20 +82,6 @@
                         </button>
                     }
                 }
-                @*@{
-                List<string> distinctStr = new List<string>();
-                for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
-                {
-                Car car = (Car)ViewBag.OnePageOfCars[i];
-                if (!distinctStr.Contains(car.Model))
-                {
-                distinctStr.Add(car.Model);
-                <button id="btnModel @i" class="dropdown-item" type="button">
-                @car.Model
-                </button>
-                }
-                }
-                }*@
             </div>
         </div>
         <div class="ddBtnHolder">
@@ -164,7 +136,6 @@
                             <button id="btnYear @i" onmouseup="selectYear(this)" class="dropdown-item" type="submit">
                                 @years[i]
                             </button>
-
                         }
                     }
                     else
@@ -176,14 +147,6 @@
                 }
             </div>
         </div>
-        @*@using (Html.BeginForm("index", "Home", FormMethod.Post, new { @class = "ddBtnHolder", id = "buttonSubmit" }))
-        {
-        <button class="btn btn-primary" type="submit" id="btnSubmit"> Genindlæs</button>
-        }
-        @using (Html.BeginForm("ClearFilters", "Home", FormMethod.Get, new { @class = "ddBtnHolder" }))
-        {
-        <button class="btn btn-primary" type="submit" id="btnReset"> Nulstil</button>
-        }*@
     </div>
 
     @if (ViewBag.OnePageOfCars != null)
@@ -196,12 +159,9 @@
                 <p> <strong> Model </strong></p>
             </div>
             <div class="col-5 variantTitleAlign">
-                @*<div class="VariantTitleAlign">*@
                 <p>
                     <strong> Udgave </strong>
-                    @*<i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="right" title="heyThere!"> </i>*@
                 </p>
-                @*</div>*@
             </div>
             <div class="col-sm">
                 <p> <strong> År </strong></p>
@@ -212,27 +172,10 @@
         </div>
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
-            @*string model = Context.Session.GetObject<string>("model");
-    Brand? brand = Context.Session.GetObject<Brand?>("brand");
-    string variant = Context.Session.GetObject<string>("variant");
-    int year = Context.Session.GetObject<int>("year");*@
-
             @for (int i = 0; i < (ViewBag.OnePageOfCars).Count; i++)
             {
                 Car car = (Car)ViewBag.OnePageOfCars[i];
-
                 @Html.Partial("CarPartialView", car)
-                @*	if (model == null && brand == null && variant == null && year == 0)
-    {
-
-    }
-    else if (model != null && model == car.Model ||
-    brand != null && brand == car.Brand ||
-    variant != null && variant == car.Variant ||
-    year != 0 && year == car.ReleaseYear.Year)
-    {
-    @Html.Partial("CarPartialView", car)
-    }*@
             }
         }
         <div class="pagedListPager">
