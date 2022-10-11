@@ -1,27 +1,31 @@
-﻿//THIS
-//IS
-//IMPORTANT
-
-var inspec = 490;
-// Gas car prices
+﻿var inspec = 490;
 var serv = 3500;
+
+//Price for gas
 var fuelP = 17.7325;
 
-// Electric car prices
+//Average price for a subscription (times 12 to get a years price)
 var sub = 180 * 12;
+
+//'Refusion' on electricity (only applicable if the car is charged with electricity through a subscription)
 var ref = 1.06;
+
 //Raw electric price
 //Notes: Price for kWh/h is not precise.
 //We have used the average raw price not including any vat
 //or other additional costs that may be applied in real life.
 var electP = 2.0225;
-//with ab
+
+//Only applicable when a subscription is active
 var startprice = 8542.85;
-//Uden ab
+
+//Price for charger (applicable when there is no subscription)
 var charger = 5500;
 
+//To keep tabs on wheter the electrtic car is with or without subscription
 var ownership;
 
+//Used to hold prices for the chart
 let finPrices = {
     year1G: 0,
     year2G: 0,
@@ -34,11 +38,14 @@ let finPrices = {
     year4E: 0,
     year5E: 0
 };
+
+//Makes sure one of the radio buttons in on from the start
 document.getElementById("electricRadioRent").checked = true;
 ownership = "Rent";
 
 window.onload = function () {
-    document.getElementById("kmYear").addEventListener('change', function (e) {
+
+    document.getElementById("kmYear").addEventListener('change', function () {
         calcGas();
         calcElec();
         SetKmYear();
@@ -46,8 +53,6 @@ window.onload = function () {
     })
     calcElec();
     calcGas();
-
-
 
     document.getElementById("electricRadioRent").addEventListener('change', function () {
         ownership = "Rent";
@@ -73,11 +78,9 @@ window.onload = function () {
                 let hiddenEl = document.getElementById("currentTab");
                 if (!isNaN(e.currentTarget.id[0])) {
                     hiddenEl.innerHTML = e.currentTarget.id[0];
-                    //    document.querySelector(".canvasContainer").hidden = false;
                 }
                 else {
                     hiddenEl.innerHTML = "all";
-                    //    document.querySelector(".canvasContainer").hidden = true;
                 }
                 console.log(hiddenEl.innerHTML)
                 calcElec();
@@ -97,8 +100,7 @@ function SetKmYear() {
         data: {
             "kmYear": document.getElementById("kmYear").value
         },
-        success: function (data) {
-            /*                console.log(data);*/
+        success: function () {
         },
         error: function (error) {
             if (error) {
@@ -108,12 +110,14 @@ function SetKmYear() {
     });
 }
 
+//Used to calculate gas cars
 function calcGas() {
     if (document.getElementById("chosenGasCarBrand") != null) {
         calcCar("gas");
     }
 }
 
+//Used to calculate electric cars
 function calcElec() {
     if (document.getElementById("chosenElecCarBrand") != null) {
         calcCar("elec");
@@ -198,6 +202,7 @@ function calcCar(car) {
     setText(car, prices);
 }
 
+//calculates the first year
 function calcYear1(car, newP, fuel, servIns) {
     let total = newP + fuel + servIns;
     let extra = 0;
@@ -213,6 +218,7 @@ function calcYear1(car, newP, fuel, servIns) {
     return { total, extra, ins: 0 };
 }
 
+//Calculates the fourth year
 function calcYear4(car, fuel, servIns) {
     let total = fuel + servIns + inspec;
     let extra = 0;
@@ -225,6 +231,7 @@ function calcYear4(car, fuel, servIns) {
     return { total, extra, ins: inspec };
 }
 
+//Calculates the total of all five years
 function calcAll(car, newP, fuel, servIns) {
     let total = newP + (fuel * 5) + (servIns * 5) + inspec;
     let extra = 0;
@@ -241,6 +248,7 @@ function calcAll(car, newP, fuel, servIns) {
     return { total, extra, ins: inspec };
 }
 
+//Used to calculate all years after the first where there is no service 
 function calcYearWithoutServ(car, fuel, servIns) {
     let total = fuel + servIns;
     let extra = 0;
@@ -253,13 +261,13 @@ function calcYearWithoutServ(car, fuel, servIns) {
     return { total, extra, ins: 0 };
 }
 
+//Set all the prices that he chart needs
 function calcGraph(car, newP, fuel, servIns) {
 
     let year1 = calcYear1(car, newP, fuel, servIns);
     let year235 = calcYearWithoutServ(car, fuel, servIns);
     let year4 = calcYear4(car, fuel, servIns);
     if (car == "gas") {
-
         finPrices.year1G = year1.total;
         finPrices.year2G = year235.total;
         finPrices.year3G = year235.total;
@@ -275,6 +283,7 @@ function calcGraph(car, newP, fuel, servIns) {
     }
 }
 
+//Fills out the table with calculated prices
 function setText(car, prices) {
     if (car == "gas") {
         document.getElementById("newPGasO").innerHTML = prices.new.toFixed(2).toString().replace(".", ",") + " kr";

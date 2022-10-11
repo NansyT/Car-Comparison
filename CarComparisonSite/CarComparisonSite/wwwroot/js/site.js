@@ -10,66 +10,34 @@ $(document).ready(function () {
 
 function selectBrand(button) {
     let val = button.innerHTML;
-    console.log(val)
 
-    let ur = 'https://localhost:44355/Home/SelectBrand?brand=' + val;
-    $.ajax({
-        url: ur,
-        type: 'POST',
-        success: function () {
-            location.reload();
-        },
-        error: function (error) {
-            if (error) {
-                console.log(error);
-            }
-        }
-    });
+    let ur = 'https://localhost:44355/Home/SelectBrand?brand=' + val.trim();
+    sendPOST(ur);
 }
 
 function selectModels(button) {
     let val = button.innerHTML;
-    console.log(val)
 
     let ur = 'https://localhost:44355/Home/SelectModel?model=' + val.trim();
-    $.ajax({
-        url: ur,
-        type: 'POST',
-        success: function () {
-            location.reload();
-        },
-        error: function (error) {
-            if (error) {
-                console.log(error);
-            }
-        }
-    });
+    sendPOST(ur);
 }
 
 function selectVariant(button) {
     let val = button.innerHTML;
-    console.log(val)
 
     let ur = 'https://localhost:44355/Home/SelectVariant?variant=' + val.trim();
-    $.ajax({
-        url: ur,
-        type: 'POST',
-        success: function () {
-            location.reload();
-        },
-        error: function (error) {
-            if (error) {
-                console.log(error);
-            }
-        }
-    });
+    sendPOST(ur);
 }
 
 function selectYear(button) {
     let val = button.innerHTML;
-    console.log(val)
 
     let ur = 'https://localhost:44355/Home/SelectYear?year=' + val.trim();
+    sendPOST(ur);
+    
+}
+
+function sendPOST(ur) {
     $.ajax({
         url: ur,
         type: 'POST',
