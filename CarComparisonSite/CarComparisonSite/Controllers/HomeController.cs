@@ -183,9 +183,9 @@ namespace CarComparisonSite.Controllers
         }
 
         private void SetAvailableYears(string variant)
-		{
+        {
 
-		}
+        }
 
         [HttpPost]
         public ActionResult SelectYear(int year)
@@ -205,6 +205,18 @@ namespace CarComparisonSite.Controllers
             }
             return RedirectToAction("index");
         }
+
+        [HttpPost]
+        public ActionResult SetOwnership(string owner)
+        {
+            if (owner != null && owner != "")
+            {
+                HttpContext.Session.SetObject("ownership", owner);
+            }
+
+            return RedirectToAction("index");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

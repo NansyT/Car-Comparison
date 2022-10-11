@@ -22,9 +22,6 @@ var startprice = 8542.85;
 //Price for charger (applicable when there is no subscription)
 var charger = 5500;
 
-//To keep tabs on wheter the electrtic car is with or without subscription
-var ownership;
-
 //Used to hold prices for the chart
 let finPrices = {
     year1G: 0,
@@ -39,9 +36,7 @@ let finPrices = {
     year5E: 0
 };
 
-//Makes sure one of the radio buttons in on from the start
-document.getElementById("electricRadioRent").checked = true;
-ownership = "Rent";
+//Makes sure one of the radio buttons is on from the start
 
 window.onload = function () {
 
@@ -55,14 +50,12 @@ window.onload = function () {
     calcGas();
 
     document.getElementById("electricRadioRent").addEventListener('change', function () {
-        ownership = "Rent";
         calcElec();
         calcGas();
         chart();
     })
 
     document.getElementById("electricRadioOwn").addEventListener('change', function () {
-        ownership = "Own";
         calcElec();
         calcGas();
         chart();
@@ -143,13 +136,17 @@ function calculateServInspecPrice(km) {
     return serv;
 }
 
-function calcElectricityPrice(km) {
+function calcElectricityPrice(km, ownership) {
     if (km != "") {
         let electUseElec = parseFloat(document.getElementById("useKmElecI").innerHTML.replace(',', "."));
         electUseElec = electUseElec / 1000;
         var elP = electP;
         if (ownership == "Rent") {
             elP -= ref;
+        }
+        else if (ownership != "Own" && ownership != "Rent") {
+
+            return 0;
         }
         return (elP * electUseElec) * km;
     }
@@ -160,35 +157,42 @@ function calcElectricityPrice(km) {
 function calcCar(car) {
     let kmDriven = document.getElementById("kmYear").value;
     let newPrice;
+    let ownership ="";
     let servIns = calculateServInspecPrice(kmDriven);
-    let year = document.getElementById("currentTab").innerHTML;;
-    let fuel, outPrices
+    let year = document.getElementById("currentTab").innerHTML;
+    let fuel, outPrices;
     let prices = new Object;
     if (car == "gas") {
         fuel = calculateFuelPrice(kmDriven);
         newPrice = parseFloat(document.getElementById("newPGasI").innerHTML);
     }
     else {
-        fuel = calcElectricityPrice(kmDriven);
+        if (document.getElementById("electricRadioRent").checked) {
+            ownership = "Rent";
+        }
+        else if (document.getElementById("electricRadioOwn").checked) {
+            ownership = "Own";
+        }
+        fuel = calcElectricityPrice(kmDriven, ownership);
         newPrice = parseFloat(document.getElementById("newPElecI").innerHTML);
     }
 
     switch (year) {
         case "1":
-            outPrices = calcYear1(car, newPrice, fuel, servIns);
+            outPrices = calcYear1(car, newPrice, fuel, servIns, ownership);
             break;
         case "4":
-            outPrices = calcYear4(car, fuel, servIns);
+            outPrices = calcYear4(car, fuel, servIns, ownership);
             newPrice = 0;
 
             break;
         case "all":
-            outPrices = calcAll(car, newPrice, fuel, servIns);
+            outPrices = calcAll(car, newPrice, fuel, servIns, ownership);
             fuel *= 5;
             servIns *= 5;
             break;
         default:
-            outPrices = calcYearWithoutServ(car, fuel, servIns);
+            outPrices = calcYearWithoutServ(car, fuel, servIns, ownership);
             newPrice = 0;
             break;
     }
@@ -199,18 +203,18 @@ function calcCar(car) {
     prices.extra = outPrices.extra;
     prices.total = outPrices.total;
 
-    setText(car, prices);
+    setText(car, prices, ownership);
 }
 
 //calculates the first year
-function calcYear1(car, newP, fuel, servIns) {
+function calcYear1(car, newP, fuel, servIns, ownership) {
     let total = newP + fuel + servIns;
     let extra = 0;
     if (car == "elec") {
         if (ownership == "Rent") {
             extra = startprice + sub;
         }
-        else {
+        else if (ownership == "Own") {
             extra = charger;
         }
         total += extra;
@@ -219,7 +223,7 @@ function calcYear1(car, newP, fuel, servIns) {
 }
 
 //Calculates the fourth year
-function calcYear4(car, fuel, servIns) {
+function calcYear4(car, fuel, servIns, ownership) {
     let total = fuel + servIns + inspec;
     let extra = 0;
     if (car == "elec") {
@@ -232,14 +236,14 @@ function calcYear4(car, fuel, servIns) {
 }
 
 //Calculates the total of all five years
-function calcAll(car, newP, fuel, servIns) {
+function calcAll(car, newP, fuel, servIns, ownership) {
     let total = newP + (fuel * 5) + (servIns * 5) + inspec;
     let extra = 0;
     if (car == "elec") {
         if (ownership == "Rent") {
             extra = (sub * 5) + startprice;
         }
-        else {
+        else if (ownership == "Own") {
             extra = charger;
         }
         total += extra;
@@ -249,7 +253,7 @@ function calcAll(car, newP, fuel, servIns) {
 }
 
 //Used to calculate all years after the first where there is no service 
-function calcYearWithoutServ(car, fuel, servIns) {
+function calcYearWithoutServ(car, fuel, servIns, ownership) {
     let total = fuel + servIns;
     let extra = 0;
     if (car == "elec") {
@@ -274,7 +278,7 @@ function calcGraph(car, newP, fuel, servIns) {
         finPrices.year4G = year4.total;
         finPrices.year5G = year235.total;
     }
-    else {
+    else if (car == "elec") {
         finPrices.year1E = year1.total;
         finPrices.year2E = year235.total;
         finPrices.year3E = year235.total;
@@ -284,7 +288,7 @@ function calcGraph(car, newP, fuel, servIns) {
 }
 
 //Fills out the table with calculated prices
-function setText(car, prices) {
+function setText(car, prices, ownership) {
     if (car == "gas") {
         document.getElementById("newPGasO").innerHTML = prices.new.toFixed(2).toString().replace(".", ",") + " kr";
         document.getElementById("fuelPGasO").innerHTML = prices.fuel.toFixed(2).toString().replace(".", ",") + " kr";
@@ -294,18 +298,22 @@ function setText(car, prices) {
         document.getElementById("subPGasO").innerHTML = "N/A";
         document.getElementById("totalPGas").innerHTML = prices.total.toFixed(2).toString().replace(".", ",") + " kr";
     }
-    else {
+    else if (car == "elec") {
         document.getElementById("newPElecO").innerHTML = prices.new.toFixed(2).toString().replace(".", ",") + " kr";
         document.getElementById("electPElecO").innerHTML = prices.fuel.toFixed(2).toString().replace(".", ",") + " kr";
         document.getElementById("synPElecO").innerHTML = prices.ins.toFixed(2).toString().replace(".", ",") + " kr";
         document.getElementById("servPElecO").innerHTML = prices.serv.toFixed(2).toString().replace(".", ",") + " kr";
-        if (ownership = "Rent") {
-            document.getElementById("chargPElecO").innerHTML = 0 + " kr";
+        if (ownership == "Rent") {
+            document.getElementById("chargPElecO").innerHTML = "0,00 kr";
             document.getElementById("subPElecO").innerHTML = prices.extra.toFixed(2).toString().replace(".", ",") + " kr";
         }
-        else {
+        else if (ownership == "Own") {
             document.getElementById("chargPElecO").innerHTML = prices.extra.toFixed(2).toString().replace(".", ",") + " kr";
-            document.getElementById("subPElecO").innerHTML = 0 + " kr";
+            document.getElementById("subPElecO").innerHTML = "0,00 kr";
+        }
+        else {
+            document.getElementById("chargPElecO").innerHTML = "0,00 kr";
+            document.getElementById("subPElecO").innerHTML = "0,00 kr";
         }
         document.getElementById("totalPElec").innerHTML = prices.total.toFixed(2).toString().replace(".", ",") + " kr";
     }
