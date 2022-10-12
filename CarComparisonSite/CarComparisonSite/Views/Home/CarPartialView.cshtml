@@ -1,21 +1,21 @@
 ﻿@model Car
 
 <div class="clickAbleDiv" id="@Model.CarId.ToString()">
-	<div class="row">
-		<div class="col-sm">
-			<p class="lead">@Model.Brand</p>
-		</div>
-		<div class="col-sm">
-			<p class="lead">@Model.Model</p>
-		</div>
-		<div class="col-sm">
-			<p class="lead">@Model.Variant</p>
-		</div>
-		<div class="col-sm">
-			<p class="lead">@Model.ReleaseYear.Year</p>
-		</div>
-		<div class="col-sm">
-			<p class="lead">@Enum.GetName(typeof(FuelType),Model.Fuel.FuelType)</p>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-sm">
+            <p class="lead">@Model.Brand</p>
+        </div>
+        <div class="col-sm">
+            <p class="lead">@Model.Model</p>
+        </div>
+        <div class="col-5">
+            <p class="lead">@Model.Variant</p>
+        </div>
+        <div class="col-sm">
+            <p class="lead">@Model.ReleaseYear.Year</p>
+        </div>
+        <div class="col-sm">
+            <p class="lead">@Enum.GetName(typeof(FuelType), Model.Fuel.FuelType)</p>
+        </div>
+    </div>
 </div>

@@ -14,7 +14,6 @@ C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarCompariso
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.csproj.AssemblyReference.cache
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.AssemblyInfoInputs.cache
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.AssemblyInfo.cs
@@ -238,3 +237,4 @@ C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarCompariso
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Home\CarPartialView.cshtml.g.cs
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.csproj.AssemblyReference.cache

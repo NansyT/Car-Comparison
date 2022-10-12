@@ -20,5 +20,17 @@ namespace CarComparisonSite
         Tesla,
         Chevrolet,
         Mitsubishi,
+        Kia,
+        Volvo,
+        Nissan,
+        Opel,
+        Hyundai,
+        Mazda,
+        Citroën,
+        Fiat,
+        Porsche,
+        Audi,
+        MINI,
+        Peugeot
     }
 }

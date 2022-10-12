@@ -54,6 +54,14 @@ namespace CarComparisonSite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(name: "ClearFilters", pattern: "{controller=Home}/{action=ClearFilters}");
+                endpoints.MapControllerRoute(name: "GetAllBrands", pattern: "{controller=Home}/{action=GetAllBrands}");
+                endpoints.MapControllerRoute(name: "SelectBrand", pattern: "{controller=Home}/{action=SelectBrand}/{brand}");
+                endpoints.MapControllerRoute(name: "SelectModel", pattern: "{controller=Home}/{action=SelectModel}/{model}");
+                endpoints.MapControllerRoute(name: "SelectVariant", pattern: "{controller=Home}/{action=SelectVariant}/{variant}");
+                endpoints.MapControllerRoute(name: "SelectYear", pattern: "{controller=Home}/{action=SelectYear}/{year}");
+                endpoints.MapControllerRoute(name: "SetKmPerYear", pattern: "{controller=Home}/{action=SetKmPerYear}/{kmYear}");
+                endpoints.MapControllerRoute(name: "SetOwnership", pattern: "{controller=Home}/{action=SetOwnership}/{owner}");
             });
         }
     }

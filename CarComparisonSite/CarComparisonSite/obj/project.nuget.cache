@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yVD3rSDIK1429b+37eII4E2kGIYpeFkxp+5eAVLuhLIN+x5UW1laW6sUBCWfJTxG3MMF7HI+t4FZegnlgYtdew==",
+  "dgSpecHash": "/AZrL2oeXmVCurNsoWA1fUSMmyGPLlBZ38YZysO7tY0JmcHOcr1AVr/b4XLlu4v7+slusHvizAuhvp0/06S78w==",
   "success": true,
   "projectFilePath": "C:\\Users\\nann8059\\Documents\\GitHub\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj",
   "expectedPackageFiles": [
@@ -122,7 +122,7 @@
     "C:\\Users\\nann8059\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\x.pagedlist\\8.4.3\\x.pagedlist.8.4.3.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\x.pagedlist.mvc.core\\8.4.3\\x.pagedlist.mvc.core.8.4.3.nupkg.sha512",
-    "C:\\Users\\nann8059\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
+    "C:\\Users\\nann8059\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.28\\microsoft.netcore.app.host.win-x64.3.1.28.nupkg.sha512"
   ],
   "logs": []
 }

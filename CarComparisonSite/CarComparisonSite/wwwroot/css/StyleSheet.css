@@ -20,10 +20,10 @@ h1 {
         margin-bottom: 0.5%;
     }
 
-.form-check{
-    padding-left:0;
-    display:inline-block;
-    padding-top:2rem;
+.form-check {
+    padding-left: 0;
+    display: inline-block;
+    padding-top: 2rem;
 }
 
 input:focus, textarea:focus, select:focus {
@@ -52,14 +52,25 @@ input:focus, textarea:focus, select:focus {
     border: 0.1px solid #dee2e6;
 }
 
+.variantTitleAlign {
+    padding-top: 0.5%;
+}
+
+.toolTip {
+    padding: 0;
+}
+
+
+
 .clickAbleDiv {
     background-color: transparent;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .pagedListPager {
     text-align: center;
+    font-size: x-large;
 }
 
 /*.electricCarContainer {
@@ -81,8 +92,18 @@ input:focus, textarea:focus, select:focus {
     clear: both;
 }
 
+.topButtons {
+    margin-bottom: 1%;
+    display: flex;
+}
+
 .ddBtnHolder {
-    display: inline-block;
+    margin-left: 0.5%;
+}
+
+#buttonSubmit {
+    margin-left: 2.5%;
+    margin-right: 0.5%;
 }
 
 .electricRadioBoxes {
@@ -126,7 +147,7 @@ input:focus, textarea:focus, select:focus {
 .statisticsBody {
     background-color: #f8f9fa;
     display: grid;
-    grid-template-columns: 42% 48% 10%;
+    grid-template-columns: 33% 33% 33%;
     clear: both;
     border-left: 0.1px solid #dee2e6;
     border-right: 0.1px solid #dee2e6;
@@ -153,4 +174,21 @@ input:focus, textarea:focus, select:focus {
 
 .category {
     font-weight: bold;
+}
+
+.totalPriceAmountTitle {
+    border-bottom: 2px double black;
+}
+
+.fa-circle-info {
+    color: #3b71ca;
+}
+
+.chargingStationTitle{
+    display:inline-flex;
+}
+
+.chargingStationInfo{
+    margin-left:0.5rem;
+    padding-top:2.5%;
 }
