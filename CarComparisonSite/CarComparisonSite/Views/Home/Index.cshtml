@@ -8,15 +8,15 @@
 
 <div class="text-center">
     @{
-        <span class="col-form-label label-primary">Indtast kørte km./år: </span>
+                                <span class="col-form-label label-primary">Indtast kørte km./år: </span>
         double kmYear = Context.Session.GetObject<double>("kmYear");
         if (kmYear != default)
         {
-            <input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" value="@kmYear" />
+                                    <input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" value="@kmYear" />
         }
         else
         {
-            <input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" />
+                                    <input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" />
         }
     }
     <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" role="tooltip" data-placement="right" title="Gennemsnitligt kører en dansker 17.000 km./år"> </i>
@@ -40,16 +40,16 @@
                     {
                         for (int i = 0; i < brands.Count; i++)
                         {
-                            <button id="btnBrand @i" onmouseup="selectBrand(this)" class="dropdown-item" name="btnBrand" type="submit">
-                                @brands[i]
-                            </button>
+                                                    <button id="btnBrand @i" onmouseup="selectBrand(this)" class="dropdown-item" name="btnBrand" type="submit">
+                                                        @brands[i]
+                                                    </button>
                         }
                     }
                     else
                     {
-                        <button class="dropdown-item" type="button">
-                            Der var ingen mærker fundet
-                        </button>
+                                                <button class="dropdown-item" type="button">
+                                                    Der var ingen mærker fundet
+                                                </button>
                     }
                 }
             </div>
@@ -70,16 +70,16 @@
                     {
                         for (int i = 0; i < models.Count; i++)
                         {
-                            <button id="btnModel @i" onmouseup="selectModels(this)" class="dropdown-item" type="submit">
-                                @models[i]
-                            </button>
+                                                    <button id="btnModel @i" onmouseup="selectModels(this)" class="dropdown-item" type="submit">
+                                                        @models[i]
+                                                    </button>
                         }
                     }
                     else
                     {
-                        <button class="dropdown-item" type="button">
-                            Der var ingen modeller fundet
-                        </button>
+                                                <button class="dropdown-item" type="button">
+                                                    Der var ingen modeller fundet
+                                                </button>
                     }
                 }
             </div>
@@ -102,17 +102,17 @@
 
                         for (int i = 0; i < variants.Count; i++)
                         {
-                            <button id="btnVariant @i" onmouseup="selectVariant(this)" class="dropdown-item" type="submit">
-                                @variants[i]
-                            </button>
+                                                    <button id="btnVariant @i" onmouseup="selectVariant(this)" class="dropdown-item" type="submit">
+                                                        @variants[i]
+                                                    </button>
 
                         }
                     }
                     else
                     {
-                        <button class="dropdown-item" type="button">
-                            Der var ingen varianter fundet med den mærke og model
-                        </button>
+                                                <button class="dropdown-item" type="button">
+                                                    Der var ingen varianter fundet med den mærke og model
+                                                </button>
                     }
                 }
             </div>
@@ -133,16 +133,16 @@
                     {
                         for (int i = 0; i < years.Count; i++)
                         {
-                            <button id="btnYear @i" onmouseup="selectYear(this)" class="dropdown-item" type="submit">
-                                @years[i]
-                            </button>
+                                                    <button id="btnYear @i" onmouseup="selectYear(this)" class="dropdown-item" type="submit">
+                                                        @years[i]
+                                                    </button>
                         }
                     }
                     else
                     {
-                        <button class="dropdown-item" type="button">
-                            Der var ingen år fundet
-                        </button>
+                                                <button class="dropdown-item" type="button">
+                                                    Der var ingen år fundet
+                                                </button>
                     }
                 }
             </div>
@@ -244,176 +244,181 @@
             </div>
         </div>
 
+
         <div class="form-check">
             <div class="chargingStationTitle">
-                <h3 class="lead">Ladestander type</h3>
-                <i class="fa-solid fa-circle-info chargingStationInfo" data-toggle="tooltip" role="tooltip" data-placement="right" title="Vælg om du ejer ladestanderen selv, eller får leveret en gennem abonnement."> </i>
-            </div>
-
-            <div class="electricRadioBoxes">
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="electricRadioRent" name="electricRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="electricRadioRent">Leje (Abonnement)</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="electricRadioOwn" name="electricRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="electricRadioOwn">Ejer Selv</label>
-                </div>
-            </div>
+            <h3 class="lead">Ladestander type</h3>
+            <i class="fa-solid fa-circle-info chargingStationInfo" data-toggle="tooltip" role="tooltip" data-placement="right" title="Vælg om du ejer ladestanderen selv, eller får leveret en gennem abonnement."> </i>
         </div>
 
-        <div class="statisticsContainer">
-            <div class="statisticsNav">
-                <p hidden="hidden" id="currentTab">1</p>
-                <ul class="nav nav-tabs" id="statisticsNavTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="1YearTab" data-toggle="tab" href="#1Year" aria-controls="1Year" aria-selected="true">1. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="2YearTab" data-toggle="tab" href="#2Year" aria-controls="2Year" aria-selected="false">2. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="3YearTab" data-toggle="tab" href="#3Year" aria-controls="3Year" aria-selected="false">3. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="4YearTab" data-toggle="tab" href="#4Year" aria-controls="4Year" aria-selected="false">4. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="5YearTab" data-toggle="tab" href="#5Year" aria-controls="5Year" aria-selected="false">5. År</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="fullTab" data-toggle="tab" href="#fullYear" aria-controls="fullYear" aria-selected="false">Samlet</a>
-                    </li>
-                </ul>
+        <div class="electricRadioBoxes">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="electricRadioRent" name="electricRadio" class="custom-control-input">
+                <label class="custom-control-label" for="electricRadioRent">Leje (Abonnement)</label>
             </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="electricRadioOwn" name="electricRadio" class="custom-control-input">
+                <label class="custom-control-label" for="electricRadioOwn">Ejer Selv</label>
+            </div>
+        </div>
+    </div>
+    
+        string ownStatus = Context.Session.GetObject<string>("ownership");
+    
+            <label id="ownStatus" hidden="hidden">@ownStatus</label>
+
+    <div class="statisticsContainer">
+        <div class="statisticsNav">
+            <p hidden="hidden" id="currentTab">1</p>
+            <ul class="nav nav-tabs" id="statisticsNavTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="1YearTab" data-toggle="tab" href="#1Year" aria-controls="1Year" aria-selected="true">1. År</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="2YearTab" data-toggle="tab" href="#2Year" aria-controls="2Year" aria-selected="false">2. År</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="3YearTab" data-toggle="tab" href="#3Year" aria-controls="3Year" aria-selected="false">3. År</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="4YearTab" data-toggle="tab" href="#4Year" aria-controls="4Year" aria-selected="false">4. År</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="5YearTab" data-toggle="tab" href="#5Year" aria-controls="5Year" aria-selected="false">5. År</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="fullTab" data-toggle="tab" href="#fullYear" aria-controls="fullYear" aria-selected="false">Samlet</a>
+                </li>
+            </ul>
+        </div>
 
 
-            <div class="statisticsBody">
-                <div class=" col category">
+        <div class="statisticsBody">
+            <div class=" col category">
+                <div class="d-flex p-2 ">
+                    <p>Kategorier:</p>
+                </div>
+                <div class="d-flex p-2 ">
+                    <p>Nypris <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Købsprisen på bilen. Dette bliver kun regnet med det første år."></i></p>
+                </div>
+                <div class="d-flex p-2 ">
+                    <p>Brændstof/el forbrug <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Totalprisen af forbrug på el/benzin."></i></p>
+                </div>
+                @*<div class="d-flex p-2 ">Co2 afgift</div>*@
+                <div class="d-flex p-2 ">
+                    <p>Bilsyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal synes efter 4 år efter køb. Derefter skal den synes hvert andet år."> </i></p>
+                </div>
+                <div class="d-flex p-2 ">
+                    <p>Serviceeftersyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal til serviceeftersyn mindst 1 gang årligt, eller efter et bestemt antal kilometer kørt."> </i></p>
+                </div>
+                <div class="d-flex p-2 ">
+                    <p>Ladestander <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Pris på en ladestander. Dette er kun relevant hvis du ejer den selv."> </i></p>
+                </div>
+                <div class="d-flex p-2 ">
+                    <p>Ladeabonnement <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Startpris og pris for abonnement "> </i></p>
+                </div>
+                <br />
+                <div class="d-flex p-2">
+                    <p class="totalPriceAmountTitle">Totalt</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="statisticsGas">
                     <div class="d-flex p-2 ">
-                        <p>Kategorier:</p>
+                        @if (Context.Session.GetObject<Car>("SelectedGas") != null)
+                        {
+                            Car car = Context.Session.GetObject<Car>("SelectedGas");
+                            <p class="category">Benzin bil: @car.Variant</p>
+                        }
+                        else
+                        {
+                            <p class="category">Benzin bil:</p>
+                        }
                     </div>
-                    <div class="d-flex p-2 ">
-                        <p>Nypris <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Købsprisen på bilen. Dette bliver kun regnet med det første år."></i></p>
+                    <div class="d-flex p-2">
+                        <p id="newPGasO"></p>
                     </div>
-                    <div class="d-flex p-2 ">
-                        <p>Brændstof/el forbrug <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Totalprisen af forbrug på el/benzin."></i></p>
+                    <div class="d-flex p-2">
+                        <p id="fuelPGasO"></p>
                     </div>
-                    @*<div class="d-flex p-2 ">Co2 afgift</div>*@
-                    <div class="d-flex p-2 ">
-                        <p>Bilsyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal synes efter 4 år efter køb. Derefter skal den synes hvert andet år."> </i></p>
+                    @*<div id="co2Gas" class="d-flex p-2"></div>*@
+                    <div class="d-flex p-2">
+                        <p id="synPGasO"></p>
                     </div>
-                    <div class="d-flex p-2 ">
-                        <p>Serviceeftersyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal til serviceeftersyn mindst 1 gang årligt, eller efter et bestemt antal kilometer kørt."> </i></p>
+                    <div class="d-flex p-2">
+                        <p id="servPGasO"></p>
                     </div>
-                    <div class="d-flex p-2 ">
-                        <p>Ladestander <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Pris på en ladestander. Dette er kun relevant hvis du ejer den selv."> </i></p>
+                    <div class="d-flex p-2">
+                        <p id="chargPGasO"></p>
                     </div>
-                    <div class="d-flex p-2 ">
-                        <p>Ladeabonnement <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Startpris og pris for abonnement "> </i></p>
+                    <div class="d-flex p-2">
+                        <p id="subPGasO"></p>
                     </div>
                     <br />
                     <div class="d-flex p-2">
-                        <p class="totalPriceAmountTitle">Totalt</p>
+                        <p class="totalPriceAmountTitle" id="totalPGas"></p>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="statisticsGas">
-                        <div class="d-flex p-2 ">
-                            @if (Context.Session.GetObject<Car>("SelectedGas") != null)
-                            {
-                                Car car = Context.Session.GetObject<Car>("SelectedGas");
-                                <p class="category">Benzin bil: @car.Variant</p>
-                            }
-                            else
-                            {
-                                <p class="category">Benzin bil:</p>
-                            }
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="newPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="fuelPGasO"></p>
-                        </div>
-                        @*<div id="co2Gas" class="d-flex p-2"></div>*@
-                        <div class="d-flex p-2">
-                            <p id="synPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="servPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="chargPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="subPGasO"></p>
-                        </div>
-                        <br />
-                        <div class="d-flex p-2">
-                            <p class="totalPriceAmountTitle" id="totalPGas"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="statisticsElectric">
-                        <div class="d-flex p-2 ">
-                            @if (Context.Session.GetObject<Car>("SelectedElectric") != null)
-                            {
-                                Car car = Context.Session.GetObject<Car>("SelectedElectric");
-                                <p class="category">El bil: @car.Variant</p>
-                            }
-                            else
-                            {
-                                <p class="category">El bil:</p>
-                            }
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="newPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="electPElecO"></p>
-
-                        </div>
-                        @*<div id="co2Elec" class="d-flex p-2"></div>*@
-                        <div class="d-flex p-2">
-                            <p id="synPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="servPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="chargPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="subPElecO"></p>
-                        </div>
-                        <br />
-                        <div class="d-flex p-2">
-                            <p class="totalPriceAmountTitle" id="totalPElec"></p>
-                        </div>
-                    </div>
-                </div>
-                <div id="canCon" class="canvasContainer" hidden="hidden">
-                    <canvas id="myChart"></canvas>
-                </div>
-                <p id="year1G" hidden="hidden"></p>
-                <p id="year2G" hidden="hidden"></p>
-                <p id="year3G" hidden="hidden"></p>
-                <p id="year4G" hidden="hidden"></p>
-                <p id="year5G" hidden="hidden"></p>
-                <p id="year1E" hidden="hidden"></p>
-                <p id="year2E" hidden="hidden"></p>
-                <p id="year3E" hidden="hidden"></p>
-                <p id="year4E" hidden="hidden"></p>
-                <p id="year5E" hidden="hidden"></p>
             </div>
+            <div class="col">
+                <div class="statisticsElectric">
+                    <div class="d-flex p-2 ">
+                        @if (Context.Session.GetObject<Car>("SelectedElectric") != null)
+                        {
+                            Car car = Context.Session.GetObject<Car>("SelectedElectric");
+                            <p class="category">El bil: @car.Variant</p>
+                        }
+                        else
+                        {
+                            <p class="category">El bil:</p>
+                        }
+                    </div>
+                    <div class="d-flex p-2">
+                        <p id="newPElecO"></p>
+                    </div>
+                    <div class="d-flex p-2">
+                        <p id="electPElecO"></p>
+
+                    </div>
+                    @*<div id="co2Elec" class="d-flex p-2"></div>*@
+                    <div class="d-flex p-2">
+                        <p id="synPElecO"></p>
+                    </div>
+                    <div class="d-flex p-2">
+                        <p id="servPElecO"></p>
+                    </div>
+                    <div class="d-flex p-2">
+                        <p id="chargPElecO"></p>
+                    </div>
+                    <div class="d-flex p-2">
+                        <p id="subPElecO"></p>
+                    </div>
+                    <br />
+                    <div class="d-flex p-2">
+                        <p class="totalPriceAmountTitle" id="totalPElec"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="canCon" class="canvasContainer" hidden="hidden">
+                <canvas id="myChart"></canvas>
+            </div>
+            <p id="year1G" hidden="hidden"></p>
+            <p id="year2G" hidden="hidden"></p>
+            <p id="year3G" hidden="hidden"></p>
+            <p id="year4G" hidden="hidden"></p>
+            <p id="year5G" hidden="hidden"></p>
+            <p id="year1E" hidden="hidden"></p>
+            <p id="year2E" hidden="hidden"></p>
+            <p id="year3E" hidden="hidden"></p>
+            <p id="year4E" hidden="hidden"></p>
+            <p id="year5E" hidden="hidden"></p>
         </div>
+    </div>
     }
     else
     {
-        <div class="text-center">
-            <h1 class="display-2">Der kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
-        </div>
+    <div class="text-center">
+        <h1 class="display-2">Der kunne ikke indlæses nogle biler på dette tidspunkt, prøv igen senere</h1>
+    </div>
     }
 </div>				

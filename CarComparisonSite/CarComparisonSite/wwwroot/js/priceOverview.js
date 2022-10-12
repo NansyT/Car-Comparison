@@ -40,6 +40,15 @@ let finPrices = {
 
 window.onload = function () {
 
+    var status = document.getElementById("ownStatus").innerHTML;
+    if (status == "Rent") {
+        document.getElementById("electricRadioRent").checked = true;
+        console.log(status);
+    }
+    else if (status == "Own") {
+        document.getElementById("electricRadioOwn").checked = true;
+        console.log(status);
+    }
     document.getElementById("kmYear").addEventListener('change', function () {
         calcGas();
         calcElec();
@@ -50,12 +59,14 @@ window.onload = function () {
     calcGas();
 
     document.getElementById("electricRadioRent").addEventListener('change', function () {
+        SetOwnership("Rent");
         calcElec();
         calcGas();
         chart();
     })
 
     document.getElementById("electricRadioOwn").addEventListener('change', function () {
+        SetOwnership("Own");
         calcElec();
         calcGas();
         chart();
@@ -82,6 +93,21 @@ window.onload = function () {
             }
         })
     }
+}
+
+function SetOwnership(ownership) {
+    let ur = 'https://localhost:44355/home/SetOwnership?owner=' + ownership;
+    $.ajax({
+        url: ur,
+        type: 'POST',
+        success: function () {
+        },
+        error: function (error) {
+            if (error) {
+                console.log(error);
+            }
+        }
+    });
 }
 
 function SetKmYear() {
@@ -157,7 +183,7 @@ function calcElectricityPrice(km, ownership) {
 function calcCar(car) {
     let kmDriven = document.getElementById("kmYear").value;
     let newPrice;
-    let ownership ="";
+    let ownership = "";
     let servIns = calculateServInspecPrice(kmDriven);
     let year = document.getElementById("currentTab").innerHTML;
     let fuel, outPrices;
@@ -166,7 +192,7 @@ function calcCar(car) {
         fuel = calculateFuelPrice(kmDriven);
         newPrice = parseFloat(document.getElementById("newPGasI").innerHTML);
     }
-    else {
+    else if (car == "elec") {
         if (document.getElementById("electricRadioRent").checked) {
             ownership = "Rent";
         }
