@@ -182,17 +182,10 @@ namespace CarComparisonSite.Controllers
             }
         }
 
-        private void SetAvailableYears(string variant)
-        {
-
-        }
-
         [HttpPost]
         public ActionResult SelectYear(int year)
         {
             HttpContext.Session.SetObject("currentYear", year);
-            //Brand brand = HttpContext.Session.GetObject<Brand>("currentBrand");
-            //SelectBrand(brand);
             return RedirectToAction("index");
         }
 

@@ -36,8 +36,6 @@ let finPrices = {
     year5E: 0
 };
 
-//Makes sure one of the radio buttons is on from the start
-
 window.onload = function () {
 
     var status = document.getElementById("ownStatus").innerHTML;
