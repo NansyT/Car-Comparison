@@ -67,7 +67,7 @@ namespace CarComparisonSite.Controllers
         {
             try
             {
-                List<Brand> brands = ((MsSqlConnection)dbConnector).GetAllBrands();
+                List<Brand> brands = ((Ms_SqlConnector)dbConnector).GetAllBrands();
                 if (brands != null && brands.Count > 0)
                 {
                     HttpContext.Session.SetObject("brands", brands);
@@ -110,7 +110,7 @@ namespace CarComparisonSite.Controllers
         /// <exception cref="Exception"></exception>
         private void SetAVailableModels(Brand brand)
         {
-            List<string> models = ((MsSqlConnection)dbConnector).GetModelsByBrand(brand);
+            List<string> models = ((Ms_SqlConnector)dbConnector).GetModelsByBrand(brand);
             if (models != null && models.Count > 0)
             {
                 HttpContext.Session.SetObject("models", models);
@@ -142,7 +142,7 @@ namespace CarComparisonSite.Controllers
 
         private void SetAvailableVariants(string model)
         {
-            List<string> variants = ((MsSqlConnection)dbConnector).GetVariantsByModel(model);
+            List<string> variants = ((Ms_SqlConnector)dbConnector).GetVariantsByModel(model);
             if (variants != null && variants.Count > 0)
             {
                 HttpContext.Session.SetObject("variants", variants);
@@ -163,7 +163,7 @@ namespace CarComparisonSite.Controllers
                 Brand? brand = HttpContext.Session.GetObject<Brand?>("currentBrand");
                 string model = HttpContext.Session.GetObject<string>("currentModel");
 
-                List<int> years = ((MsSqlConnection)dbConnector).GetYears(brand, variant, model);
+                List<int> years = ((Ms_SqlConnector)dbConnector).GetYears(brand, variant, model);
                 if (years != null && years.Count > 0)
                 {
                     HttpContext.Session.SetObject("years", years);
