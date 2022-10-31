@@ -1,0 +1,41 @@
+Der er 6 forskellige totalpriser:
+Første (1) år
+Andet (2) år
+Tredje (3) år
+Fjerde (4) år
+Femte (5) år
+Samlet
+
+
+Hvornår skal hvad bruges?
+
+KUN første år og samlet:
+Nypris
+Ladestander
+Opstart
+
+
+
+Alle år og total
+Refusion (pr kwh)
+Forsikring (har ikke)
+Brændstof (pr liter / pr wh (/ med 1000 for kwh))
+Abonnement (måned)
+Service (mindst 1 gang om året ellers hvert 15.000 km kørt)
+Co2 afgift (har ikke, årligt)
+
+
+
+Fjerde år og hvert 2. år efter (kommer også med i samlet):
+periodesyn
+
+
+Beregning af totalpris
+
+nypris + ?(syn) + (service * antal) + Co2 + forsikring + (((km/år / usagePrKM) * fuel/elec price) ?/refusion) + ?(ladestander) + ?(lade abonnement)
+
+nypris, prisen for bilen
+syn, peiodesyn
+(service * antal), antal service
+
+
