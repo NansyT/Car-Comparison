@@ -230,7 +230,7 @@ function calcCar(car) {
     setText(car, prices, ownership);
 }
 
-//calculates the first year
+//Calculates the first year
 function calcYear1(car, newP, fuel, servIns, ownership) {
     let total = newP + fuel + servIns;
     let extra = 0;
