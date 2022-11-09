@@ -60,7 +60,9 @@ input:focus, textarea:focus, select:focus {
     padding: 0;
 }
 
-
+.arrowMenu {
+    padding: 5px;
+}
 
 .clickAbleDiv {
     background-color: transparent;
@@ -184,11 +186,11 @@ input:focus, textarea:focus, select:focus {
     color: #3b71ca;
 }
 
-.chargingStationTitle{
-    display:inline-flex;
+.chargingStationTitle {
+    display: inline-flex;
 }
 
-.chargingStationInfo{
-    margin-left:0.5rem;
-    padding-top:2.5%;
+.chargingStationInfo {
+    margin-left: 0.5rem;
+    padding-top: 2.5%;
 }

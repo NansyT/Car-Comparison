@@ -13,24 +13,25 @@ namespace CarComparisonSite
 
     public enum Brand
     {
-        Ford,
+        Audi,
         BMW,
-        Volkswagen,
-        Toyota,
-        Tesla,
-        Chevrolet,
-        Mitsubishi,
+        Citroën,
+        Dacia,
+        Fiat,
+        Ford,
+        Hyundai,
         Kia,
-        Volvo,
+        Mazda,
+        MercedesBenz,
+        MINI,
         Nissan,
         Opel,
-        Hyundai,
-        Mazda,
-        Citroën,
-        Fiat,
+        Peugeot,
         Porsche,
-        Audi,
-        MINI,
-        Peugeot
+        Renault,
+        SEAT,
+        Tesla,
+        Volkswagen,
+        Volvo
     }
 }

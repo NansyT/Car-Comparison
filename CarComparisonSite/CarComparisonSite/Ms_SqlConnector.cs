@@ -39,7 +39,7 @@ namespace CarComparisonSite
                                 reader.GetDouble(3),
                                 reader.GetDouble(4),
                                 reader.GetString(5),
-                                Enum.Parse<Brand>(reader.GetString(6)),
+                                Enum.Parse<Brand>(reader.GetString(6).Replace("-", "")),
                                 new Fuel(
                                     Enum.Parse<FuelType>(reader.GetString(7)),
                                     reader.GetDouble(8))
@@ -65,7 +65,7 @@ namespace CarComparisonSite
                     {
                         while (reader.Read())
                         {
-                            brands.Add(Enum.Parse<Brand>(reader.GetString(0)));
+                            brands.Add(Enum.Parse<Brand>(reader.GetString(0).Replace("-", "")));
                         }
                         return brands;
                     }
