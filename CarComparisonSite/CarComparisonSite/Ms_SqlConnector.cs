@@ -39,7 +39,7 @@ namespace CarComparisonSite
                                 reader.GetDouble(3),
                                 reader.GetDouble(4),
                                 reader.GetString(5),
-                                Enum.Parse<Brand>(reader.GetString(6).Replace("-", "")),
+                                Enum.Parse<Brand>(reader.GetString(6)),
                                 new Fuel(
                                     Enum.Parse<FuelType>(reader.GetString(7)),
                                     reader.GetDouble(8))
@@ -65,7 +65,7 @@ namespace CarComparisonSite
                     {
                         while (reader.Read())
                         {
-                            brands.Add(Enum.Parse<Brand>(reader.GetString(0).Replace("-", "")));
+                            brands.Add(Enum.Parse<Brand>(reader.GetString(0)));
                         }
                         return brands;
                     }
@@ -82,12 +82,18 @@ namespace CarComparisonSite
                 using (command = new MySqlCommand("GetModelsByBrand", connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@Brand", brand.ToString());
+
+                    command.Parameters.AddWithValue("Brand", brand);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
+                        string model;
                         while (reader.Read())
                         {
-                            models.Add(reader.GetString(0));
+                            model = reader.GetString(0);
+                            if (!models.Contains(model))
+                            {
+                                models.Add(model);
+                            }
                         }
                     }
                     return models;
@@ -106,9 +112,14 @@ namespace CarComparisonSite
                     command.Parameters.AddWithValue("model", model);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
+                        string variant;
                         while (reader.Read())
                         {
-                            variants.Add(reader.GetString(0));
+                            variant = reader.GetString(0);
+                            if (!variants.Contains(variant))
+                            {
+                                variants.Add(variant);
+                            }
                         }
                     }
                     return variants;
@@ -125,14 +136,20 @@ namespace CarComparisonSite
                 using (command = new MySqlCommand("GetYears", connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("brand", brand);
-                    command.Parameters.AddWithValue("variant", variant);
+                    command.Parameters.AddWithValue("variants", variant);
                     command.Parameters.AddWithValue("model", model);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
+                        int year;
                         while (reader.Read())
                         {
-                            years.Add(reader.GetInt32(0));
+                            year = reader.GetInt32(0);
+                            if (!years.Contains(year))
+                            {
+                                years.Add(year);
+                            }
                         }
                     }
                     return years;

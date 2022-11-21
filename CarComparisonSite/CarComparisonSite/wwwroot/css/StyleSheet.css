@@ -131,6 +131,7 @@ input:focus, textarea:focus, select:focus {
 .pagination a {
     text-decoration: none;
     color: #6c757d;
+    padding: 1px;
 }
 
     .pagination a.active {
@@ -141,6 +142,11 @@ input:focus, textarea:focus, select:focus {
     .pagination a:hover:not(.active) {
         background-color: #ddd;
     }
+
+.pagination li {
+    padding: 5px;
+}
+
 
 .statisticsNav {
     padding-bottom: 0;

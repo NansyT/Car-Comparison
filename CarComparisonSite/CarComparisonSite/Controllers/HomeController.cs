@@ -89,10 +89,11 @@ namespace CarComparisonSite.Controllers
         {
             try
             {
+                Debug.WriteLine(HttpContext.Session.GetObject<Brand>("currentBrand"));
                 if (HttpContext.Session.GetObject<Brand>("currentBrand") != brand)
                 {
-                    HttpContext.Session.SetObject("currentBrand", brand);
                     ResetButtons();
+                    HttpContext.Session.SetObject("currentBrand", brand);
                     SetAVailableModels(brand);
                 }
                 return RedirectToAction("index");

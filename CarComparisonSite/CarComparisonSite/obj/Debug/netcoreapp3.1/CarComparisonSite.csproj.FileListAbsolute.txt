@@ -26,7 +26,6 @@ C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarCompariso
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.TagHelpers.output.cache
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.RazorCoreGenerate.cache
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -238,3 +237,14 @@ C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarCompariso
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\Razor\Views\Home\CarPartialView.cshtml.g.cs
 C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\obj\Debug\netcoreapp3.1\CarComparisonSite.csproj.AssemblyReference.cache
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\MySql.Data.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\ZstdNet.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\nann8059\Documents\GitHub\Car-Comparison\CarComparisonSite\CarComparisonSite\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll

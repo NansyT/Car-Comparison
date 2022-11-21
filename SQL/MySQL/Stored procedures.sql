@@ -29,19 +29,19 @@ drop procedure if exists GetModelsByBrand;$$
 
 CREATE PROCEDURE GetModelsByBrand(Brand varchar(30))
 begin
-	Select MName from car where BName = Brand;
+	Select MName from Car where BName = Brand;
 end $$
 
 drop procedure if exists GetVariantByModel;$$
 
 CREATE PROCEDURE GetVariantByModel(model varchar(50))
 begin
-	Select Variant from car where MName = model;
+	Select Variant from Car where MName = model;
 end $$
 
 drop procedure if exists GetYears;$$
 
-CREATE PROCEDURE GetYears(brand varchar(30), variant varchar(150), model varchar(50))
+CREATE PROCEDURE GetYears(brand varchar(30), variants varchar(150), model varchar(50))
 begin
-	Select YEAR(ReleaseYear) from car where MName = model;
+	Select YEAR(ReleaseYear) from Car where BName = brand and MName = model and Variant = variants;
 end $$

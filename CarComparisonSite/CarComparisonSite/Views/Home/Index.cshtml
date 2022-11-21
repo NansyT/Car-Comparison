@@ -181,8 +181,7 @@
         <div class="pagedListPager">
             @Html.PagedListPager((IPagedList)ViewBag.OnePageOfCars, page =>
         Url.Action("Index", new { page }))
-        </div>
-
+        </div> 
         <div class="chosenCars">
             <div id="chosenGas" class="row">
                 @if (Context.Session.GetObject<Car>("SelectedGas") != null)
