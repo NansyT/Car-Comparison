@@ -14,8 +14,8 @@ begin
 	set elPrice = (select (SELECT Avg(Price) from FuelPrice where FuelName = 'El')  
 	from FuelPrice where Date > timestampadd(day, -120, now()) and FuelPrice.FuelName = 'El' LIMIT 1);
 
-	SELECT Car.*, case when Car.FuelName = 'Benzin' then gasPrice else elPrice end as AvgPrice
-	from Car;
+	SELECT car.*, case when car.FuelName = 'Benzin' then gasPrice else elPrice end as AvgPrice
+	from car;
 end $$
 
 drop procedure if exists GetBrands;$$
@@ -27,21 +27,21 @@ end $$
 
 drop procedure if exists GetModelsByBrand;$$
 
-CREATE PROCEDURE GetModelsByBrand(Brand varchar(30))
+CREATE PROCEDURE GetModelsByBrand(brand varchar(30))
 begin
-	Select MName from Car where BName = Brand;
+	Select MName from car where BName = brand;
 end $$
 
 drop procedure if exists GetVariantByModel;$$
 
 CREATE PROCEDURE GetVariantByModel(model varchar(50))
 begin
-	Select Variant from Car where MName = model;
+	Select Variant from car where MName = model;
 end $$
 
 drop procedure if exists GetYears;$$
 
 CREATE PROCEDURE GetYears(brand varchar(30), variants varchar(150), model varchar(50))
 begin
-	Select YEAR(ReleaseYear) from Car where BName = brand and MName = model and Variant = variants;
+	Select YEAR(ReleaseYear) from car where BName = brand and MName = model and Variant = variants;
 end $$

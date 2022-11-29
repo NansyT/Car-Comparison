@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
@@ -80,10 +81,10 @@ namespace CarComparisonSite
                 List<string> models = new List<string>();
                 connection.Open();
                 using (command = new MySqlCommand("GetModelsByBrand", connection))
+                //using (command = new MySqlCommand($"CALL `carcomparison`.`GetModelsByBrand`('{brand}');", connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("Brand", brand);
+                    command.Parameters.AddWithValue("Brand", brand.ToString());
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         string model;
@@ -136,8 +137,7 @@ namespace CarComparisonSite
                 using (command = new MySqlCommand("GetYears", connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("brand", brand);
+                    command.Parameters.AddWithValue("brand", brand.ToString());
                     command.Parameters.AddWithValue("variants", variant);
                     command.Parameters.AddWithValue("model", model);
                     using (MySqlDataReader reader = command.ExecuteReader())
