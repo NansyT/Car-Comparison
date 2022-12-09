@@ -81,7 +81,6 @@ namespace CarComparisonSite
                 List<string> models = new List<string>();
                 connection.Open();
                 using (command = new MySqlCommand("GetModelsByBrand", connection))
-                //using (command = new MySqlCommand($"CALL `carcomparison`.`GetModelsByBrand`('{brand}');", connection))
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("Brand", brand.ToString());

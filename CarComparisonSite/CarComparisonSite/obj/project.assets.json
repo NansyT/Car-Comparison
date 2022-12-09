@@ -1,20 +1,16 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    "net6.0": {
       "Google.Protobuf/3.19.4": {
         "type": "package",
-        "dependencies": {
-          "System.Memory": "4.5.3",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
-        },
         "compile": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {
+          "lib/net5.0/Google.Protobuf.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {
+          "lib/net5.0/Google.Protobuf.dll": {
             "related": ".pdb;.xml"
           }
         }
@@ -664,16 +660,16 @@
           "System.Text.Encoding.CodePages": "4.4.0"
         },
         "compile": {
-          "lib/netstandard2.1/MySql.Data.dll": {
+          "lib/net6.0/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/netstandard2.1/ZstdNet.dll": {}
+          "lib/net6.0/ZstdNet.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/MySql.Data.dll": {
+          "lib/net6.0/MySql.Data.dll": {
             "related": ".xml"
           },
-          "lib/netstandard2.1/ZstdNet.dll": {}
+          "lib/net6.0/ZstdNet.dll": {}
         }
       },
       "NETStandard.Library/1.6.1": {
@@ -2357,10 +2353,10 @@
           "JetBrains.Annotations": "2022.1.0"
         },
         "compile": {
-          "lib/netstandard2.1/X.PagedList.dll": {}
+          "lib/net6.0/X.PagedList.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/X.PagedList.dll": {}
+          "lib/net6.0/X.PagedList.dll": {}
         }
       },
       "X.PagedList.Mvc.Core/8.4.3": {
@@ -2369,10 +2365,10 @@
           "X.PagedList": "8.4.3"
         },
         "compile": {
-          "lib/netcoreapp3.1/X.PagedList.Mvc.Core.dll": {}
+          "lib/net6.0/X.PagedList.Mvc.Core.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/X.PagedList.Mvc.Core.dll": {}
+          "lib/net6.0/X.PagedList.Mvc.Core.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -7318,7 +7314,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
+    "net6.0": [
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.5",
       "MySql.Data >= 8.0.31",
       "Newtonsoft.Json >= 13.0.1",
@@ -7344,15 +7340,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {}
         }
       },
@@ -7363,8 +7359,8 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
@@ -7402,12 +7398,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.30, 3.1.30]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
