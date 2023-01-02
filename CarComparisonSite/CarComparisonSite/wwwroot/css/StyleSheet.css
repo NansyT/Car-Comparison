@@ -60,7 +60,9 @@ input:focus, textarea:focus, select:focus {
     padding: 0;
 }
 
-
+.arrowMenu {
+    padding: 5px;
+}
 
 .clickAbleDiv {
     background-color: transparent;
@@ -129,6 +131,7 @@ input:focus, textarea:focus, select:focus {
 .pagination a {
     text-decoration: none;
     color: #6c757d;
+    padding: 1px;
 }
 
     .pagination a.active {
@@ -139,6 +142,11 @@ input:focus, textarea:focus, select:focus {
     .pagination a:hover:not(.active) {
         background-color: #ddd;
     }
+
+.pagination li {
+    padding: 5px;
+}
+
 
 .statisticsNav {
     padding-bottom: 0;
@@ -184,11 +192,11 @@ input:focus, textarea:focus, select:focus {
     color: #3b71ca;
 }
 
-.chargingStationTitle{
-    display:inline-flex;
+.chargingStationTitle {
+    display: inline-flex;
 }
 
-.chargingStationInfo{
-    margin-left:0.5rem;
-    padding-top:2.5%;
+.chargingStationInfo {
+    margin-left: 0.5rem;
+    padding-top: 2.5%;
 }
