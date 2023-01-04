@@ -8,11 +8,11 @@ begin
 	declare gasPrice float;
     declare elPrice float;
     
-	set gasPrice = (select (SELECT Avg(Price) from FuelPrice where FuelName = 'Benzin')
-	from FuelPrice where Date > timestampadd(day, -320, now()) and FuelPrice.FuelName = 'Benzin' LIMIT 1);
+	set gasPrice = (select (SELECT Avg(Price) from fuelprice where FuelName = 'Benzin')
+	from fuelprice where Date > timestampadd(day, -320, now()) and fuelprice.FuelName = 'Benzin' LIMIT 1);
 	
-	set elPrice = (select (SELECT Avg(Price) from FuelPrice where FuelName = 'El')  
-	from FuelPrice where Date > timestampadd(day, -120, now()) and FuelPrice.FuelName = 'El' LIMIT 1);
+	set elPrice = (select (SELECT Avg(Price) from fuelprice where FuelName = 'El')  
+	from fuelprice where Date > timestampadd(day, -320, now()) and fuelprice.FuelName = 'El' LIMIT 1);
 
 	SELECT car.*, case when car.FuelName = 'Benzin' then gasPrice else elPrice end as AvgPrice
 	from car;
@@ -22,7 +22,7 @@ drop procedure if exists GetBrands;$$
 
 CREATE PROCEDURE GetBrands()
 begin
-	select * from Brand;
+	select * from brand;
 end $$
 
 drop procedure if exists GetModelsByBrand;$$
