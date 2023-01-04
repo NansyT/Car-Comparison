@@ -303,7 +303,6 @@
                     <div class="d-flex p-2 ">
                         <p>Brændstof/el forbrug <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Totalprisen af forbrug på el/benzin."></i></p>
                     </div>
-                    @*<div class="d-flex p-2 ">Co2 afgift</div>*@
                     <div class="d-flex p-2 ">
                         <p>Bilsyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal synes efter 4 år efter køb. Derefter skal den synes hvert andet år."> </i></p>
                     </div>
@@ -327,7 +326,7 @@
                             @if (Context.Session.GetObject<Car>("SelectedGas") != null)
                             {
                                 Car car = Context.Session.GetObject<Car>("SelectedGas");
-                                <p class="category">Benzin bil: @car.Variant</p>
+                                <p class="category">Benzin bil: @car.Brand @car.Variant</p>
                             }
                             else
                             {
@@ -340,7 +339,6 @@
                         <div class="d-flex p-2">
                             <p id="fuelPGasO"></p>
                         </div>
-                        @*<div id="co2Gas" class="d-flex p-2"></div>*@
                         <div class="d-flex p-2">
                             <p id="synPGasO"></p>
                         </div>
@@ -365,7 +363,7 @@
                             @if (Context.Session.GetObject<Car>("SelectedElectric") != null)
                             {
                                 Car car = Context.Session.GetObject<Car>("SelectedElectric");
-                                <p class="category">El bil: @car.Variant</p>
+                                <p class="category">El bil: @car.Brand @car.Variant</p>
                             }
                             else
                             {
@@ -379,7 +377,6 @@
                             <p id="electPElecO"></p>
 
                         </div>
-                        @*<div id="co2Elec" class="d-flex p-2"></div>*@
                         <div class="d-flex p-2">
                             <p id="synPElecO"></p>
                         </div>
