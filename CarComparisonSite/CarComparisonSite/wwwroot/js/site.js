@@ -2,32 +2,33 @@
     $('[data-toggle="tooltip"]').tooltip();
 });
 
+let currentURL = window.location.href;
 
 function selectBrand(button) {
     let val = button.innerHTML;
 
-    let ur = 'https://localhost:44355/Home/SelectBrand?brand=' + val.trim();
+    let ur = currentURL + 'Home/SelectBrand?brand=' + val.trim();
     sendPOST(ur);
 }
 
 function selectModels(button) {
     let val = button.innerHTML;
 
-    let ur = 'https://localhost:44355/Home/SelectModel?model=' + val.trim();
+    let ur = currentURL + 'Home/SelectModel?model=' + val.trim();
     sendPOST(ur);
 }
 
 function selectVariant(button) {
     let val = button.innerHTML;
 
-    let ur = 'https://localhost:44355/Home/SelectVariant?variant=' + val.trim();
+    let ur = currentURL + 'Home/SelectVariant?variant=' + val.trim();
     sendPOST(ur);
 }
 
 function selectYear(button) {
     let val = button.innerHTML;
 
-    let ur = 'https://localhost:44355/Home/SelectYear?year=' + val.trim();
+    let ur = currentURL + 'Home/SelectYear?year=' + val.trim();
     sendPOST(ur);
     
 }

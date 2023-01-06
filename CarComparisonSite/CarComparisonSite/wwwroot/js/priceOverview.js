@@ -37,6 +37,7 @@ let finPrices = {
     year5E: 0
 };
 
+
 //This gets called every time the page is loaded
 window.onload = function () {
     //checks the status for charger (rent or own) and sets a check in the correct checkbox
@@ -101,7 +102,7 @@ window.onload = function () {
 
 //
 function SetOwnership(ownership) {
-    let ur = 'https://localhost:44355/home/SetOwnership?owner=' + ownership;
+    let ur = currentURL + 'Home/SetOwnership?owner=' + ownership;
     $.ajax({
         url: ur,
         type: 'POST',
@@ -117,7 +118,7 @@ function SetOwnership(ownership) {
 
 //
 function SetKmYear() {
-    let ur = 'https://localhost:44355/home/SetkmPeryear'
+    let ur = currentURL + 'Home/SetkmPeryear';
     $.ajax({
         url: ur,
         type: 'POST',

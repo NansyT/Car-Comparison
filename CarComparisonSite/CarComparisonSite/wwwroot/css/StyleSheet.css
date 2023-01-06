@@ -154,15 +154,17 @@ input:focus, textarea:focus, select:focus {
 
 .statisticsBody {
     background-color: #f8f9fa;
-    display: grid;
-    grid-template-columns: 20% 40% 40%;
-    clear: both;
     border-left: 0.1px solid #dee2e6;
     border-right: 0.1px solid #dee2e6;
     border-bottom: 0.1px solid #dee2e6;
     border-top: 0.1px solid #dee2e6;
 }
 
+.statisticsTable {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    clear: both;
+}
 .statisticsGas {
     flex: auto;
     text-align: center;
@@ -174,10 +176,11 @@ input:focus, textarea:focus, select:focus {
 }
 
 .statisticsTextEndAlign {
-    text-align: end
+    text-align: end;
 }
 
-.convasContainer {
+.canvasContainer {
+    width: 40%;
 }
 
 .category {

@@ -293,110 +293,103 @@
 
 
             <div class="statisticsBody">
-                <div class=" col category">
-                    <div class="d-flex p-2 ">
+                <div class="statisticsTable">
+                    @*Top row*@
+                    <div class="p-2 category">
                         <p>Kategorier:</p>
                     </div>
-                    <div class="d-flex p-2 ">
+                    <div class="p-2 category">
+                        @if (Context.Session.GetObject<Car>("SelectedGas") != null)
+                        {
+                            Car car = Context.Session.GetObject<Car>("SelectedGas");
+                            <p class="category">Benzin bil: @car.Brand @car.Model @car.Variant</p>
+                        }
+                        else
+                        {
+                            <p class="category">Benzin bil:</p>
+                        }
+                    </div>
+                    <div class="p-2 category">
+                        @if (Context.Session.GetObject<Car>("SelectedElectric") != null)
+                        {
+                            Car car = Context.Session.GetObject<Car>("SelectedElectric");
+                            <p class="category">El bil: @car.Brand @car.Model @car.Variant</p>
+                        }
+                        else
+                        {
+                            <p class="category">El bil:</p>
+                        }
+                    </div>
+                    @*Second row*@
+                    <div class="p-2 category">
                         <p>Nypris <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Købsprisen på bilen. Dette bliver kun regnet med det første år."></i></p>
                     </div>
-                    <div class="d-flex p-2 ">
+                    <div class="p-2">
+                        <p id="newPGasO"></p>
+                    </div>
+                    <div class="p-2">
+                        <p id="newPElecO"></p>
+                    </div>
+                    @*Third row*@
+                    <div class="p-2 category">
                         <p>Brændstof/el forbrug <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Totalprisen af forbrug på el/benzin."></i></p>
                     </div>
-                    <div class="d-flex p-2 ">
+                    <div class="p-2">
+                        <p id="fuelPGasO"></p>
+                    </div>
+                    <div class="p-2">
+                        <p id="electPElecO"></p>
+                    </div>
+                    @*Fourth row*@
+                    <div class="p-2 category">
                         <p>Bilsyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal synes efter 4 år efter køb. Derefter skal den synes hvert andet år."> </i></p>
                     </div>
-                    <div class="d-flex p-2 ">
+                    <div class="p-2">
+                        <p id="synPGasO"></p>
+                    </div>
+                    <div class="p-2">
+                        <p id="synPElecO"></p>
+                    </div>
+                    @*Fifth row*@
+                    <div class="p-2 category">
                         <p>Serviceeftersyn <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Bilen skal til serviceeftersyn mindst 1 gang årligt, eller efter et bestemt antal kilometer kørt."> </i></p>
                     </div>
-                    <div class="d-flex p-2 ">
+                    <div class="p-2">
+                        <p id="servPGasO"></p>
+                    </div>
+                    <div class="p-2">
+                        <p id="servPElecO"></p>
+                    </div>
+                    @*Sixth row*@
+                    <div class="p-2 category">
                         <p>Ladestander <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Pris på en ladestander. Dette er kun relevant hvis du ejer den selv."> </i></p>
                     </div>
-                    <div class="d-flex p-2 ">
+                    <div class="p-2">
+                        <p id="chargPGasO"></p>
+                    </div>
+                    <div class="p-2">
+                        <p id="chargPElecO"></p>
+                    </div>
+                    @*Seventh row*@
+                    <div class="p-2 category">
                         <p>Ladeabonnement <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" data-placement="top" title="Startpris og pris for abonnement "> </i></p>
                     </div>
-                    <br />
-                    <div class="d-flex p-2">
+                    <div class="p-2">
+                        <p id="subPGasO"></p>
+                    </div>
+                    <div class="p-2">
+                        <p id="subPElecO"></p>
+                    </div>
+                    @*Eight row*@
+                    <div class="d-flex p-2 category">
                         <p class="totalPriceAmountTitle">Totalt</p>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="statisticsGas">
-                        <div class="d-flex p-2 ">
-                            @if (Context.Session.GetObject<Car>("SelectedGas") != null)
-                            {
-                                Car car = Context.Session.GetObject<Car>("SelectedGas");
-                                <p class="category">Benzin bil: @car.Brand @car.Variant</p>
-                            }
-                            else
-                            {
-                                <p class="category">Benzin bil:</p>
-                            }
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="newPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="fuelPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="synPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="servPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="chargPGasO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="subPGasO"></p>
-                        </div>
-                        <br />
-                        <div class="d-flex p-2">
-                            <p class="totalPriceAmountTitle" id="totalPGas"></p>
-                        </div>
+                    <div class="d-flex p-2">
+                        <p class="totalPriceAmountTitle" id="totalPGas"></p>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="statisticsElectric">
-                        <div class="d-flex p-2 ">
-                            @if (Context.Session.GetObject<Car>("SelectedElectric") != null)
-                            {
-                                Car car = Context.Session.GetObject<Car>("SelectedElectric");
-                                <p class="category">El bil: @car.Brand @car.Variant</p>
-                            }
-                            else
-                            {
-                                <p class="category">El bil:</p>
-                            }
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="newPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="electPElecO"></p>
-
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="synPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="servPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="chargPElecO"></p>
-                        </div>
-                        <div class="d-flex p-2">
-                            <p id="subPElecO"></p>
-                        </div>
-                        <br />
-                        <div class="d-flex p-2">
-                            <p class="totalPriceAmountTitle" id="totalPElec"></p>
-                        </div>
+                    <div class="d-flex p-2">
+                        <p class="totalPriceAmountTitle" id="totalPElec"></p>
                     </div>
-                </div>
-                <div id="canCon" class="canvasContainer" hidden="hidden">
-                    <canvas id="myChart"></canvas>
                 </div>
                 <p id="year1G" hidden="hidden"></p>
                 <p id="year2G" hidden="hidden"></p>
@@ -408,6 +401,9 @@
                 <p id="year3E" hidden="hidden"></p>
                 <p id="year4E" hidden="hidden"></p>
                 <p id="year5E" hidden="hidden"></p>
+                <div id="canCon" class="canvasContainer" hidden="hidden">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
     }
