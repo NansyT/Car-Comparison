@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace CarComparisonSite.Controllers
             //collect the items for the first dropdown
             GetAllBrands();
             return View();
+            
         }
 
         //Called from an onclick in JS
@@ -211,6 +213,11 @@ namespace CarComparisonSite.Controllers
             return RedirectToAction("index");
         }
 
+        [HttpPost]
+        public void Getkeyboard()
+        {
+           
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

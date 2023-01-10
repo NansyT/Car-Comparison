@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UzqIvBCg4UZLW3097VkdZgyBK+i3WZ/bpykBXaDMv62GLchs5BWbGfLnDruFGssyx3SX72gcqwmDvnljAs6pXw==",
+  "dgSpecHash": "Qf//mqrBnJIIBuT6H6Mjelg7IIvs29KMtGFlfN9IE15rFc7PYgzwQdVgudFJWHAekvI5zq42Fp1sVEeYCJVIMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\nann8059\\Documents\\GitHub\\Car-Comparison\\CarComparisonSite\\CarComparisonSite\\CarComparisonSite.csproj",
   "expectedPackageFiles": [
@@ -72,7 +72,7 @@
     "C:\\Users\\nann8059\\.nuget\\packages\\system.composition.typedparts\\1.0.31\\system.composition.typedparts.1.0.31.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
-    "C:\\Users\\nann8059\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
+    "C:\\Users\\nann8059\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.3.0\\system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
     "C:\\Users\\nann8059\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",

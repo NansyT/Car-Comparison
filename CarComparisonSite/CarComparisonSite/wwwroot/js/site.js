@@ -33,6 +33,8 @@ function selectYear(button) {
     
 }
 
+
+
 function sendPOST(ur) {
     $.ajax({
         url: ur,

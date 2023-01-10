@@ -1,31 +1,33 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@ViewData["Title"] - CarComparisonSite</title>
-	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-	<link href="~/mdb/css/mdb.min.css" rel="stylesheet">
-	<link href="~/css/webfonts/all.css" rel="stylesheet">
-	@*<link rel="stylesheet" href="~/css/site.css" />*@
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CarComparisonSite</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="~/mdb/css/mdb.min.css" rel="stylesheet">
+    <link href="~/css/webfonts/all.css" rel="stylesheet">
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
 </head>
 <body>
 
-	<div class="container">
-		<main role="main" class="pb-3">
-			@RenderBody()
-		</main>
-	</div>
-	<script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="~/mdb/js/mdb.min.js" type="module"></script>
-	@*<script type="text/javascript" src="~/mdb/js/popper.min.js"></script>*@
-	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	@*Script for chart*@
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="~/js/site.js" asp-append-version="true"></script>
-	<script src="~/js/priceOverview.js" type="text/javascript"></script>
-	<script src="~/js/chart.js" type="text/javascript"></script>
-	<script src="~/js/SelectCar.js" type="text/javascript"></script>
-	@RenderSection("Scripts", required: false)
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/mdb/js/mdb.min.js" type="module"></script>
+    @*<script type="text/javascript" src="~/mdb/js/popper.min.js"></script>*@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @*Script for chart*@
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/priceOverview.js" type="text/javascript"></script>
+    <script src="/virtual-keyboard/dist/js/jquery.keyboard.js" type="text/javascript"></script>
+    
+    <script src="~/js/chart.js" type="text/javascript"></script>
+    <script src="~/js/SelectCar.js" type="text/javascript"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

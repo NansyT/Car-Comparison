@@ -12,9 +12,8 @@ var ref = 1.06;
 
 //Raw electric price
 //Notes: Price for kWh/h is not precise.
-//We have used the average raw price not including any vat
-//or other additional costs that may be applied in real life.
-var electP = 2.0225;
+//We have used the average-ish price from https://elberegner.dk/elpriser/
+var electP = 3.25;
 
 //Only applicable when a subscription is active
 //This is costs for starting up a subscription
@@ -50,14 +49,16 @@ window.onload = function () {
         document.getElementById("electricRadioOwn").checked = true;
         console.log(status);
     }
+    
 
     //Sets eventlistener on the textbox for km driven to make sure calculations are run when the km is changed.
-    document.getElementById("kmYear").addEventListener('change', function () {
-        calcGas();
-        calcElec();
-        SetKmYear();
-        chart();
-    })
+    //Not needed when using the virtual keyboard. Using the kmCalc() Method instead (look alittle further down)
+    //document.getElementById("kmYear").addEventListener('change', function () {
+    //    calcGas();
+    //    calcElec();
+    //    SetKmYear();
+    //    chart();
+    //})
     calcElec();
     calcGas();
 
@@ -98,6 +99,14 @@ window.onload = function () {
             }
         })
     }
+}
+
+//Gets used by the keyboard to update the km driven instead of making an event listener for kn driven textbox
+function kmCalc() {
+    calcGas();
+    calcElec();
+    SetKmYear();
+    chart();
 }
 
 //
