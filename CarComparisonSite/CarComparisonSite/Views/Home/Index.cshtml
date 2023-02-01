@@ -9,48 +9,11 @@
 
 
 <div class="text-center">
-    <script type="text/javascript">
-        $(function () {
-            $('#kmYear').keyboard({
-                layout: 'custom',
-                autoAccept: 'true',
-                maxLength: 10,
-                customLayout: {
-                    'default': [
-                        '7 8 9',
-                        '4 5 6',
-                        '1 2 3',
-                        '{accept} 0 {bksp}'
-                    ]
-                },
-                appendLocally: true,
-                position: {
-                    // optional - null (attach to input/textarea) or a jQuery object (attach elsewhere)
-                    of: null,
-                    my: 'center top',
-                    at: 'center top',
-                    // used when 'usePreview' is false (centers the keyboard at the bottom of the input/textarea)
-                    at2: 'center bottom'
-                },
-                usePreview: false,
-                restrictInput: true,
-                autoAccept: false
-               
-            })
-        });
-    </script>
     @{
-                            <span class="col-form-label label-primary">Indtast kørte km./år: </span>
+        <span class="col-form-label label-primary">Indtast kørte km./år: </span>
         double kmYear = Context.Session.GetObject<double>("kmYear");
-        if (kmYear != default)
-        {
-            <input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" autocomplete="off" value="@kmYear" />
-
-        }
-        else
-        {
-                                <input id="kmYear" class="kmTitel" placeholder="0" type="text" pattern="[0-9]+" autocomplete="off" />
-        }
+        <label hidden="hidden" id="kmHolder">@kmYear</label>
+        <select id="kmYear" class="kmTitel"></select>
     }
 
     <i class="fa-solid fa-circle-info toolTip" data-toggle="tooltip" role="tooltip" data-placement="right" title="Gennemsnitligt kører en dansker 17.000 km./år"> </i>
@@ -74,16 +37,16 @@
                     {
                         for (int i = 0; i < brands.Count; i++)
                         {
-                                                <button id="btnBrand @i" onmouseup="selectBrand(this)" class="dropdown-item" name="btnBrand" type="submit">
-                                                    @brands[i]
-                                                </button>
+                            <button id="btnBrand @i" onmouseup="selectBrand(this)" class="dropdown-item" name="btnBrand" type="submit">
+                                @brands[i]
+                            </button>
                         }
                     }
                     else
                     {
-                                            <button class="dropdown-item" type="button">
-                                                Der var ingen mærker fundet
-                                            </button>
+                        <button class="dropdown-item" type="button">
+                            Der var ingen mærker fundet
+                        </button>
                     }
                 }
             </div>
@@ -104,16 +67,16 @@
                     {
                         for (int i = 0; i < models.Count; i++)
                         {
-                                                <button id="btnModel @i" onmouseup="selectModels(this)" class="dropdown-item" type="submit">
-                                                    @models[i]
-                                                </button>
+                            <button id="btnModel @i" onmouseup="selectModels(this)" class="dropdown-item" type="submit">
+                                @models[i]
+                            </button>
                         }
                     }
                     else
                     {
-                                            <button class="dropdown-item" type="button">
-                                                Der var ingen modeller fundet
-                                            </button>
+                        <button class="dropdown-item" type="button">
+                            Der var ingen modeller fundet
+                        </button>
                     }
                 }
             </div>
@@ -136,17 +99,17 @@
 
                         for (int i = 0; i < variants.Count; i++)
                         {
-                                                <button id="btnVariant @i" onmouseup="selectVariant(this)" class="dropdown-item" type="submit">
-                                                    @variants[i]
-                                                </button>
+                            <button id="btnVariant @i" onmouseup="selectVariant(this)" class="dropdown-item" type="submit">
+                                @variants[i]
+                            </button>
 
                         }
                     }
                     else
                     {
-                                            <button class="dropdown-item" type="button">
-                                                Der var ingen varianter fundet med den mærke og model
-                                            </button>
+                        <button class="dropdown-item" type="button">
+                            Der var ingen varianter fundet med den mærke og model
+                        </button>
                     }
                 }
             </div>
@@ -167,16 +130,16 @@
                     {
                         for (int i = 0; i < years.Count; i++)
                         {
-                                                <button id="btnYear @i" onmouseup="selectYear(this)" class="dropdown-item" type="submit">
-                                                    @years[i]
-                                                </button>
+                            <button id="btnYear @i" onmouseup="selectYear(this)" class="dropdown-item" type="submit">
+                                @years[i]
+                            </button>
                         }
                     }
                     else
                     {
-                                            <button class="dropdown-item" type="button">
-                                                Der var ingen år fundet
-                                            </button>
+                        <button class="dropdown-item" type="button">
+                            Der var ingen år fundet
+                        </button>
                     }
                 }
             </div>

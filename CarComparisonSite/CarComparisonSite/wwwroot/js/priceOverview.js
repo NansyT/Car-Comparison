@@ -49,16 +49,16 @@ window.onload = function () {
         document.getElementById("electricRadioOwn").checked = true;
         console.log(status);
     }
-    
 
-    //Sets eventlistener on the textbox for km driven to make sure calculations are run when the km is changed.
-    //Not needed when using the virtual keyboard. Using the kmCalc() Method instead (look alittle further down)
-    //document.getElementById("kmYear").addEventListener('change', function () {
-    //    calcGas();
-    //    calcElec();
-    //    SetKmYear();
-    //    chart();
-    //})
+    setKm();
+
+    //Sets eventlistener for km driven to make sure calculations are run when the km is changed.
+    document.getElementById("kmYear").addEventListener('change', function () {
+        calcGas();
+        calcElec();
+        SetKmYear();
+        chart();
+    })
     calcElec();
     calcGas();
 

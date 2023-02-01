@@ -15,7 +15,7 @@ begin
 	from fuelprice where Date > timestampadd(day, -320, now()) and fuelprice.FuelName = 'El' LIMIT 1);
 
 	SELECT car.*, case when car.FuelName = 'Benzin' then gasPrice else elPrice end as AvgPrice
-	from car;
+	from car order by BName, MName, Variant;
 end $$
 
 drop procedure if exists GetBrands;$$

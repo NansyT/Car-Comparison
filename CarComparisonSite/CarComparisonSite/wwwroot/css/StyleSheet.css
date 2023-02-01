@@ -5,6 +5,19 @@
     font-size: 2rem;
     text-align: center;
     margin: 5% 0px 5% 0px;
+    width: 10rem;
+}
+
+select.kmTitel::-webkit-scrollbar {
+   background-color:white;
+}
+
+select.kmTitel::-webkit-scrollbar-thumb {
+    background-color: #dee2e6;
+}
+
+option {
+    font-size: 1.3rem;
 }
 
 h1 {
@@ -165,6 +178,7 @@ input:focus, textarea:focus, select:focus {
     grid-template-columns: 20% 40% 40%;
     clear: both;
 }
+
 .statisticsGas {
     flex: auto;
     text-align: center;
